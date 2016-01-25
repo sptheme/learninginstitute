@@ -110,6 +110,12 @@ add_action( 'widgets_init', 'learninginstitute_widgets_init' );
 function learninginstitute_scripts() {
 	wp_enqueue_style( 'learninginstitute-style', get_stylesheet_uri() );
 
+	//Add Google Fonts (English): Merriweather and Open Sans
+	wp_enqueue_style( 'google-font-english', 'https://fonts.googleapis.com/css?family=Merriweather:400,400italic,900,900italic|Open+Sans:400,400italic,700,700italic' );
+
+	//Add Google Font (Khmer): Hanuman
+	wp_enqueue_style( 'google-font-khmer', 'https://fonts.googleapis.com/css?family=Hanuman:400,700' );
+
 	wp_enqueue_script( 'learninginstitute-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
 	wp_enqueue_script( 'learninginstitute-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
