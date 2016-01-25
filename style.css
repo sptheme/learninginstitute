@@ -274,7 +274,12 @@ textarea {
 	color: #404040;
 	font-family: 'Merriweather', serif;
 	font-size: 16px;
-	font-size: 1rem;
+	/*
+	 * Set responsive typography
+	 *
+	 * if user and their browser have set default font-size (16px) and all other fonts will respond that dynamic default font-size.
+	 */
+	font-size: 1rem; 
 	line-height: 1.5;
 }
 
@@ -286,7 +291,16 @@ h5,
 h6 {
 	font-family: 'Open Sans', sans-serif;
 	clear: both;
+	line-height: 1.3em; /* Always relative to the inherited font-size of container element */
+	margin-top: 2.5rem; /* Use rem are root relative to em, always related to default font-size (16px) */
+	margin-bottom: 1rem; 
 }
+h1 { font-size: 2.4em; }
+h2 { font-size: 2.2em; }
+h3 { font-size: 2em; }
+h4 { font-size: 1.8em; }
+h5 { font-size: 1.6em; }
+h6 { font-size: 1.4em; }
 
 p {
 	margin-bottom: 1.5em;
@@ -770,6 +784,36 @@ a:active {
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Set typography for content page
+--------------------------------------------------------------*/
+.site-content {
+	font-size: 1.125em;
+	line-height: 1.6em;
+}
+
+.site-main {
+	margin: 1.4em;
+	font-size: 0.8em;
+	line-height: 1.6em;
+}
+@media screen and ( min-width: 30em ) {
+	.site-main {
+		margin: 1.8em;
+	}
+}
+@media screen and ( min-width: 40em ) {
+	.site-main {
+		font-size: 1em;
+	}
+}
+@media screen and ( min-width: 57em ) {
+	.site-main {
+		max-width: 45em;
+		margin: 1.8em auto;
+	}
+}
+
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
