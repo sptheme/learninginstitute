@@ -22,6 +22,21 @@
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 
+<nav id="sitemenu-container" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div id="inner-mobile-menu">
+	    <div class="mobile-branding">
+	    	<img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="<?php bloginfo( 'name' ); ?>">
+			
+			<?php $description = get_bloginfo( 'description', 'display' );
+			if ( $description || is_customize_preview() ) : ?>
+				<p class="site-description"><?php echo $description; ?></p>
+			<?php endif; ?>
+	    </div>
+	    
+	    <?php wp_nav_menu( array( 'container' => false, 'menu_id' => 'menu-mobile', 'theme_location' => 'mobile', 'menu_class' => 'mobile-nav' ) ); ?>
+    </div> <!-- #inner-mobile-menu -->
+</nav>
+
 <?php wp_footer(); ?>
 
 </body>
