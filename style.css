@@ -37,6 +37,8 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Clearings
 # Layout
 # Header
+# Footer
+	## Footer menus
 # Widgets
 # Content
 	## Posts and pages
@@ -445,7 +447,7 @@ acronym {
 
 mark,
 ins {
-	background: #007acc;
+	background: #007196;
 	color: #fff;
 	padding: 0.125em 0.25em;
 	text-decoration: none;
@@ -641,7 +643,7 @@ input[type="reset"]:hover,
 input[type="reset"]:focus,
 input[type="submit"]:hover,
 input[type="submit"]:focus {
-	background: #007acc;
+	background: #007196;
 }
 
 button:focus,
@@ -678,7 +680,7 @@ input[type="tel"]:focus,
 input[type="number"]:focus,
 textarea:focus {
 	background-color: #fff;
-	border-color: #007acc;
+	border-color: #007196;
 	color: #1a1a1a;
 	outline: 0;
 }
@@ -800,7 +802,8 @@ a:active {
 	font-size: 1em;
 	font-weight: 400;
 	display: block;
-	float: left;
+	float: right;
+	margin-top: 1.923em;
 }
 
 .main-navigation ul {
@@ -853,7 +856,7 @@ a:active {
 
 .main-navigation li:hover > a,
 .main-navigation li.focus > a {
-	background-color: #50b948;
+	background-color: #4caf50;
 	color:#fff;
 }
 
@@ -904,7 +907,7 @@ a:active {
 .main-navigation .current_page_ancestor > a,
 .main-navigation .current-menu-ancestor > a,
 .main-navigation .current-menu-parent > a {
-	background-color: #4cb050;
+	background-color: #4caf50;
 	color:#fff;
 }
 
@@ -914,7 +917,7 @@ a:active {
 	display: block;
 }
 
-@media screen and (min-width: 37.5em) {
+@media only screen and (min-width: 1024px) {
 	.menu-toggle {
 		display: none;
 	}
@@ -1057,7 +1060,7 @@ a:active {
 .pagination .prev:focus,
 .pagination .next:hover,
 .pagination .next:focus {
-	background-color: #007acc;
+	background-color: #007196;
 	color: #fff;
 }
 
@@ -1240,16 +1243,28 @@ blockquote.aligncenter {
 /*--------------------------------------------------------------
 # Layout
 --------------------------------------------------------------*/
+.site-content,
 .container {
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto;
+  max-width: 100%;
+}
+.site-content {
+	padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 40px;
 }
 
-@media screen and (min-width: 992px) {
+@media only screen and (min-width: 1024px) {
 	.container {
-		width: 960px;
+		max-width: 960px;
 	}
 }
+
+/*@media only screen and (min-width: 1140px) {
+	.container {
+		max-width: 1140px;
+	}
+}*/
 
 /*--------------------------------------------------------------
 # Header
@@ -1260,6 +1275,66 @@ blockquote.aligncenter {
 }
 .site-branding h2 {
 	margin: 0.5em 0;
+}
+.site-search-top {
+	float: right;
+}
+.search-form-small input[type="search"] {
+	padding: 0.385em 0.4375em;
+	color: #999;
+	font-size: 0.923em;
+}
+.search-form-small .search-submit {
+	width: 32px;
+}
+.search-form-small .search-submit:before {
+	font-size: 18px;
+	width: 32px;
+	line-height: 32px;
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+.site-footer {
+	background-color: #00394b;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	padding: 0.769em;
+	color: #0099cc;
+}
+.site-footer a {
+	color: #99ccff;
+}
+.site-footer a:hover,
+.site-footer a:focus {
+	color:#fff;
+}
+.site-info {
+	float: left;
+}
+.footer-navigation {
+	float: right;
+}
+
+/*--------------------------------------------------------------
+## Footer menus
+--------------------------------------------------------------*/
+.footer-navigation ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.footer-navigation ul li {
+	display: inline-block;
+	border-right: 1px solid #0099cc;	
+}
+.footer-navigation ul li:last-child {
+	border-right: none;
+}
+.footer-navigation ul li a {
+	padding: 0 0.769em;
+	display: block;
 }
 
 /*--------------------------------------------------------------
@@ -1337,7 +1412,7 @@ blockquote.aligncenter {
 }
 
 .widget_calendar tbody a {
-	background-color: #007acc;
+	background-color: #007196;
 	color: #fff;
 	display: block;
 	font-weight: 700;
@@ -1403,8 +1478,8 @@ blockquote.aligncenter {
 
 .tagcloud a:hover,
 .tagcloud a:focus {
-	border-color: #007acc;
-	color: #007acc;
+	border-color: #007196;
+	color: #007196;
 	outline: 0;
 }
 
@@ -1469,12 +1544,15 @@ blockquote.aligncenter {
 /*--------------------------------------------------------------
 ## Set typography for content page
 --------------------------------------------------------------*/
-.site-content {
+/*.site-content {
 	font-size: 1.125em;
 	line-height: 1.6em;
-}
+	padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 40px;
+}*/
 
-.site-main {
+/*.site-main {
 	margin: 1.4em;
 	font-size: 0.8em;
 	line-height: 1.6em;
@@ -1494,7 +1572,7 @@ blockquote.aligncenter {
 		max-width: 45em;
 		margin: 1.8em auto;
 	}
-}
+}*/
 
 /*--------------------------------------------------------------
 ## Posts and pages

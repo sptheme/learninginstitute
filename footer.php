@@ -10,15 +10,16 @@
  */
 
 ?>
-
+		</div><!-- .container -->	
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'learninginstitute' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'learninginstitute' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'learninginstitute' ), 'learninginstitute', '<a href="https://www.linkedin.com/in/sopheakpeas" rel="designer">Sopheak Peas</a>' ); ?>
+			<?php esc_html_e( 'All content copyright © 2010, The Learning Institute. All Rights Reserved.', 'learninginstitute' ); ?>
 		</div><!-- .site-info -->
+		<nav id="footer-navigation" class="footer-navigation" role="navigation">			
+			<?php wp_nav_menu( array( 'theme_location' => 'footer', 'menu_id' => 'footer-menu', 'menu_class' => 'nav-menu-footer', 'container' => false ) ); ?>
+		</nav><!-- #site-navigation -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

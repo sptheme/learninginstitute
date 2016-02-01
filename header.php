@@ -36,6 +36,10 @@
 				<?php if( !is_singular() ) echo '</h1>'; else echo '</h2>'; ?>
 			</div><!-- .site-branding -->
 
+			<div id="search-top" class="site-search-top search-form-small">
+			<?php get_search_form(); ?>
+			</div>
+
 			<nav id="site-navigation" class="main-navigation" role="navigation">			
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'menu_class' => 'nav-menu', 'container' => false ) ); ?>
 			</nav><!-- #site-navigation -->
@@ -43,3 +47,4 @@
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">
+		<div class="container">
