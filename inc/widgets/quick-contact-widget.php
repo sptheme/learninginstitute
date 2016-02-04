@@ -50,11 +50,7 @@ class WPSP_Quick_Contact_Widget extends WP_Widget {
         $telephone        = $instance['telephone'];
         $fax              = $instance['fax'];
         $email            = $instance['email'];
-        $social_label     = $instance['social_label'];
-        $facebook         = $instance['facebook'];
-        $twitter          = $instance['twitter'];
-        $youtube           = $instance['youtube'];
-        $linkedin         = $instance['linkedin'];
+    
 
         $title = apply_filters('widget_title', empty($instance['title'] ) ? __('Office address:', 'wpsp') : $instance['title'], $instance, $this->id_base);
 
@@ -68,13 +64,6 @@ class WPSP_Quick_Contact_Widget extends WP_Widget {
         $out .= '<li class="telephone">' . $telephone . '</li>';
         $out .= '<li class="fax">' . $fax . '</li>';
         $out .= '<li class="email"><a href="mailto:' . antispambot( $email ) . '">' . antispambot( $email ) . '</a></li>';
-        $out .= '</ul>';
-        $out .= '<ul class="social-links">';
-        $out .= '<li>' . $social_label . '</li>';
-        $out .= '<li><a target="_blank" href="' . $facebook . '"><span class="screen-reader-text">Facebook</span></a></li>';
-        $out .= '<li><a target="_blank" href="' . $twitter . '"><span class="screen-reader-text">Twitter</span></a></li>';
-        $out .= '<li><a target="_blank" href="' . $youtube . '"><span class="screen-reader-text">Youtube</span></a></li>';
-        $out .= '<li><a target="_blank" href="' . $linkedin . '"><span class="screen-reader-text">Linkedin</span></a></li>';
         $out .= '</ul>';
 
         echo $out;
@@ -103,11 +92,6 @@ class WPSP_Quick_Contact_Widget extends WP_Widget {
         $instance['telephone'] = strip_tags( $new_instance['telephone'] );
         $instance['fax'] = strip_tags( $new_instance['fax'] );
         $instance['email'] = strip_tags( $new_instance['email'] );
-        $instance['social_label'] = strip_tags( $new_instance['social_label'] );
-        $instance['facebook'] = strip_tags( $new_instance['facebook'] );
-        $instance['twitter'] = strip_tags( $new_instance['twitter'] );
-        $instance['youtube'] = strip_tags( $new_instance['youtube'] );
-        $instance['linkedin'] = strip_tags( $new_instance['linkedin'] );
 
         return $instance;
     }	
@@ -127,12 +111,7 @@ class WPSP_Quick_Contact_Widget extends WP_Widget {
             'address' => '#170, street 450, Toul Tompoung II, Chamcar Morn, Phnom Penh',
             'telephone' => '+855 (0)23 997 840', 
             'fax' => '+855 (0)23 997 840',
-            'email' => 'info@mydomain.com',
-            'social_label' => esc_html__('Keep Connect', 'wpsp_admin'),
-            'facebook' => '',
-            'twitter' => '',
-            'youtube' => '',
-            'linkedin' => '' );
+            'email' => 'info@mydomain.com' );
         $instance = wp_parse_args( (array) $instance, $defaults ); ?>
         <p>
             <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'wpsp_admin'); ?></label>
@@ -153,27 +132,6 @@ class WPSP_Quick_Contact_Widget extends WP_Widget {
         <p>
             <label for="<?php echo $this->get_field_id('email'); ?>"><?php _e('E-mail:', 'wpsp_admin'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('email'); ?>" name="<?php echo $this->get_field_name('email'); ?>" type="text" value="<?php echo esc_attr($instance['email']) ?>" />
-        </p>
-        <hr />
-        <p>
-            <label for="<?php echo $this->get_field_id('social_label'); ?>"><?php _e('Social label', 'wpsp_admin'); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id('social_label'); ?>" name="<?php echo $this->get_field_name('social_label'); ?>" type="text" value="<?php echo esc_attr($instance['social_label']) ?>" />
-        </p>
-        <p>
-            <label for="<?php echo $this->get_field_id('facebook'); ?>"><?php _e('Facebook', 'wpsp_admin'); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id('facebook'); ?>" name="<?php echo $this->get_field_name('facebook'); ?>" type="text" value="<?php echo esc_attr($instance['facebook']) ?>" />
-        </p>
-        <p>
-            <label for="<?php echo $this->get_field_id('twitter'); ?>"><?php _e('Twitter', 'wpsp_admin'); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id('twitter'); ?>" name="<?php echo $this->get_field_name('twitter'); ?>" type="text" value="<?php echo esc_attr($instance['twitter']) ?>" />
-        </p>
-        <p>
-            <label for="<?php echo $this->get_field_id('youtube'); ?>"><?php _e('Youtube', 'wpsp_admin'); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id('youtube'); ?>" name="<?php echo $this->get_field_name('youtube'); ?>" type="text" value="<?php echo esc_attr($instance['youtube']) ?>" />
-        </p>
-        <p>
-            <label for="<?php echo $this->get_field_id('linkedin'); ?>"><?php _e('Linkedin', 'wpsp_admin'); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id('linkedin'); ?>" name="<?php echo $this->get_field_name('linkedin'); ?>" type="text" value="<?php echo esc_attr($instance['linkedin']) ?>" />
         </p>
 <?php    
     }    

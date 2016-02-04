@@ -39,6 +39,15 @@ function wpsp_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Sidebar 3', 'learninginstitute' ),
+		'id'            => 'footer-sidebar-3',
+		'description'   => '',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
 }
 add_action( 'widgets_init', 'wpsp_widgets_init' );
 
@@ -53,8 +62,9 @@ add_filter( 'widget_text', 'do_shortcode' );
  */
 function wpsp_custom_sidebars() {
 	global $redux_wpsp;
-	$sidebars = $redux_wpsp['sidebar-area'];
-	if ( !empty($sidebars) ) {
+	
+	if ( !empty($redux_wpsp['sidebar-area']) ) {
+		$sidebars = $redux_wpsp['sidebar-area'];
 		foreach( $sidebars as $sidebar ) {
 			if ( !empty($sidebar) ) {
 				register_sidebar(
