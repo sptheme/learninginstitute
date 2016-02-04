@@ -53,20 +53,21 @@ add_filter( 'widget_text', 'do_shortcode' );
  */
 function wpsp_custom_sidebars() {
 	global $redux_wpsp;
-	if ( isset($redux_wpsp['sidebar-area'] ) ) {
-		
-		$sidebars = $redux_wpsp['sidebar-area'];
+	$sidebars = $redux_wpsp['sidebar-area'];
+	if ( !empty($sidebars) ) {
 		foreach( $sidebars as $sidebar ) {
-			register_sidebar(
-				array(	
-					'name' => $sidebar,
-					'id' => strtolower(str_replace(' ', '-', $sidebar)),
-					'before_widget' => '<div id="%1$s" class="widget %2$s">',
-					'after_widget' => '</div>',
-					'before_title' => '<h2 class="widget-title">',
-					'after_title' => '</h2>'
-				)
-			);
+			if ( !empty($sidebar) ) {
+				register_sidebar(
+					array(	
+						'name' => $sidebar,
+						'id' => strtolower(str_replace(' ', '-', $sidebar)),
+						'before_widget' => '<div id="%1$s" class="widget %2$s">',
+						'after_widget' => '</div>',
+						'before_title' => '<h2 class="widget-title">',
+						'after_title' => '</h2>'
+					)
+				);
+			}
 		}
 	}
 }
