@@ -149,3 +149,4 @@ require get_template_directory() . '/inc/template-tags.php';
 // Portfolio custom post
 require get_template_directory() . '/inc/custom-posts/cp-portfolio.php';
 require get_template_directory() . '/inc/custom-posts/cp-staff.php';
+require get_template_directory() . '/inc/custom-posts/cp-testimonials.php';
