@@ -142,3 +142,9 @@ require get_template_directory() . '/inc/meta-box/meta-config.php';
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
+
+/*
+ * Add Custom Posts
+ */
+// Portfolio custom post
+//require get_template_directory() . '/inc/custom-posts/cp-portfolio.php';

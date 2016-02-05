@@ -20,7 +20,7 @@
 
 		if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php learninginstitute_posted_on(); ?>
+			<?php wpsp_posted_on(); ?>
 		</div><!-- .entry-meta -->
 		<?php
 		endif; ?>
@@ -42,6 +42,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php learninginstitute_entry_footer(); ?>
+		<?php wpsp_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
