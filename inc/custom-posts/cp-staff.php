@@ -75,7 +75,7 @@ if ( ! class_exists( 'WPSP_Cp_Staff' ) ) {
 			$slug  			  = get_option( 'staff_slug' );
 			$slug             = $slug ? $slug : 'staff-item';
 			$menu_icon        = get_option( 'staff_admin_icon' );
-			$menu_icon        = $menu_icon ? $menu_icon : 'staff';
+			$menu_icon        = $menu_icon ? $menu_icon : 'businessman';
 			$staff_search = true;
 
 			// Args

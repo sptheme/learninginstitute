@@ -348,3 +348,18 @@ if ( ! function_exists( 'wpsp_is_testimonials_tax' ) ) {
 		}
 	}
 }
+
+/**
+ * Checks if on a theme photo_gallery category page.
+ *
+ * @since 1.1.0
+ */
+if ( ! function_exists( 'wpsp_is_photo_gallery_tax' ) ) {
+	function wpsp_is_photo_gallery_tax() {
+		if ( ! is_search() && ( is_tax( 'photo_gallery_category' ) || is_tax( 'photo_gallery_tag' ) ) ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}

@@ -1,6 +1,6 @@
 <?php 
 /**
- * Testimonials custom post type
+ * Photo Gallery custom post type
  *
  * @package Learning_Institute
  */
@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
-	class WPSP_Cp_Testimonials {
+if ( ! class_exists( 'WPSP_Cp_Photo_Gallery' ) ) {
+	class WPSP_Cp_Photo_Gallery {
 		
 		private $label;
 
@@ -23,25 +23,25 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 		public function __construct() {
 
 			// Update vars
-			$this->label = get_option( 'testimonials_labels' );
-			$this->label = $this->label ? $this->label : _x( 'Testimonials', 'Testimonials Post Type Label', 'wpsp_admin' );
+			$this->label = get_option( 'photo_gallery_labels' );
+			$this->label = $this->label ? $this->label : _x( 'Photo Gallery', 'Photo Gallery Post Type Label', 'wpsp_admin' );
 
-			// Adds the testimonials post type
+			// Adds the photo gallery post type
 			add_action( 'init', array( $this, 'register_post_type' ), 0 );
 
-			// Adds the testimonials taxonomies
-			if ( 'off' != get_option( 'testimonials_tags', 'on' ) ) {
+			// Adds the photo gallery taxonomies
+			if ( 'off' != get_option( 'photo_gallery_tags', 'on' ) ) {
 				add_action( 'init', array( $this, 'register_tags' ), 0 );
 			}
-			if ( 'off' != get_option( 'testimonials_categories', 'on' ) ) {	
+			if ( 'off' != get_option( 'photo_gallery_categories', 'on' ) ) {	
 				add_action( 'init', array( $this, 'register_categories' ), 0 );
 			}	
 
 			// Admin only actions
 			if ( is_admin() ) {
 				// Adds columns in the admin view for taxonomies
-				add_filter( 'manage_edit-testimonials_columns', array( $this, 'edit_columns' ) );
-				add_action( 'manage_testimonials_posts_custom_column', array( $this, 'column_display' ), 10, 2 );
+				add_filter( 'manage_edit-photo_gallery_columns', array( $this, 'edit_columns' ) );
+				add_action( 'manage_photo_gallery_posts_custom_column', array( $this, 'column_display' ), 10, 2 );
 
 				// Allows filtering of posts by taxonomy in the admin view
 				add_action( 'restrict_manage_posts', array( $this, 'tax_filters' ) );
@@ -50,10 +50,10 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 				add_action( 'admin_menu', array( $this, 'add_page' ) );
 				add_action( 'admin_init', array( $this,'register_page_options' ) );
 				add_action( 'admin_notices', array( $this, 'notices' ) );
-				add_action( 'admin_print_styles-testimonials_page_wpsp-testimonials-editor', array( $this,'css' ) );
+				add_action( 'admin_print_styles-photo_gallery_page_wpsp-photo-gallery-editor', array( $this,'css' ) );
 			}	
 
-			// Adds the testimonials custom sidebar
+			// Adds the photo gallery custom sidebar
 			add_filter( 'widgets_init', array( $this, 'register_sidebar' ) );
 
 			// Posts per page
@@ -70,13 +70,13 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 
 			// Get values and sanitize
 			$name             = $this->label;
-			$singular_name    = get_option( 'testimonials_singular_name' );
-			$singular_name    = $singular_name ? $singular_name : esc_html__( 'Testimonials Item', 'wpsp_admin' );
-			$slug  			  = get_option( 'testimonials_slug' );
-			$slug             = $slug ? $slug : 'testimonials-item';
-			$menu_icon        = get_option( 'testimonials_admin_icon' );
-			$menu_icon        = $menu_icon ? $menu_icon : 'id-alt';
-			$testimonials_search = true;
+			$singular_name    = get_option( 'photo_gallery_singular_name' );
+			$singular_name    = $singular_name ? $singular_name : esc_html__( 'Photo Gallery Item', 'wpsp_admin' );
+			$slug  			  = get_option( 'photo_gallery_slug' );
+			$slug             = $slug ? $slug : 'photo-gallery-item';
+			$menu_icon        = get_option( 'photo_gallery_admin_icon' );
+			$menu_icon        = $menu_icon ? $menu_icon : 'format-gallery';
+			$photo_gallery_search = true;
 
 			// Args
 			$args = array(
@@ -98,7 +98,7 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 				'has_archive' => false,
 				'menu_icon' => 'dashicons-'. $menu_icon,
 				'menu_position' => 20,
-				'exclude_from_search' => $testimonials_search,
+				'exclude_from_search' => $photo_gallery_search,
 				'rewrite' => array(
 					'slug' => $slug,
 				),
@@ -116,24 +116,24 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 			);
 
 			// Register the post type
-			register_post_type( 'testimonials', apply_filters( 'wpsp_testimonials_args', $args ) );
+			register_post_type( 'photo_gallery', apply_filters( 'wpsp_photo_gallery_args', $args ) );
 
 		}
 
 		/**
-		 * Register Testimonials tags.
+		 * Register Photo Gallery tags.
 		 *
 		 * @since 1.0.0
 		 */
 		public static function register_tags() {
 
 			// Define and sanitize options
-			$name = esc_html( get_option( 'testimonials_tag_labels' ) );
-			$name = $name ? $name : esc_html__( 'Testimonials Tags', 'wpsp' );
-			$slug = get_option( 'testimonials_tag_slug' );
-			$slug = $slug ? $slug : 'testimonials-tag';
+			$name = esc_html( get_option( 'photo_gallery_tag_labels' ) );
+			$name = $name ? $name : esc_html__( 'Photo Gallery Tags', 'wpsp' );
+			$slug = get_option( 'photo_gallery_tag_slug' );
+			$slug = $slug ? $slug : 'photo-gallery-tag';
 
-			// Define testimonials tag arguments
+			// Define photo gallery tag arguments
 			$args = array(
 				'labels' => array(
 					'name' => $name,
@@ -164,27 +164,27 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 			);
 
 			// Apply filters
-			$args = apply_filters( 'wpsp_taxonomy_testimonials_tag_args', $args );
+			$args = apply_filters( 'wpsp_taxonomy_photo_gallery_tag_args', $args );
 
-			// Register the testimonials tag taxonomy
-			register_taxonomy( 'testimonials_tag', array( 'testimonials' ), $args );
+			// Register the photo gallery tag taxonomy
+			register_taxonomy( 'photo_gallery_tag', array( 'photo_gallery' ), $args );
 
 		}
 
 		/**
-		 * Register Testimonials category.
+		 * Register Photo Gallery category.
 		 *
 		 * @since 1.0.0
 		 */
 		public static function register_categories() {
 
 			// Define and sanitize options
-			$name = esc_html( get_option( 'testimonials_cat_labels' ) );
-			$name = $name ? $name : esc_html__( 'Testimonials Categories', 'wpsp' );
-			$slug = get_option( 'testimonials_tag_slug' );
-			$slug = $slug ? $slug : 'testimonials-category';
+			$name = esc_html( get_option( 'photo_gallery_cat_labels' ) );
+			$name = $name ? $name : esc_html__( 'Photo Gallery Categories', 'wpsp' );
+			$slug = get_option( 'photo_gallery_tag_slug' );
+			$slug = $slug ? $slug : 'photo-gallery-category';
 
-			// Define testimonials category arguments
+			// Define photo gallery category arguments
 			$args = array(
 				'labels' => array(
 					'name' => $name,
@@ -213,10 +213,10 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 			);
 
 			// Apply filters
-			$args = apply_filters( 'wpsp_taxonomy_testimonials_category_args', $args );
+			$args = apply_filters( 'wpsp_taxonomy_photo_gallery_category_args', $args );
 
-			// Register the testimonials category taxonomy
-			register_taxonomy( 'testimonials_category', array( 'testimonials' ), $args );
+			// Register the photo gallery category taxonomy
+			register_taxonomy( 'photo_gallery_category', array( 'photo_gallery' ), $args );
 
 		}
 
@@ -226,11 +226,11 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 		 * @since 1.0.0
 		 */
 		public static function edit_columns( $columns ) {
-			if ( taxonomy_exists( 'testimonials_category' ) ) {
-				$columns['testimonials_category'] = esc_html__( 'Category', 'wpsp' );
+			if ( taxonomy_exists( 'photo_gallery_category' ) ) {
+				$columns['photo_gallery_category'] = esc_html__( 'Category', 'wpsp' );
 			}
-			if ( taxonomy_exists( 'testimonials_tag' ) ) {
-				$columns['testimonials_tag']      = esc_html__( 'Tags', 'wpsp' );
+			if ( taxonomy_exists( 'photo_gallery_tag' ) ) {
+				$columns['photo_gallery_tag']      = esc_html__( 'Tags', 'wpsp' );
 			}
 			return $columns;
 		}
@@ -245,10 +245,10 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 
 			switch ( $column ) :
 
-				// Display the testimonials categories in the column view
-				case 'testimonials_category':
+				// Display the photo gallery categories in the column view
+				case 'photo_gallery_category':
 
-					if ( $category_list = get_the_term_list( $post_id, 'testimonials_category', '', ', ', '' ) ) {
+					if ( $category_list = get_the_term_list( $post_id, 'photo_gallery_category', '', ', ', '' ) ) {
 						echo $category_list;
 					} else {
 						echo '&mdash;';
@@ -256,10 +256,10 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 
 				break;
 
-				// Display the testimonials tags in the column view
-				case 'testimonials_tag':
+				// Display the photo gallery tags in the column view
+				case 'photo_gallery_tag':
 
-					if ( $tag_list = get_the_term_list( $post_id, 'testimonials_tag', '', ', ', '' ) ) {
+					if ( $tag_list = get_the_term_list( $post_id, 'photo_gallery_tag', '', ', ', '' ) ) {
 						echo $tag_list;
 					} else {
 						echo '&mdash;';
@@ -272,7 +272,7 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 		}
 
 		/**
-		 * Adds taxonomy filters to the testimonials admin page.
+		 * Adds taxonomy filters to the photo gallery admin page.
 		 *
 		 * @since 1.0.0
 		 */
@@ -280,10 +280,10 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 			global $typenow;
 
 			// An array of all the taxonomyies you want to display. Use the taxonomy name or slug
-			$taxonomies = array( 'testimonials_category', 'testimonials_tag' );
+			$taxonomies = array( 'photo_gallery_category', 'photo_gallery_tag' );
 
 			// must set this to the post type you want the filter(s) displayed on
-			if ( 'testimonials' == $typenow ) {
+			if ( 'photo_gallery' == $typenow ) {
 
 				foreach ( $taxonomies as $tax_slug ) {
 					$current_tax_slug = isset( $_GET[$tax_slug] ) ? $_GET[$tax_slug] : false;
@@ -303,21 +303,21 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 		}
 
 		/**
-		 * Add sub menu page for the Testimonials Editor.
+		 * Add sub menu page for the Photo Gallery Editor.
 		 *
 		 * @since 1.0.0
 		 * @link    http://codex.wordpress.org/Function_Reference/add_theme_page
 		 */
 		public function add_page() {
-			$wpsp_testimonials_editor = add_submenu_page(
-				'edit.php?post_type=testimonials',
+			$wpsp_photo_gallery_editor = add_submenu_page(
+				'edit.php?post_type=photo_gallery',
 				esc_html__( 'Post Type Editor', 'wpsp' ),
 				esc_html__( 'Post Type Editor', 'wpsp' ),
 				'administrator',
-				'wpsp-testimonials-editor',
+				'wpsp-photo-gallery-editor',
 				array( $this, 'create_admin_page' )
 			);
-			add_action( 'load-'. $wpsp_testimonials_editor, array( $this, 'flush_rewrite_rules' ) );
+			add_action( 'load-'. $wpsp_photo_gallery_editor, array( $this, 'flush_rewrite_rules' ) );
 		}
 
 		/**
@@ -327,20 +327,20 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 		 */
 		public static function flush_rewrite_rules() {
 			$screen = get_current_screen();
-			if ( $screen->id == 'testimonials_page_wpsp-testimonials-editor' ) {
+			if ( $screen->id == 'photo_gallery_page_wpsp-photo-gallery-editor' ) {
 				flush_rewrite_rules();
 			}
 
 		}
 
 		/**
-		 * Function that will register the testimonials editor admin page.
+		 * Function that will register the photo gallery editor admin page.
 		 *
 		 * @since 1.0.0
 		 * @link    http://codex.wordpress.org/Function_Reference/register_setting
 		 */
 		public function register_page_options() {
-			register_setting( 'wpsp_testimonials_options', 'wpsp_testimonials_branding', array( $this, 'sanitize' ) );
+			register_setting( 'wpsp_photo_gallery_options', 'wpsp_photo_gallery_branding', array( $this, 'sanitize' ) );
 		}
 
 		/**
@@ -350,7 +350,7 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 		 * @link    http://codex.wordpress.org/Function_Reference/settings_errors
 		 */
 		public static function notices() {
-			settings_errors( 'wpsp_testimonials_editor_page_notices' );
+			settings_errors( 'wpsp_photo_gallery_editor_page_notices' );
 		}
 
 		/**
@@ -364,8 +364,8 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 			if ( ! empty ( $options ) ) {
 				// Checkboxes
 				$checkboxes = array(
-					'testimonials_categories',
-					'testimonials_tags',
+					'photo_gallery_categories',
+					'photo_gallery_tags',
 				);
 				foreach ( $checkboxes as $checkbox ) {
 					if ( ! empty( $options[$checkbox] ) ) {
@@ -388,7 +388,7 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 
 			// Add notice
 			add_settings_error(
-				'wpsp_testimonials_editor_page_notices',
+				'wpsp_photo_gallery_editor_page_notices',
 				esc_attr( 'settings_updated' ),
 				esc_html__( 'Settings saved and rewrite rules flushed.', 'wpsp' ),
 				'updated'
@@ -400,7 +400,7 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 		}
 
 		/**
-		 * Output for the actual Testimonials Editor admin page.
+		 * Output for the actual Photo Gallery Editor admin page.
 		 *
 		 * @since 1.0.0
 		 */
@@ -408,66 +408,66 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 			<div class="wrap">
 				<h2><?php esc_html_e( 'Post Type Editor', 'wpsp' ); ?></h2>
 				<form method="post" action="options.php">
-				<?php settings_fields( 'wpsp_testimonials_options' ); ?>
+				<?php settings_fields( 'wpsp_photo_gallery_options' ); ?>
 				<table class="form-table">
 					<tr valign="top">
 						<th scope="row"><?php esc_html_e( 'Admin Icon', 'wpsp' ); ?></th>
 						<td>
 							<?php
 							// Mod
-							$mod = get_option( 'testimonials_admin_icon', null );
-							$mod = 'testimonials' == $mod ? '' : $mod;
+							$mod = get_option( 'photo_gallery_admin_icon', null );
+							$mod = 'photo_gallery' == $mod ? '' : $mod;
 							// Dashicons list
 							$dashicons = wpsp_get_dashicons_array(); ?>
 							<div id="wpsp-dashicon-select" class="wpsp-clr">
 								<?php foreach ( $dashicons as $key => $val ) :
-									$value = 'testimonials' == $key ? '' : $key;
+									$value = 'photo_gallery' == $key ? '' : $key;
 									$class = $mod == $value ? 'button-primary' : 'button-secondary'; ?>
 									<a href="#" data-value="<?php echo esc_attr( $value ); ?>" class="<?php echo esc_attr( $class ); ?>" title="<?php echo esc_attr( $key ); ?>"><span class="dashicons dashicons-<?php echo $key; ?>"></span></a>
 								<?php endforeach; ?>
 							</div>
-							<input type="hidden" name="wpsp_testimonials_branding[testimonials_admin_icon]" id="wpsp-dashicon-select-input" value="<?php echo esc_attr( $mod ); ?>"></td>
+							<input type="hidden" name="wpsp_photo_gallery_branding[photo_gallery_admin_icon]" id="wpsp-dashicon-select-input" value="<?php echo esc_attr( $mod ); ?>"></td>
 						</td>
 					</tr>
 					<tr valign="top">
 						<th scope="row"><?php esc_html_e( 'Post Type: Name', 'wpsp' ); ?></th>
-						<td><input type="text" name="wpsp_testimonials_branding[testimonials_labels]" value="<?php echo get_option( 'testimonials_labels' ); ?>" /></td>
+						<td><input type="text" name="wpsp_photo_gallery_branding[photo_gallery_labels]" value="<?php echo get_option( 'photo_gallery_labels' ); ?>" /></td>
 					</tr>
 					<tr valign="top">
 						<th scope="row"><?php esc_html_e( 'Post Type: Singular Name', 'wpsp' ); ?></th>
-						<td><input type="text" name="wpsp_testimonials_branding[testimonials_singular_name]" value="<?php echo get_option( 'testimonials_singular_name' ); ?>" /></td>
+						<td><input type="text" name="wpsp_photo_gallery_branding[photo_gallery_singular_name]" value="<?php echo get_option( 'photo_gallery_singular_name' ); ?>" /></td>
 					</tr>
 					<tr valign="top" id="wpsp-tags-enable">
 						<th scope="row"><?php esc_html_e( 'Enable Tags', 'wpsp' ); ?></th>
 						<?php
 						// Get checkbox value
-						$mod = get_option( 'testimonials_tags', 'on' );
+						$mod = get_option( 'photo_gallery_tags', 'on' );
 						$mod = 'off' != $mod ? 'on' : 'off'; // sanitize ?>
-						<td><input type="checkbox" name="wpsp_testimonials_branding[testimonials_tags]" value="<?php echo esc_attr( $mod ); ?>" <?php checked( $mod, 'on' ); ?> /></td>
+						<td><input type="checkbox" name="wpsp_photo_gallery_branding[photo_gallery_tags]" value="<?php echo esc_attr( $mod ); ?>" <?php checked( $mod, 'on' ); ?> /></td>
 					</tr>
 					<tr valign="top" id="wpsp-tags-label">
 						<th scope="row"><?php esc_html_e( 'Tags: Label', 'wpsp' ); ?></th>
-						<td><input type="text" name="wpsp_testimonials_branding[testimonials_tag_labels]" value="<?php echo get_option( 'testimonials_tag_labels' ); ?>" /></td>
+						<td><input type="text" name="wpsp_photo_gallery_branding[photo_gallery_tag_labels]" value="<?php echo get_option( 'photo_gallery_tag_labels' ); ?>" /></td>
 					</tr>
 					<tr valign="top" id="wpsp-tags-slug">
 						<th scope="row"><?php esc_html_e( 'Tags: Slug', 'wpsp' ); ?></th>
-						<td><input type="text" name="wpsp_testimonials_branding[testimonials_tag_slug]" value="<?php echo get_option( 'testimonials_tag_slug' ); ?>" /></td>
+						<td><input type="text" name="wpsp_photo_gallery_branding[photo_gallery_tag_slug]" value="<?php echo get_option( 'photo_gallery_tag_slug' ); ?>" /></td>
 					</tr>
 					<tr valign="top" id="wpsp-categories-enable">
 						<th scope="row"><?php esc_html_e( 'Enable Categories', 'wpsp' ); ?></th>
 						<?php
 						// Get checkbox value
-						$mod = get_option( 'testimonials_categories', 'on' );
+						$mod = get_option( 'photo_gallery_categories', 'on' );
 						$mod = 'off' != $mod ? 'on' : 'off'; // sanitize ?>
-						<td><input type="checkbox" name="wpsp_testimonials_branding[testimonials_categories]" value="<?php echo esc_attr( $mod ); ?>" <?php checked( $mod, 'on' ); ?> /></td>
+						<td><input type="checkbox" name="wpsp_photo_gallery_branding[photo_gallery_categories]" value="<?php echo esc_attr( $mod ); ?>" <?php checked( $mod, 'on' ); ?> /></td>
 					</tr>
 					<tr valign="top" id="wpsp-categories-label">
 						<th scope="row"><?php esc_html_e( 'Categories: Label', 'wpsp' ); ?></th>
-						<td><input type="text" name="wpsp_testimonials_branding[testimonials_cat_labels]" value="<?php echo get_option( 'testimonials_cat_labels' ); ?>" /></td>
+						<td><input type="text" name="wpsp_photo_gallery_branding[photo_gallery_cat_labels]" value="<?php echo get_option( 'photo_gallery_cat_labels' ); ?>" /></td>
 					</tr>
 					<tr valign="top" id="wpsp-categories-slug">
 						<th scope="row"><?php esc_html_e( 'Categories: Slug', 'wpsp' ); ?></th>
-						<td><input type="text" name="wpsp_testimonials_branding[testimonials_cat_slug]" value="<?php echo get_option( 'testimonials_cat_slug' ); ?>" /></td>
+						<td><input type="text" name="wpsp_photo_gallery_branding[photo_gallery_cat_slug]" value="<?php echo get_option( 'photo_gallery_cat_slug' ); ?>" /></td>
 					</tr>
 				</table>
 				<?php submit_button(); ?>
@@ -535,20 +535,20 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 		<?php }
 
 		/**
-		 * Registers a new custom testimonials sidebar.
+		 * Registers a new custom photo gallery sidebar.
 		 *
 		 * @since 1.0.0
 		 */
 		public static function register_sidebar() {
 
 			// Get post type object to name sidebar correctly
-			$obj            = get_post_type_object( 'testimonials' );
+			$obj            = get_post_type_object( 'photo_gallery' );
 			$post_type_name = $obj->labels->name;
 
 			// Register custom sidebar
 			register_sidebar( array(
 				'name'          => $post_type_name .' '. esc_html__( 'Sidebar', 'wpsp' ),
-				'id'            => 'testimonials_sidebar',
+				'id'            => 'photo_gallery_sidebar',
 				'description'   => '',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
@@ -558,13 +558,13 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 		}
 
 		/**
-		 * Alters posts per page for the testimonials taxonomies.
+		 * Alters posts per page for the photo gallery taxonomies.
 		 *
 		 * @since 2.0.0
 		 * @link    http://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
 		 */
 		public static function posts_per_page( $query ) {
-			if ( wpsp_is_testimonials_tax() && $query->is_main_query() ) {
+			if ( wpsp_is_photo_gallery_tax() && $query->is_main_query() ) {
 				$query->set( 'posts_per_page', 12 );
 				return;
 			}
@@ -572,4 +572,4 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 
 	}	
 }
-$wpsp_cp_testimonials = new WPSP_Cp_Testimonials;
+$wpsp_cp_photo_gallery = new WPSP_Cp_Photo_Gallery;

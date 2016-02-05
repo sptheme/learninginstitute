@@ -150,3 +150,4 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/custom-posts/cp-portfolio.php';
 require get_template_directory() . '/inc/custom-posts/cp-staff.php';
 require get_template_directory() . '/inc/custom-posts/cp-testimonials.php';
+require get_template_directory() . '/inc/custom-posts/cp-photo-gallery.php';
