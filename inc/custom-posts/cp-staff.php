@@ -1,6 +1,6 @@
 <?php 
 /**
- * Team custom post type
+ * Staff custom post type
  *
  * @package Learning_Institute
  */
@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
-	class WPSP_Cp_Team {
+if ( ! class_exists( 'WPSP_Cp_Staff' ) ) {
+	class WPSP_Cp_Staff {
 		
 		private $label;
 
@@ -23,25 +23,25 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 		public function __construct() {
 
 			// Update vars
-			$this->label = get_option( 'team_labels' );
-			$this->label = $this->label ? $this->label : _x( 'Team', 'Team Post Type Label', 'wpsp_admin' );
+			$this->label = get_option( 'staff_labels' );
+			$this->label = $this->label ? $this->label : _x( 'Staff', 'Staff Post Type Label', 'wpsp_admin' );
 
-			// Adds the team post type
+			// Adds the staff post type
 			add_action( 'init', array( $this, 'register_post_type' ), 0 );
 
-			// Adds the team taxonomies
-			if ( 'off' != get_option( 'team_tags', 'on' ) ) {
+			// Adds the staff taxonomies
+			if ( 'off' != get_option( 'staff_tags', 'on' ) ) {
 				add_action( 'init', array( $this, 'register_tags' ), 0 );
 			}
-			if ( 'off' != get_option( 'team_categories', 'on' ) ) {	
+			if ( 'off' != get_option( 'staff_categories', 'on' ) ) {	
 				add_action( 'init', array( $this, 'register_categories' ), 0 );
 			}	
 
 			// Admin only actions
 			if ( is_admin() ) {
 				// Adds columns in the admin view for taxonomies
-				add_filter( 'manage_edit-team_columns', array( $this, 'edit_columns' ) );
-				add_action( 'manage_team_posts_custom_column', array( $this, 'column_display' ), 10, 2 );
+				add_filter( 'manage_edit-staff_columns', array( $this, 'edit_columns' ) );
+				add_action( 'manage_staff_posts_custom_column', array( $this, 'column_display' ), 10, 2 );
 
 				// Allows filtering of posts by taxonomy in the admin view
 				add_action( 'restrict_manage_posts', array( $this, 'tax_filters' ) );
@@ -50,10 +50,10 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 				add_action( 'admin_menu', array( $this, 'add_page' ) );
 				add_action( 'admin_init', array( $this,'register_page_options' ) );
 				add_action( 'admin_notices', array( $this, 'notices' ) );
-				add_action( 'admin_print_styles-team_page_wpsp-team-editor', array( $this,'css' ) );
+				add_action( 'admin_print_styles-staff_page_wpsp-staff-editor', array( $this,'css' ) );
 			}	
 
-			// Adds the team custom sidebar
+			// Adds the staff custom sidebar
 			add_filter( 'widgets_init', array( $this, 'register_sidebar' ) );
 
 			// Posts per page
@@ -70,13 +70,13 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 
 			// Get values and sanitize
 			$name             = $this->label;
-			$singular_name    = get_option( 'team_singular_name' );
-			$singular_name    = $singular_name ? $singular_name : esc_html__( 'Team Item', 'wpsp_admin' );
-			$slug  			  = get_option( 'team_slug' );
-			$slug             = $slug ? $slug : 'team-item';
-			$menu_icon        = get_option( 'team_admin_icon' );
-			$menu_icon        = $menu_icon ? $menu_icon : 'team';
-			$team_search = true;
+			$singular_name    = get_option( 'staff_singular_name' );
+			$singular_name    = $singular_name ? $singular_name : esc_html__( 'Staff Item', 'wpsp_admin' );
+			$slug  			  = get_option( 'staff_slug' );
+			$slug             = $slug ? $slug : 'staff-item';
+			$menu_icon        = get_option( 'staff_admin_icon' );
+			$menu_icon        = $menu_icon ? $menu_icon : 'staff';
+			$staff_search = true;
 
 			// Args
 			$args = array(
@@ -98,7 +98,7 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 				'has_archive' => false,
 				'menu_icon' => 'dashicons-'. $menu_icon,
 				'menu_position' => 20,
-				'exclude_from_search' => $team_search,
+				'exclude_from_search' => $staff_search,
 				'rewrite' => array(
 					'slug' => $slug,
 				),
@@ -116,24 +116,24 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 			);
 
 			// Register the post type
-			register_post_type( 'team', apply_filters( 'wpsp_team_args', $args ) );
+			register_post_type( 'staff', apply_filters( 'wpsp_staff_args', $args ) );
 
 		}
 
 		/**
-		 * Register Team tags.
+		 * Register Staff tags.
 		 *
 		 * @since 1.0.0
 		 */
 		public static function register_tags() {
 
 			// Define and sanitize options
-			$name = esc_html( get_option( 'team_tag_labels' ) );
-			$name = $name ? $name : esc_html__( 'Team Tags', 'wpsp' );
-			$slug = get_option( 'team_tag_slug' );
-			$slug = $slug ? $slug : 'team-tag';
+			$name = esc_html( get_option( 'staff_tag_labels' ) );
+			$name = $name ? $name : esc_html__( 'Staff Tags', 'wpsp' );
+			$slug = get_option( 'staff_tag_slug' );
+			$slug = $slug ? $slug : 'staff-tag';
 
-			// Define team tag arguments
+			// Define staff tag arguments
 			$args = array(
 				'labels' => array(
 					'name' => $name,
@@ -164,27 +164,27 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 			);
 
 			// Apply filters
-			$args = apply_filters( 'wpsp_taxonomy_team_tag_args', $args );
+			$args = apply_filters( 'wpsp_taxonomy_staff_tag_args', $args );
 
-			// Register the team tag taxonomy
-			register_taxonomy( 'team_tag', array( 'team' ), $args );
+			// Register the staff tag taxonomy
+			register_taxonomy( 'staff_tag', array( 'staff' ), $args );
 
 		}
 
 		/**
-		 * Register Team category.
+		 * Register Staff category.
 		 *
 		 * @since 1.0.0
 		 */
 		public static function register_categories() {
 
 			// Define and sanitize options
-			$name = esc_html( get_option( 'team_cat_labels' ) );
-			$name = $name ? $name : esc_html__( 'Team Categories', 'wpsp' );
-			$slug = get_option( 'team_tag_slug' );
-			$slug = $slug ? $slug : 'team-category';
+			$name = esc_html( get_option( 'staff_cat_labels' ) );
+			$name = $name ? $name : esc_html__( 'Staff Categories', 'wpsp' );
+			$slug = get_option( 'staff_tag_slug' );
+			$slug = $slug ? $slug : 'staff-category';
 
-			// Define team category arguments
+			// Define staff category arguments
 			$args = array(
 				'labels' => array(
 					'name' => $name,
@@ -213,10 +213,10 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 			);
 
 			// Apply filters
-			$args = apply_filters( 'wpsp_taxonomy_team_category_args', $args );
+			$args = apply_filters( 'wpsp_taxonomy_staff_category_args', $args );
 
-			// Register the team category taxonomy
-			register_taxonomy( 'team_category', array( 'team' ), $args );
+			// Register the staff category taxonomy
+			register_taxonomy( 'staff_category', array( 'staff' ), $args );
 
 		}
 
@@ -226,11 +226,11 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 		 * @since 1.0.0
 		 */
 		public static function edit_columns( $columns ) {
-			if ( taxonomy_exists( 'team_category' ) ) {
-				$columns['team_category'] = esc_html__( 'Category', 'wpsp' );
+			if ( taxonomy_exists( 'staff_category' ) ) {
+				$columns['staff_category'] = esc_html__( 'Category', 'wpsp' );
 			}
-			if ( taxonomy_exists( 'team_tag' ) ) {
-				$columns['team_tag']      = esc_html__( 'Tags', 'wpsp' );
+			if ( taxonomy_exists( 'staff_tag' ) ) {
+				$columns['staff_tag']      = esc_html__( 'Tags', 'wpsp' );
 			}
 			return $columns;
 		}
@@ -245,10 +245,10 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 
 			switch ( $column ) :
 
-				// Display the team categories in the column view
-				case 'team_category':
+				// Display the staff categories in the column view
+				case 'staff_category':
 
-					if ( $category_list = get_the_term_list( $post_id, 'team_category', '', ', ', '' ) ) {
+					if ( $category_list = get_the_term_list( $post_id, 'staff_category', '', ', ', '' ) ) {
 						echo $category_list;
 					} else {
 						echo '&mdash;';
@@ -256,10 +256,10 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 
 				break;
 
-				// Display the team tags in the column view
-				case 'team_tag':
+				// Display the staff tags in the column view
+				case 'staff_tag':
 
-					if ( $tag_list = get_the_term_list( $post_id, 'team_tag', '', ', ', '' ) ) {
+					if ( $tag_list = get_the_term_list( $post_id, 'staff_tag', '', ', ', '' ) ) {
 						echo $tag_list;
 					} else {
 						echo '&mdash;';
@@ -272,7 +272,7 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 		}
 
 		/**
-		 * Adds taxonomy filters to the team admin page.
+		 * Adds taxonomy filters to the staff admin page.
 		 *
 		 * @since 1.0.0
 		 */
@@ -280,10 +280,10 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 			global $typenow;
 
 			// An array of all the taxonomyies you want to display. Use the taxonomy name or slug
-			$taxonomies = array( 'team_category', 'team_tag' );
+			$taxonomies = array( 'staff_category', 'staff_tag' );
 
 			// must set this to the post type you want the filter(s) displayed on
-			if ( 'team' == $typenow ) {
+			if ( 'staff' == $typenow ) {
 
 				foreach ( $taxonomies as $tax_slug ) {
 					$current_tax_slug = isset( $_GET[$tax_slug] ) ? $_GET[$tax_slug] : false;
@@ -303,21 +303,21 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 		}
 
 		/**
-		 * Add sub menu page for the Team Editor.
+		 * Add sub menu page for the Staff Editor.
 		 *
 		 * @since 1.0.0
 		 * @link    http://codex.wordpress.org/Function_Reference/add_theme_page
 		 */
 		public function add_page() {
-			add_submenu_page(
-				'edit.php?post_type=team',
+			$wpsp_staff_editor = add_submenu_page(
+				'edit.php?post_type=staff',
 				esc_html__( 'Post Type Editor', 'wpsp' ),
 				esc_html__( 'Post Type Editor', 'wpsp' ),
 				'administrator',
-				'wpsp-team-editor',
+				'wpsp-staff-editor',
 				array( $this, 'create_admin_page' )
 			);
-			add_action( 'load-'. $wpsp_team_editor, array( $this, 'flush_rewrite_rules' ) );
+			add_action( 'load-'. $wpsp_staff_editor, array( $this, 'flush_rewrite_rules' ) );
 		}
 
 		/**
@@ -327,20 +327,20 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 		 */
 		public static function flush_rewrite_rules() {
 			$screen = get_current_screen();
-			if ( $screen->id == 'team_page_wpsp-team-editor' ) {
+			if ( $screen->id == 'staff_page_wpsp-staff-editor' ) {
 				flush_rewrite_rules();
 			}
 
 		}
 
 		/**
-		 * Function that will register the team editor admin page.
+		 * Function that will register the staff editor admin page.
 		 *
 		 * @since 1.0.0
 		 * @link    http://codex.wordpress.org/Function_Reference/register_setting
 		 */
 		public function register_page_options() {
-			register_setting( 'wpsp_team_options', 'wpsp_team_branding', array( $this, 'sanitize' ) );
+			register_setting( 'wpsp_staff_options', 'wpsp_staff_branding', array( $this, 'sanitize' ) );
 		}
 
 		/**
@@ -350,7 +350,7 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 		 * @link    http://codex.wordpress.org/Function_Reference/settings_errors
 		 */
 		public static function notices() {
-			settings_errors( 'wpsp_team_editor_page_notices' );
+			settings_errors( 'wpsp_staff_editor_page_notices' );
 		}
 
 		/**
@@ -364,8 +364,8 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 			if ( ! empty ( $options ) ) {
 				// Checkboxes
 				$checkboxes = array(
-					'team_categories',
-					'team_tags',
+					'staff_categories',
+					'staff_tags',
 				);
 				foreach ( $checkboxes as $checkbox ) {
 					if ( ! empty( $options[$checkbox] ) ) {
@@ -388,7 +388,7 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 
 			// Add notice
 			add_settings_error(
-				'wpsp_team_editor_page_notices',
+				'wpsp_staff_editor_page_notices',
 				esc_attr( 'settings_updated' ),
 				esc_html__( 'Settings saved and rewrite rules flushed.', 'wpsp' ),
 				'updated'
@@ -400,7 +400,7 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 		}
 
 		/**
-		 * Output for the actual Team Editor admin page.
+		 * Output for the actual Staff Editor admin page.
 		 *
 		 * @since 1.0.0
 		 */
@@ -408,66 +408,66 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 			<div class="wrap">
 				<h2><?php esc_html_e( 'Post Type Editor', 'wpsp' ); ?></h2>
 				<form method="post" action="options.php">
-				<?php settings_fields( 'wpsp_team_options' ); ?>
+				<?php settings_fields( 'wpsp_staff_options' ); ?>
 				<table class="form-table">
 					<tr valign="top">
 						<th scope="row"><?php esc_html_e( 'Admin Icon', 'wpsp' ); ?></th>
 						<td>
 							<?php
 							// Mod
-							$mod = get_option( 'team_admin_icon', null );
-							$mod = 'team' == $mod ? '' : $mod;
+							$mod = get_option( 'staff_admin_icon', null );
+							$mod = 'staff' == $mod ? '' : $mod;
 							// Dashicons list
 							$dashicons = wpsp_get_dashicons_array(); ?>
 							<div id="wpsp-dashicon-select" class="wpsp-clr">
 								<?php foreach ( $dashicons as $key => $val ) :
-									$value = 'team' == $key ? '' : $key;
+									$value = 'staff' == $key ? '' : $key;
 									$class = $mod == $value ? 'button-primary' : 'button-secondary'; ?>
 									<a href="#" data-value="<?php echo esc_attr( $value ); ?>" class="<?php echo esc_attr( $class ); ?>" title="<?php echo esc_attr( $key ); ?>"><span class="dashicons dashicons-<?php echo $key; ?>"></span></a>
 								<?php endforeach; ?>
 							</div>
-							<input type="hidden" name="wpsp_team_branding[team_admin_icon]" id="wpsp-dashicon-select-input" value="<?php echo esc_attr( $mod ); ?>"></td>
+							<input type="hidden" name="wpsp_staff_branding[staff_admin_icon]" id="wpsp-dashicon-select-input" value="<?php echo esc_attr( $mod ); ?>"></td>
 						</td>
 					</tr>
 					<tr valign="top">
 						<th scope="row"><?php esc_html_e( 'Post Type: Name', 'wpsp' ); ?></th>
-						<td><input type="text" name="wpsp_team_branding[team_labels]" value="<?php echo get_option( 'team_labels' ); ?>" /></td>
+						<td><input type="text" name="wpsp_staff_branding[staff_labels]" value="<?php echo get_option( 'staff_labels' ); ?>" /></td>
 					</tr>
 					<tr valign="top">
 						<th scope="row"><?php esc_html_e( 'Post Type: Singular Name', 'wpsp' ); ?></th>
-						<td><input type="text" name="wpsp_team_branding[team_singular_name]" value="<?php echo get_option( 'team_singular_name' ); ?>" /></td>
+						<td><input type="text" name="wpsp_staff_branding[staff_singular_name]" value="<?php echo get_option( 'staff_singular_name' ); ?>" /></td>
 					</tr>
 					<tr valign="top" id="wpsp-tags-enable">
 						<th scope="row"><?php esc_html_e( 'Enable Tags', 'wpsp' ); ?></th>
 						<?php
 						// Get checkbox value
-						$mod = get_option( 'team_tags', 'on' );
+						$mod = get_option( 'staff_tags', 'on' );
 						$mod = 'off' != $mod ? 'on' : 'off'; // sanitize ?>
-						<td><input type="checkbox" name="wpsp_team_branding[team_tags]" value="<?php echo esc_attr( $mod ); ?>" <?php checked( $mod, 'on' ); ?> /></td>
+						<td><input type="checkbox" name="wpsp_staff_branding[staff_tags]" value="<?php echo esc_attr( $mod ); ?>" <?php checked( $mod, 'on' ); ?> /></td>
 					</tr>
 					<tr valign="top" id="wpsp-tags-label">
 						<th scope="row"><?php esc_html_e( 'Tags: Label', 'wpsp' ); ?></th>
-						<td><input type="text" name="wpsp_team_branding[team_tag_labels]" value="<?php echo get_option( 'team_tag_labels' ); ?>" /></td>
+						<td><input type="text" name="wpsp_staff_branding[staff_tag_labels]" value="<?php echo get_option( 'staff_tag_labels' ); ?>" /></td>
 					</tr>
 					<tr valign="top" id="wpsp-tags-slug">
 						<th scope="row"><?php esc_html_e( 'Tags: Slug', 'wpsp' ); ?></th>
-						<td><input type="text" name="wpsp_team_branding[team_tag_slug]" value="<?php echo get_option( 'team_tag_slug' ); ?>" /></td>
+						<td><input type="text" name="wpsp_staff_branding[staff_tag_slug]" value="<?php echo get_option( 'staff_tag_slug' ); ?>" /></td>
 					</tr>
 					<tr valign="top" id="wpsp-categories-enable">
 						<th scope="row"><?php esc_html_e( 'Enable Categories', 'wpsp' ); ?></th>
 						<?php
 						// Get checkbox value
-						$mod = get_option( 'team_categories', 'on' );
+						$mod = get_option( 'staff_categories', 'on' );
 						$mod = 'off' != $mod ? 'on' : 'off'; // sanitize ?>
-						<td><input type="checkbox" name="wpsp_team_branding[team_categories]" value="<?php echo esc_attr( $mod ); ?>" <?php checked( $mod, 'on' ); ?> /></td>
+						<td><input type="checkbox" name="wpsp_staff_branding[staff_categories]" value="<?php echo esc_attr( $mod ); ?>" <?php checked( $mod, 'on' ); ?> /></td>
 					</tr>
 					<tr valign="top" id="wpsp-categories-label">
 						<th scope="row"><?php esc_html_e( 'Categories: Label', 'wpsp' ); ?></th>
-						<td><input type="text" name="wpsp_team_branding[team_cat_labels]" value="<?php echo get_option( 'team_cat_labels' ); ?>" /></td>
+						<td><input type="text" name="wpsp_staff_branding[staff_cat_labels]" value="<?php echo get_option( 'staff_cat_labels' ); ?>" /></td>
 					</tr>
 					<tr valign="top" id="wpsp-categories-slug">
 						<th scope="row"><?php esc_html_e( 'Categories: Slug', 'wpsp' ); ?></th>
-						<td><input type="text" name="wpsp_team_branding[team_cat_slug]" value="<?php echo get_option( 'team_cat_slug' ); ?>" /></td>
+						<td><input type="text" name="wpsp_staff_branding[staff_cat_slug]" value="<?php echo get_option( 'staff_cat_slug' ); ?>" /></td>
 					</tr>
 				</table>
 				<?php submit_button(); ?>
@@ -535,20 +535,20 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 		<?php }
 
 		/**
-		 * Registers a new custom team sidebar.
+		 * Registers a new custom staff sidebar.
 		 *
 		 * @since 1.0.0
 		 */
 		public static function register_sidebar() {
 
 			// Get post type object to name sidebar correctly
-			$obj            = get_post_type_object( 'team' );
+			$obj            = get_post_type_object( 'staff' );
 			$post_type_name = $obj->labels->name;
 
 			// Register custom sidebar
 			register_sidebar( array(
 				'name'          => $post_type_name .' '. esc_html__( 'Sidebar', 'wpsp' ),
-				'id'            => 'team_sidebar',
+				'id'            => 'staff_sidebar',
 				'description'   => '',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
@@ -558,13 +558,13 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 		}
 
 		/**
-		 * Alters posts per page for the team taxonomies.
+		 * Alters posts per page for the staff taxonomies.
 		 *
 		 * @since 2.0.0
 		 * @link    http://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
 		 */
 		public static function posts_per_page( $query ) {
-			if ( wpsp_is_team_tax() && $query->is_main_query() ) {
+			if ( wpsp_is_staff_tax() && $query->is_main_query() ) {
 				$query->set( 'posts_per_page', 12 );
 				return;
 			}
@@ -572,4 +572,4 @@ if ( ! class_exists( 'WPSP_Cp_Team' ) ) {
 
 	}	
 }
-$wpsp_cp_team = new WPSP_Cp_Team;
+$wpsp_cp_staff = new WPSP_Cp_Staff;

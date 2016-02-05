@@ -309,7 +309,7 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 		 * @link    http://codex.wordpress.org/Function_Reference/add_theme_page
 		 */
 		public function add_page() {
-			add_submenu_page(
+			$wpsp_portfolio_editor = add_submenu_page(
 				'edit.php?post_type=portfolio',
 				esc_html__( 'Post Type Editor', 'wpsp' ),
 				esc_html__( 'Post Type Editor', 'wpsp' ),
