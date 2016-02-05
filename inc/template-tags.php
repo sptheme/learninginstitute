@@ -318,3 +318,18 @@ if ( ! function_exists( 'wpsp_is_portfolio_tax' ) ) {
 		}
 	}
 }
+
+/**
+ * Checks if on a theme team category page.
+ *
+ * @since 1.1.0
+ */
+if ( ! function_exists( 'wpsp_is_team_tax' ) ) {
+	function wpsp_is_team_tax() {
+		if ( ! is_search() && ( is_tax( 'team_category' ) || is_tax( 'team_tag' ) ) ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
