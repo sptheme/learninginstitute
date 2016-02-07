@@ -286,6 +286,9 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 			if ( 'portfolio' == $typenow ) {
 
 				foreach ( $taxonomies as $tax_slug ) {
+					if ( ! taxonomy_exists( $tax_slug ) ) {
+						continue;
+					}
 					$current_tax_slug = isset( $_GET[$tax_slug] ) ? $_GET[$tax_slug] : false;
 					$tax_obj = get_taxonomy( $tax_slug );
 					$tax_name = $tax_obj->labels->name;

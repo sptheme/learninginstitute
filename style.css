@@ -919,7 +919,7 @@ a:active {
 	display: block;
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1023px) {
 	.menu-toggle {
 		display: none;
 	}
@@ -1091,7 +1091,7 @@ a:active {
 	top: -1px;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 767px) {
 	/* restore screen-reader-text */
 	.pagination .current .screen-reader-text {
 		position: absolute !important;
@@ -1173,6 +1173,18 @@ blockquote.aligncenter {
 /* ------------------------------------------------------------
 # Columns - Support 4 columns
 --------------------------------------------------------------*/
+.wpsp-row .col { width: 100%; }
+
+@media screen and (min-width: 767px) { 
+	/* Grid > Main Classes */
+	.wpsp-row { margin: 0 -10px }
+	.wpsp-row .col { float: left; margin: 0 0 20px; padding: 0 10px; }
+	.wpsp-row .span_1_of_1.col { float: none }
+	.wpsp-row .span_1_of_2 { width: 50% }
+	.wpsp-row .span_1_of_3 { width: 33.33% }
+	.wpsp-row .span_1_of_4 { width: 25% }
+}
+
 @media screen and (min-width: 992px) {
 	
 	.one-fourth, .one-third, .two-third, .two-fourth, .three-fourth {
@@ -1595,9 +1607,6 @@ blockquote.aligncenter {
 .copyright {
 	float: left;
 }
-.footer-navigation {
-	float: right;
-}
 
 @media only screen and (min-width: 992px) {
 	.join-us h3 {
@@ -1623,6 +1632,9 @@ blockquote.aligncenter {
 /*--------------------------------------------------------------
 ## Footer menus
 --------------------------------------------------------------*/
+.footer-navigation {
+	float: right;
+}
 .footer-navigation ul {
 	list-style: none;
 	padding: 0;
@@ -1630,7 +1642,7 @@ blockquote.aligncenter {
 }
 .footer-navigation ul li {
 	display: inline-block;
-	border-right: 1px solid #0099cc;	
+	border-right: 1px solid #0099cc;
 }
 .footer-navigation ul li:last-child {
 	border-right: none;

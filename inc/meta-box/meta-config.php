@@ -8,7 +8,7 @@
  * @package Learning_Institute
  */
 
- add_filter( 'rwmb_meta_boxes', 'hfhc_register_meta_boxes' );
+ add_filter( 'rwmb_meta_boxes', 'wpsp_register_meta_boxes' );
 
 /**
  * Register meta boxes
@@ -18,7 +18,7 @@
  *
  * @return array
  */
-function hfhc_register_meta_boxes( $meta_boxes ) {
+function wpsp_register_meta_boxes( $meta_boxes ) {
 	/**
 	 * prefix of meta keys (optional)
 	 * Use underscore (_) at the beginning to make keys hidden
@@ -36,11 +36,29 @@ function hfhc_register_meta_boxes( $meta_boxes ) {
     }
     $sidebars_tmp = array_unshift( $sidebars, "-- Choose Sidebar --" );    
 
+	// Staff post type
+    $meta_boxes[] = array(
+    	'id'			=> 'staff-options',
+		'title'			=> __( 'Personal information', 'wpsp_meta_options' ),
+		'post_types'	=> array( 'staff', 'portfolio' ),
+		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
+		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
+		'autosave'		=> true, // Auto save: true, false (default). Optional.
+
+		'fields'		=> array(
+			array(
+				'name'  => __( 'Position', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "staff_position",
+				'type'  => 'text',
+			),
+		)
+    );
+
 	// Page layout options
 	$meta_boxes[] = array(
 		// Meta box id, UNIQUE per meta box. Optional since 4.1.5
 		'id'         => 'page-options',
-		'title'      => __( 'Page options', 'wpsp-meta-options' ),
+		'title'      => __( 'Page options', 'wpsp_meta_options' ),
 		'post_types' => array( 'post', 'page', 'portfolio' ),
 		'context'    => 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
 		'priority'   => 'high', // Order of meta box: high (default), low. Optional.
@@ -49,19 +67,19 @@ function hfhc_register_meta_boxes( $meta_boxes ) {
 		// List of meta fields
 		'fields'     => array(
 			array(
-				'name'  => __( 'Primary Sidebar', 'wpsp-meta-options' ), 
+				'name'  => __( 'Primary Sidebar', 'wpsp_meta_options' ), 
 				'id'    => $prefix . "sidebar_primary",
-				'desc'  => __( 'Overrides default', 'wpsp-meta-options' ),// Field description (optional)
+				'desc'  => __( 'Overrides default', 'wpsp_meta_options' ),// Field description (optional)
 				'type'  => 'select',
 				// Array of 'value' => 'Image Source' pairs
 				'options'  => $sidebars,
 			),
 			array(
-				'name'  => __( 'Layout', 'wpsp-meta-options' ), 
+				'name'  => __( 'Layout', 'wpsp_meta_options' ), 
 				'id'    => $prefix . "layout",
-				'desc'  => __( 'Overrides the default layout option', 'wpsp-meta-options' ),// Field description (optional)
+				'desc'  => __( 'Overrides the default layout option', 'wpsp_meta_options' ),// Field description (optional)
 				'type'  => 'image_select',
-				'std'   => __( 'inherit', 'wpsp-meta-options' ),// Default value (optional)
+				'std'   => __( 'inherit', 'wpsp_meta_options' ),// Default value (optional)
 				// Array of 'value' => 'Image Source' pairs
 				'options'  => array(
 					'inherit'  => get_template_directory_uri() . '/images/admin/layout-off.png',
