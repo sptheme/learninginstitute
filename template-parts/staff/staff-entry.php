@@ -28,6 +28,8 @@ $classes[] = wpsp_staff_column_class( $query );
 $classes[] = 'col-'. $post_count; ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
+	<div class="staff-entry-inner">
 	<?php get_template_part( 'template-parts/staff/staff-entry-media' ); ?>
 	<?php get_template_part( 'template-parts/staff/staff-entry-content' ); ?>
+	</div> <!-- .inner-staff-entry -->
 </article><!-- #post-## -->

@@ -59,7 +59,7 @@ function wpsp_register_meta_boxes( $meta_boxes ) {
 		// Meta box id, UNIQUE per meta box. Optional since 4.1.5
 		'id'         => 'page-options',
 		'title'      => __( 'Page options', 'wpsp_meta_options' ),
-		'post_types' => array( 'post', 'page', 'portfolio' ),
+		'post_types' => array( 'post', 'page', 'portfolio', 'staff' ),
 		'context'    => 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
 		'priority'   => 'high', // Order of meta box: high (default), low. Optional.
 		'autosave'   => true, // Auto save: true, false (default). Optional.

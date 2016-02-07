@@ -64,7 +64,7 @@ if ( $related_query->have_posts() ) : ?>
 		$heading = $heading ? $heading : esc_html__( 'Related Staff', 'learninginstitute' );
 		// If Heading text isn't empty
 	if ( $heading ) : ?>
-	<h2><?php echo $heading; ?></h2>
+	<h3><?php echo $heading; ?></h3>
 	<?php endif; ?>
 	<div class="wpsp-row clearfix">
 		<?php 

@@ -42,6 +42,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## Footer menus
 # Content
 	## Posts and pages
+	## Staff post type
 	## Asides
 	## Comments
 # Infinite scroll
@@ -310,7 +311,8 @@ input,
 select,
 textarea {
 	color: #404040;
-	font-family: 'Merriweather', serif;
+	/*font-family: 'Merriweather', serif;*/
+	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 	/*
 	 * Set responsive typography
@@ -1183,6 +1185,11 @@ blockquote.aligncenter {
 	.wpsp-row .span_1_of_2 { width: 50% }
 	.wpsp-row .span_1_of_3 { width: 33.33% }
 	.wpsp-row .span_1_of_4 { width: 25% }
+	.wpsp-row .span_2_of_3 { width: 66.66% }
+	.wpsp-row .span_3_of_4 { width: 75% }
+
+	/* No margin */
+	.wpsp-row.no-margin-grid .col { margin: 0 !important; padding: 0 !important; }
 }
 
 @media screen and (min-width: 992px) {
@@ -1463,6 +1470,7 @@ blockquote.aligncenter {
 # Layout
 --------------------------------------------------------------*/
 .site-content,
+.site-footer,
 .container {
   margin: 0 auto;
   max-width: 100%;
@@ -1536,7 +1544,6 @@ blockquote.aligncenter {
 --------------------------------------------------------------*/
 .site-footer {
 	border-top:4px solid #48b24e;
-	background-color: #00394b;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 0.813em;
 	color: #0099cc;
@@ -1551,15 +1558,18 @@ blockquote.aligncenter {
 .join-us {
 	background-color:#017197;
 }
-.join-us .two-fourth {
-	float: left;
-	margin-right: 0.5em;
-}
 .join-us h3{
 	color: #02baf8;
 	font-weight: 400;
 	margin-bottom: 0;
 	margin-top: 0.5em;
+	font-size: 1.154em;
+}
+.join-us ul.social-links li a{
+	color:#fff;
+}
+.join-us ul.social-links li a:hover{
+	color: #02baf8;
 }
 .join-us ul.social-links li a:before {
 		font-size: 30px!important;
@@ -1567,22 +1577,18 @@ blockquote.aligncenter {
 .email-subscriber {
 	background-color: #4fb94a;
 	padding: 1.875em 0;
-}
-.email-subscriber .two-fourth {
-	float: left;
-	margin-right: 1.5em;
-}
-.email-subscriber .two-fourth {
-	font-size: 1em;
 	color:#fff;
-	text-align: right;
 }
-.email-subscriber .two-fourth.last {
+.email-subscriber .span_2_of_3 p {
+	margin-bottom: 1em;
+}
+.email-subscriber .span_1_of_3 {
 	font-size: 1em;
 	text-transform: uppercase;
 	text-align: left;
 }
 .footer-sidebar {
+	display: none;
 	color:#92d0ff;
 	background-color: #017197;
 	padding-top: 1.75em;
@@ -1601,16 +1607,22 @@ blockquote.aligncenter {
 	padding-top: 0;
 	color:#92d0ff;
 }
+.join-us,
+.email-subscriber,
+.footer-sidebar {
+	padding-left: 5%;
+    padding-right: 5%;
+}
 .site-info {
 	padding: 0.769em;
-}
-.copyright {
-	float: left;
+	background-color: #00394b;
+	text-align: center;
 }
 
 @media only screen and (min-width: 992px) {
 	.join-us h3 {
 		text-align: right;
+		font-size: 1.846em;
 		margin-top: 0.875em;
 		padding-right: 0.625em;
 	}
@@ -1621,20 +1633,37 @@ blockquote.aligncenter {
 	.join-us ul.social-links li a:before {
 		font-size: 42px!important;
 	}
-	.email-subscriber .two-fourth {
-		font-size: 1.5em;
+	.email-subscriber .span_2_of_3 p {
+		margin-bottom: 0;
+		padding-right: 1.5em;
 	}
-	.email-subscriber .two-fourth.last {
+	.email-subscriber .span_1_of_3 .button {
+		margin-left: 1.5em;
+	}
+	.email-subscriber .span_2_of_3 {
+		font-size: 1.5em;
+		text-align: right;
+	}
+	.email-subscriber .span_1_of_3 {
 		font-size: 1.875em;
+	}
+	.footer-sidebar {
+		display: block;
+	}
+	.site-info {
+		text-align: left;
+	}
+	.copyright {
+		float: left;
+	}
+	.footer-navigation {
+		float: right;
 	}
 }
 
 /*--------------------------------------------------------------
 ## Footer menus
 --------------------------------------------------------------*/
-.footer-navigation {
-	float: right;
-}
 .footer-navigation ul {
 	list-style: none;
 	padding: 0;
@@ -1691,6 +1720,16 @@ blockquote.aligncenter {
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
+.single-post-title {
+	font-size: 1.875em;
+	line-height: 1.2em;
+	font-weight: 400;
+	margin: -0.250em 0 0.313em 0;
+}
+.entry-title {
+	font-size: 1em;
+	margin: 0 0 0.313em 0;
+}
 .sticky {
 	display: block;
 }
@@ -1718,6 +1757,43 @@ blockquote.aligncenter {
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+}
+.entry-excerpt {
+	padding: 0.625em;;
+}
+
+/*--------------------------------------------------------------
+## Staff post type
+--------------------------------------------------------------*/
+.staff-entry-inner,
+.staff-single-media {
+	border: 3px solid #ebebeb;
+	padding: 2px;
+}
+.single-staff-title {
+	margin-bottom: 0;
+}
+.staff-entry-title {
+	padding-top: 0.938em;
+	text-align: center;
+}
+.staff-entry-title a {
+	color:#333;
+}
+.staff-entry-title a:hover {
+	color: #007acc;
+}
+.staff-entry-position {
+	font-size: 0.750em;
+	color:#555555;
+	text-align: center;
+}
+.staff-single-media {
+	margin-bottom: 1.5em;
+}
+.staff-single-position {
+	font-size: 0.938em;
+	color:#555;
 }
 
 /*--------------------------------------------------------------
@@ -1911,4 +1987,66 @@ ul.social-links {
 }
 .social-links a[href*="instagram.com"]::before {
 	content: '\f16d';
+}
+
+/*--------------------------------------------------------------
+## Overlay
+--------------------------------------------------------------*/
+.overlay-wrap {
+	position: relative;
+	display: block;
+	overflow: hidden;
+}
+.overlay-wrap > a, 
+.overlay-wrap > a img {
+	display: block;
+	width: 100%!important;
+}
+.overlay-hide {
+    visibility: hidden;
+    opacity: 0;
+    -moz-opacity: 0;
+    -webkit-opacity: 0;
+}
+.overlay-inner {
+	position: absolute;
+	top: 0;
+    right: 0;
+    background: #fff;
+    height: 100%;
+    width: 100%;
+    transition: all .25s ease-in-out;
+}
+.overlay-wrap:hover 
+.overlay-inner.white {
+	background:#fff;
+}
+.overlay-inner.black {
+	background:#000;
+}
+.overlay-inner span.title { 
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1em;
+	line-height: 1.3em; 
+	font-weight: 400;
+	position: absolute; 
+	bottom: 30px; 
+	left: 0; 
+	width: 100%; 
+	text-align: center; 
+	padding: 0 30px; 
+	color: #000; 
+	font-size: 1.077em; 
+	font-weight: 600; 
+	transition: all .15s ease-in-out; 
+}
+.overlay-inner.black span.title { color: #fff }
+.overlay-wrap:hover .overlay-inner { 
+	visibility: visible; 
+	opacity: 0.8; 
+	-webkit-opacity: 0.8; 
+	-moz-opacity: 0.8; 
+}
+.overlay-wrap:hover .overlay-inner span.title { 
+	bottom: 60px 
 }

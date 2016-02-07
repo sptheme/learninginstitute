@@ -14,6 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 <header id="staff-single-header" class="single-header">
-	<h1 id="staff-single-title" class="entry-title single-post-title"><?php the_title(); ?></h1>
+	<h1 id="staff-single-title" class="single-post-title single-staff-title"><?php the_title(); ?></h1>
 	<?php get_template_part( 'template-parts/staff/staff-single-position' ); ?>
 </header><!-- .entry-header -->

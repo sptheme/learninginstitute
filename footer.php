@@ -14,9 +14,9 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="join-us clearfix">
-			<div class="two-fourth"><h3><?php esc_html_e( 'Join us on:', 'learninginstitute' );?></h3></div>
-			<div class="two-fourth last">
+		<div class="join-us wpsp-row no-margin-grid clearfix">
+			<div class="col span_1_of_2"><h3><?php esc_html_e( 'Join us on:', 'learninginstitute' );?></h3></div>
+			<div class="col span_1_of_2">
 				<ul class="social-links">
 					<li><a href="https://www.facebook.com/" target="_blank"><span class="screen-reader-text">Facebook</span></a></li>
 					<li><a href="https://www.twitter.com/" target="_blank"><span class="screen-reader-text">Twitter</span></a></li>
@@ -26,9 +26,9 @@
 				</ul>
 			</div>
 		</div> <!-- .social-links -->
-		<div class="email-subscriber clearfix">
-			<div class="two-fourth"><?php _e( 'Be the first to know the learning Institute<br>News and Programs updates', 'learninginstitute' ); ?></div>
-			<div class="two-fourth last"><a class="button yellow" href="#"><?php esc_html_e( 'Sign Up Now', 'learninginstitute' ); ?></a></div>
+		<div class="email-subscriber wpsp-row no-margin-grid clearfix">
+			<div class="col span_2_of_3"><p><?php _e( 'Be the first to know the learning Institute News and Programs updates', 'learninginstitute' ); ?></p></div>
+			<div class="col span_1_of_3"><a class="button yellow" href="#"><?php esc_html_e( 'Sign Up Now', 'learninginstitute' ); ?></a></div>
 		</div> <!-- .email-subscriber -->
 		<div class="footer-sidebar">
 			<div class="container clearfix">
