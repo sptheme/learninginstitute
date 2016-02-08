@@ -305,6 +305,11 @@ th {
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
+html,
+body {
+  font-size: 100%; 
+}
+
 body,
 button,
 input,
@@ -313,13 +318,13 @@ textarea {
 	color: #404040;
 	/*font-family: 'Merriweather', serif;*/
 	font-family: 'Open Sans', sans-serif;
-	font-size: 16px;
+	/*font-size: 16px;*/
 	/*
 	 * Set responsive typography
 	 *
 	 * if user and their browser have set default font-size (16px) and all other fonts will respond that dynamic default font-size.
 	 */
-	font-size: 1rem; 
+	/*font-size: 1rem; */
 	line-height: 1.5;
 }
 
@@ -759,11 +764,7 @@ a:focus,
 a:active {
 	color: #686868;
 }
-
-a:focus {
-	outline: thin dotted;
-}
-
+a:focus,
 a:hover,
 a:active {
 	outline: 0;
@@ -776,8 +777,7 @@ a:active {
 .comment-content a,
 .pingback .comment-body > a,
 .textwidget a,
-.entry-footer a:hover,
-.site-info a:hover {
+.entry-footer a:hover {
 	box-shadow: 0 1px 0 0 currentColor;
 }
 
@@ -1671,14 +1671,9 @@ blockquote.aligncenter {
 }
 .footer-navigation ul li {
 	display: inline-block;
-	border-right: 1px solid #0099cc;
-}
-.footer-navigation ul li:last-child {
-	border-right: none;
 }
 .footer-navigation ul li a {
 	padding: 0 0.769em;
-	display: block;
 }
 
 /*--------------------------------------------------------------
