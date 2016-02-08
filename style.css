@@ -42,6 +42,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## Footer menus
 # Content
 	## Posts and pages
+	## Page header image
 	## Staff post type
 	## Asides
 	## Comments
@@ -1478,7 +1479,10 @@ blockquote.aligncenter {
 .site-content {
 	padding-left: 5%;
     padding-right: 5%;
-    padding-top: 40px;
+}
+.site-main {
+	padding-top: 2.5em;
+	padding-bottom: 2.5em;
 }
 
 @media only screen and (min-width: 992px) {
@@ -1715,16 +1719,18 @@ blockquote.aligncenter {
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
-.single-post-title {
+.entry-title {
+	font-size: 1em;
+	margin: 0 0 0.313em 0;
+}
+.single-post-title,
+.single .entry-title {
 	font-size: 1.875em;
 	line-height: 1.2em;
 	font-weight: 400;
 	margin: -0.250em 0 0.313em 0;
 }
-.entry-title {
-	font-size: 1em;
-	margin: 0 0 0.313em 0;
-}
+
 .sticky {
 	display: block;
 }
@@ -1755,6 +1761,82 @@ blockquote.aligncenter {
 }
 .entry-excerpt {
 	padding: 0.625em;;
+}
+
+/*--------------------------------------------------------------
+## Page header image
+--------------------------------------------------------------*/
+.page-header {
+	padding: 1em 5%;
+    position: relative;
+    background: #f7f7f7;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.page-header-title {
+    display: block;
+    font-size: 1.5em;
+    line-height: 1.4em;
+    font-weight: normal;
+    font-weight: 400;
+    margin: 0px;
+    color: #000;
+}
+.page-header-background-image .page-header .page-header-title {
+    font-size: 1.625em;
+}
+.page-header-background-image {
+	display: table;
+	width: 100%;
+    border: none;
+    background: #000;
+    min-height: 200px;
+    background-position: 50% 0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.page-header-background-image .page-header-inner {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+    padding: 0 1.875em;
+    width: 100%;
+}
+
+.page-header-background-image .page-header-title {
+	position: relative;
+	color: #fff;
+	font-size: 2em;
+	z-index: 2;
+}
+.page-header-background-image .page-subheadline {
+	position: relative;
+	color: #fff;
+	font-size: 1.077em;
+    margin: 0;
+    margin-bottom: 0;
+    z-index: 2;
+}
+.page-header-overlay {
+	display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    z-index: 1;
+    opacity: 0.5;
+}
+@media only screen and (min-width: 767px) {
+	.page-header-background-image {
+	   	height: 400px;
+	}
+	.page-header-background-image .page-header {
+		padding: 2.250em 0;
+	}
 }
 
 /*--------------------------------------------------------------

@@ -46,5 +46,7 @@
 		</div>
 	</header><!-- #masthead -->
 
+	<?php wpsp_hook_content_top(); ?>
+	
 	<div id="content" class="site-content">
 		<div class="container clearfix">

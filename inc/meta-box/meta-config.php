@@ -18,7 +18,7 @@
  *
  * @return array
  */
-function wpsp_register_meta_boxes( $meta_boxes ) {
+	function wpsp_register_meta_boxes( $meta_boxes ) {
 	/**
 	 * prefix of meta keys (optional)
 	 * Use underscore (_) at the beginning to make keys hidden
@@ -35,6 +35,37 @@ function wpsp_register_meta_boxes( $meta_boxes ) {
       $sidebars[ $id ] = $sidebar[ 'name' ];
     }
     $sidebars_tmp = array_unshift( $sidebars, "-- Choose Sidebar --" );    
+
+	// Masthead apply header of the page
+    $meta_boxes[] = array(
+    	'id'			=> 'masthead',
+		'title'			=> __( 'Masthead Options', 'wpsp_meta_options' ),
+		'post_types'	=> array( 'page' ),
+		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
+		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
+		'autosave'		=> true, // Auto save: true, false (default). Optional.
+
+		'fields'		=> array(
+			array(
+				'name'  => __( 'Headline', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "masthead_title",
+				'type'  => 'text',
+			),
+			array(
+				'name'  => __( 'Sub Headline', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "masthead_desc",
+				'type'  => 'textarea',
+				'row'	=> 3
+			),
+			array(
+				'name'  => __( 'Upload background image', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "masthead_image",
+				'desc'	=> __( 'Option: Recommended image size: 1600px by 650px.', 'wpsp_meta_options' ), 
+				'type'  => 'image_advanced',
+				'max_file_uploads' => 1,
+			),
+		)
+    );
 
 	// Staff post type
     $meta_boxes[] = array(

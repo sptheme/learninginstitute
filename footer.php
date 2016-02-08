@@ -13,6 +13,8 @@
 		</div><!-- .container -->	
 	</div><!-- #content -->
 
+	<?php wpsp_hook_content_bottom(); ?>
+
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="join-us wpsp-row no-margin-grid clearfix">
 			<div class="col span_1_of_2"><h3><?php esc_html_e( 'Join us on:', 'learninginstitute' );?></h3></div>

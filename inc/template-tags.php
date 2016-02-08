@@ -121,6 +121,29 @@ add_action( 'edit_category', 'wpsp_category_transient_flusher' );
 add_action( 'save_post',     'wpsp_category_transient_flusher' );
 
 /*-------------------------------------------------------------------------------*/
+/* [ Custom Style and Javascript ]
+/*-------------------------------------------------------------------------------*/
+
+/**
+ * Custom style page header background image
+ * 
+ * @since 1.0.0
+ */
+
+function wpsp_page_header_style() { 
+	global $post; ?>
+	
+	<?php $page_header_bg_img = wp_get_attachment_url( get_post_meta( $post->ID, 'wpsp_masthead_image', true ) );
+	if ( $page_header_bg_img ) { ?>
+		<style type="text/css">	
+			.page-header-background-image { background-image: url(<?php echo $page_header_bg_img; ?>);}
+		</style>	
+	<?php } ?>	
+<?php
+}
+add_action( 'wp_head', 'wpsp_page_header_style' );
+
+/*-------------------------------------------------------------------------------*/
 /* [ Dashicons ]
 /*-------------------------------------------------------------------------------*/
 /**
@@ -648,3 +671,4 @@ function wpsp_remove_more_link_scroll( $link ) {
 	return $link;
 }
 add_filter( 'the_content_more_link', 'wpsp_remove_more_link_scroll' );
+

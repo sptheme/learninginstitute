@@ -135,10 +135,14 @@ require get_template_directory() . '/inc/shortcodes/shortcodes.php';
  */
 require get_template_directory() . '/inc/meta-box/meta-box.php';
 // Meta Sample Config
-require get_template_directory() . '/inc/meta-box/demo.php';
+//require get_template_directory() . '/inc/meta-box/demo.php';
 // Meta hfhc Config
 require get_template_directory() . '/inc/meta-box/meta-config.php';
 
+/**
+ * Custom hooks
+ */
+require get_template_directory() . '/inc/hooks.php';
 /**
  * Custom template tags for this theme.
  */
