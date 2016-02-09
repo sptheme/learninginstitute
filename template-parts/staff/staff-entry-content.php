@@ -15,5 +15,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="staff-entry-content">
 	<?php get_template_part( 'template-parts/staff/staff-entry-title' ); ?>
 	<?php get_template_part( 'template-parts/staff/staff-entry-position' ); ?>
-	<?php get_template_part( 'template-parts/staff/staff-entry-excerpt' ); ?>
+	<?php //get_template_part( 'template-parts/staff/staff-entry-excerpt' ); ?>
 </div><!-- .entry-content -->

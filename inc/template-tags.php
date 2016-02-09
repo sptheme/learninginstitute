@@ -358,15 +358,6 @@ if ( ! function_exists( 'wpsp_is_staff_tax' ) ) {
 }
 
 /**
- * Returns staff archive columns
- *
- * @since 1.0.0
- */
-function wpsp_staff_archive_columns() {
-	return wpsp_get_mod( 'staff_entry_columns', '3' );
-}
-
-/**
  * Returns correct classes for the staff grid
  *
  * @since 1.0.0

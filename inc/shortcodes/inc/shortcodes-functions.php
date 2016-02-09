@@ -25,6 +25,7 @@ function add_script_style_sc() {
 function wpsp_add_shortcodes() {
 	add_shortcode( 'col', 'col' );
 	//add_shortcode( 'button', 'wpsp_button_shortcode' );
+	add_shortcode( 'sc_staff', 'wpsp_staff_shortcode' );
 	
 	
 }
@@ -123,3 +124,57 @@ function wpsp_accordion_section_shortcode($atts, $content = null) {
 }
 endif;
 
+if ( ! function_exists( 'wpsp_staff_shortcode' ) ) :
+/**
+ * staff shortcode
+ *
+ * Options: Show all staff / by Category
+ *
+ */
+function wpsp_staff_shortcode( $atts, $content = null ){
+	ob_start();
+	extract( shortcode_atts( array(
+		'term_id' => null,
+		'post_count' => null,
+		'cols' => null
+	), $atts ) );
+
+	$args = array(
+			'post_type' => 'staff',
+			'tax_query' => array(
+					array(
+						'taxonomy' => 'staff_category',
+						'field'    => 'id',
+						'terms'    => array($term_id)
+					)
+				),
+				'posts_per_page' => $post_count
+		);
+	$staff_query = new WP_Query($args);
+
+	if ( $staff_query->have_posts() ) { ?>
+		<div class="wpsp-row clearfix">
+
+	<?php while ( $staff_query->have_posts() ) : $staff_query->the_post(); ?>
+	<?php
+		$entry_classes = array( 'staff-entry' );
+		$entry_classes[] = 'col';
+		$entry_classes[] = 'span_1_of_'. $cols; 
+	?>	
+			<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
+				<div class="staff-entry-inner">
+				<?php get_template_part( 'template-parts/staff/staff-entry-media' ); ?>
+				<?php get_template_part( 'template-parts/staff/staff-entry-content' ); ?>
+				</div> <!-- .inner-staff-entry -->
+			</article><!-- #post-## -->
+	<?php endwhile; wp_reset_postdata(); ?>
+
+		</div> <!-- .wpsp-row .clearfix -->
+	<?php	
+	} else {
+		echo esc_html__( 'Sorry, new content will coming soon.', 'learninginstitute' );
+	}
+
+	return ob_get_clean();
+}
+endif;

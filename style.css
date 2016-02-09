@@ -1480,7 +1480,8 @@ blockquote.aligncenter {
 	padding-left: 5%;
     padding-right: 5%;
 }
-.site-main {
+.site-main,
+.widget-area {
 	padding-top: 2.5em;
 	padding-bottom: 2.5em;
 }
@@ -1723,8 +1724,7 @@ blockquote.aligncenter {
 	font-size: 1em;
 	margin: 0 0 0.313em 0;
 }
-.single-post-title,
-.single .entry-title {
+.single-post-title {
 	font-size: 1.875em;
 	line-height: 1.2em;
 	font-weight: 400;
@@ -1856,6 +1856,7 @@ blockquote.aligncenter {
 }
 .staff-entry-title a {
 	color:#333;
+	box-shadow: none;
 }
 .staff-entry-title a:hover {
 	color: #007acc;
