@@ -35,22 +35,6 @@ function wpsp_customize_text_sizes( $initArray ){
 add_filter( 'tiny_mce_before_init', 'wpsp_customize_text_sizes' );
 endif;
 
-if ( !function_exists( 'wpsp_mce_google_fonts_styles' ) ) :
-/**
- * add google scripts for use with the editor
- */
-function wpsp_mce_google_fonts_styles() {
-
-	$scripts[] = 'http://fonts.googleapis.com/css?family=Montserrat';
-	$scripts[] = 'http://fonts.googleapis.com/css?family=Open Sans';
-	foreach ( $scripts as $script ) {
-		add_editor_style( str_replace( ',', '%2C', $script ) );
-	}
-
-}
-add_action( 'init', 'wpsp_mce_google_fonts_styles' );	
-endif;
-
 if ( !function_exists( 'wpsp_shortcodes_add_tinymce_plugin' ) ) :
 /**
  * Register TinyMCE Plugin

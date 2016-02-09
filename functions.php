@@ -16,6 +16,11 @@ if ( ! function_exists( 'learninginstitute_setup' ) ) :
  * as indicating support for post thumbnails.
  */
 function learninginstitute_setup() {
+	
+	// This theme styles the visual editor to resemble the theme style.
+	$font_url = 'https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic';
+	add_editor_style( array( 'css/editor-style.css', str_replace( ',', '%2C', $font_url ) ) );	
+
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
@@ -85,7 +90,7 @@ add_action( 'after_setup_theme', 'learninginstitute_setup' );
  * @global int $content_width
  */
 function learninginstitute_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'learninginstitute_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'learninginstitute_content_width', 600 );
 }
 add_action( 'after_setup_theme', 'learninginstitute_content_width', 0 );
 
@@ -96,7 +101,7 @@ function learninginstitute_scripts() {
 	wp_enqueue_style( 'learninginstitute-style', get_stylesheet_uri() );
 
 	//Add Google Fonts (English): Merriweather and Open Sans
-	//wp_enqueue_style( 'google-font-english', 'https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic|Open+Sans:400,400italic,700,700italic' );
+	//wp_enqueue_style( 'google-font-english', 'https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic' );
 
 	//Add Google Font (Khmer): Hanuman
 	//wp_enqueue_style( 'google-font-khmer', 'https://fonts.googleapis.com/css?family=Hanuman:400,700' );
