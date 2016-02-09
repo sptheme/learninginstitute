@@ -25,6 +25,7 @@ function add_script_style_sc() {
 function wpsp_add_shortcodes() {
 	add_shortcode( 'col', 'col' );
 	//add_shortcode( 'button', 'wpsp_button_shortcode' );
+	add_shortcode( 'callout_box', 'wpsp_callout_box_shortcode' );
 	add_shortcode( 'sc_staff', 'wpsp_staff_shortcode' );
 	
 	
@@ -121,6 +122,28 @@ function wpsp_accordion_section_shortcode($atts, $content = null) {
 
 	return '<section><h4>' . $title . '</h4><div><p>' . return_clean($content) . '</p></div></section>';
 	
+}
+endif;
+
+/**
+ * Callout box shortcode
+ *
+ * Options: Show callout message
+ *
+ */
+if ( ! function_exists( 'wpsp_callout_box_shortcode' ) ) :
+function wpsp_callout_box_shortcode( $atts, $content = null ) {
+	extract( shortcode_atts( array(
+		'button_name' => null,
+		'button_url' => null
+	), $atts ) );
+
+	$out = '<div class="callout-box">';
+	$out .= '<div class="callout-message">' . return_clean($content) . '</div>';
+	$out .= '<div class="callout-button"><a class="button green" href="'. $button_url .'">'. $button_name .'</a></div>';
+	$out .= '</div><!-- #callout-box -->';
+
+	return $out;
 }
 endif;
 

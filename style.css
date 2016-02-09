@@ -52,6 +52,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## Galleries
 # Addon Elements
 	## Buttons
+	## Social Links
+	## Overlay thumbnail
+	## Callout Box
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -771,7 +774,7 @@ a:active {
 	outline: 0;
 }
 
-.entry-content a,
+/*.entry-content a,*/
 .entry-summary a,
 .taxonomy-description a,
 .logged-in-as a,
@@ -782,7 +785,7 @@ a:active {
 	box-shadow: 0 1px 0 0 currentColor;
 }
 
-.entry-content a:hover,
+/*.entry-content a:hover,*/
 .entry-content a:focus,
 .entry-summary a:hover,
 .entry-summary a:focus,
@@ -2034,6 +2037,12 @@ a.button:hover {
 .button.yellow:hover {
 	color:#ffcc01;
 }
+.button.green {
+	background-color: #4fb94a;
+}
+.button.green:hover {
+	background-color: #4aad45;
+}
 
 /*--------------------------------------------------------------
 ## Social Links
@@ -2071,7 +2080,7 @@ ul.social-links {
 }
 
 /*--------------------------------------------------------------
-## Overlay
+## Overlay thumbnail
 --------------------------------------------------------------*/
 .overlay-wrap {
 	position: relative;
@@ -2130,4 +2139,23 @@ ul.social-links {
 }
 .overlay-wrap:hover .overlay-inner span.title { 
 	bottom: 60px 
+}
+
+/*--------------------------------------------------------------
+## Callout Box
+--------------------------------------------------------------*/
+.callout-box {
+	background-color: #0198cd;
+	text-align: center;
+	padding: 1.875em 1em;
+}
+.callout-box .callout-message {
+	color:#fff;
+	padding-bottom: 1.5em;
+}
+@media only screen and (min-width: 767px) {
+	.callout-box .callout-message {
+		font-size: 1.125em;
+		line-height: 1.375em;
+	}
 }

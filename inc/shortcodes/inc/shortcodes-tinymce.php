@@ -15,6 +15,7 @@ function wpsp_shortcodes_register_mce_button_3( $buttons ) {
 
 	array_push( $buttons, 'col' );
 	//array_push( $buttons, 'btn' );
+	array_push( $buttons, 'callout' );
 	array_push( $buttons, 'staff' );
 
     return $buttons;
@@ -52,7 +53,8 @@ function wpsp_shortcodes_add_tinymce_plugin($plugin_array) {
         return;
 
 	$plugin_array['col'] 			= ED_JS_URL . 'ed-columns.js';
-	$plugin_array['btn']			= ED_JS_URL . 'ed-button.js';
+	//$plugin_array['btn']			= ED_JS_URL . 'ed-button.js';
+	$plugin_array['callout']			= ED_JS_URL . 'ed-callout.js';
 	if ( $post_type == 'page' ) {
 		$plugin_array['staff']				= ED_JS_URL . 'ed-staff.js';
 		//$plugin_array['photogallery']		= ED_JS_URL . 'ed-photogallery.js';
