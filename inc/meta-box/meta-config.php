@@ -60,9 +60,28 @@
 			array(
 				'name'  => __( 'Upload background image', 'wpsp_meta_options' ), 
 				'id'    => $prefix . "masthead_image",
-				'desc'	=> __( 'Option: Recommended image size: 1600px by 650px.', 'wpsp_meta_options' ), 
+				'desc'	=> __( 'Option: Recommended image size: 1600px by 640px.', 'wpsp_meta_options' ), 
 				'type'  => 'image_advanced',
 				'max_file_uploads' => 1,
+			),
+		)
+    );
+
+    // Homepage
+    $meta_boxes[] = array(
+    	'id'			=> 'homepage-options',
+		'title'			=> __( 'Homepage Options', 'wpsp_meta_options' ),
+		'post_types'	=> array( 'page' ),
+		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
+		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
+		'autosave'		=> true, // Auto save: true, false (default). Optional.
+
+		'fields'		=> array(
+			array(
+				'name'  => __( 'Slideshow', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "slideshow",
+				'desc'	=> __( 'Upload images for slideshow. Option: Recommended image size: 1600px by 640px.', 'wpsp_meta_options' ), 
+				'type'  => 'image_advanced'
 			),
 		)
     );

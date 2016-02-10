@@ -20,7 +20,7 @@ function wpsp_hook_content_bottom() {
  * Get custom page header template part, will apply on top of post/page
  */
 function wpsp_page_header() {
-	if ( is_home() || is_front_page() )
+	if ( is_home() || is_front_page() || is_page_template( 'templates/homepage.php' ) )
 		return;
 
 	if ( is_singular( 'page' ) || is_singular() ) {
@@ -30,11 +30,11 @@ function wpsp_page_header() {
 add_action( 'wpsp_hook_content_top', 'wpsp_page_header' );
 
 /**
- * Display home slideshow
+ * Display full slideshow on page header
  */
-function wpsp_home_slideshow() {
-	if ( is_page_template( 'templates/page-home.php' ) ) {
-		get_template_part( 'template-parts/home-slideshow' );
+function wpsp_full_slideshow() {
+	if ( is_page_template( 'templates/homepage.php' ) ) {
+		get_template_part( 'template-parts/full-slideshow' );
 	}
 }
-//add_action( 'wpsp_hook_content_top', 'wpsp_home_slideshow' );
+add_action( 'wpsp_hook_content_top', 'wpsp_full_slideshow' );

@@ -50,6 +50,8 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Media
 	## Captions
 	## Galleries
+# Templates
+	## Homepage
 # Addon Elements
 	## Buttons
 	## Social Links
@@ -319,7 +321,7 @@ button,
 input,
 select,
 textarea {
-	color: #404040;
+	color: #444444;
 	/*font-family: 'Merriweather', serif;*/
 	font-family: 'Open Sans', sans-serif;
 	/*font-size: 16px;*/
@@ -339,6 +341,7 @@ h4,
 h5,
 h6 {
 	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	clear: both;
 	line-height: 1.3em; /* Always relative to the inherited font-size of container element */
 	margin-top: 1.875rem; /* Use rem are root relative to em, always related to default font-size (16px) */
@@ -2002,6 +2005,42 @@ object {
 
 .gallery-caption {
 	display: block;
+}
+
+/*--------------------------------------------------------------
+# Templates
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Homepage
+--------------------------------------------------------------*/
+
+/* Section Title */
+.section-title h2 {
+    font-size: 1.250em;
+    line-height: 1.625em;
+    margin-bottom: 0.625em;
+}
+.section-title p.description {
+    font-size: 0.875em;
+    line-height: 1.125em;
+    color:#727272;
+}
+
+@media only screen and (min-width: 767px) {
+    .section-title h2 {
+        font-size: 1.625em;
+        line-height: 2em;
+    }
+    .section-title p.description {
+        font-size: 1em;
+        line-height: 1.5em;
+    }
+}
+
+/* Our Work */
+.our-work .section-title {
+	text-align: center;
 }
 
 /*--------------------------------------------------------------

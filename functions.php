@@ -111,8 +111,10 @@ function learninginstitute_scripts() {
 	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/fonts/font-awesome/css/font-awesome.min.css' );
 
 	wp_enqueue_style( 'mobile-menu', get_template_directory_uri() . '/css/mobile-menu.css' );
+	wp_enqueue_style( 'superslides', get_template_directory_uri() . '/css/superslides.css' );
 
 	wp_enqueue_script( 'navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), '20151214', true );
+	wp_enqueue_script( 'jquery-superslides', get_template_directory_uri() . '/js/vendor/jquery.superslides.min.js', array(), '20151214', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
