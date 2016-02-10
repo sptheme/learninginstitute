@@ -24,27 +24,40 @@ get_header();
         <?php endif; ?>    
         </header>
         <?php if ( !empty($home_meta['wpsp_main_program_page'][0]) ) : ?>
-        <div class="featured-page clearfix">
-    	<?php echo 'Featured page start'; 
+        <div class="featured-page wpsp-row clearfix">
+    	<?php
+    		$page_count = 0;
     		$args = array (
 				'child_of' => $home_meta['wpsp_main_program_page'][0],
-				'number' => 3,
-				'sort_column' => 'menu_order'
+				'sort_column' => 'menu_order',
 			); 
 			$featured_pages = get_pages( $args );
-			$page_count = 0;
 			if ( !empty($featured_pages) ) {
-				echo 'Featured page'; 
 				foreach ( $featured_pages as $page ) { 
+					$page_count++;
 					$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id( $page->ID ), 'large' );
 	            	if ( $page_count == 1 ) {
-	            		$image_url = aq_resize( $thumb_url[0], '415', '270', true);
+	            		$image_url = aq_resize( $thumb_url[0], '415', '560', true);
 	            	} else {
-	            		$image_url = aq_resize( $thumb_url[0], '300', '180', true);	
+	            		$image_url = aq_resize( $thumb_url[0], '415', '270', true);
 	            	}
-	            	echo '<img src="' . $image_url . '">';
-	            	echo '<a href="'.get_page_link( $page->ID ).'">' . $page->post_title . '</a>';
-	            	$page_count++;
+	            	if ( $page_count <= 3 ) { 
+	            		$entry_classes = array( 'page-entry-overlay' );
+						$entry_classes[] = 'col';
+						$entry_classes[] = wpsp_grid_class(2); 
+						$entry_classes[] = 'col-' . $page_count; ?>
+						<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
+							<div class="entry-page post-thumbnail-wrap overlay-1">
+								<img src="<?php echo $image_url;?>">
+								<div class="caption-wrap">
+									<div class="caption-inner">
+									<a href="<?php wpsp_permalink($page->ID);?>" rel="bookmark"><span class="title"><?php echo $page->post_title; ?></span></a>
+									</div>
+								</div>
+							</div>
+						</article> <!-- .page-entry-overlay -->
+
+	            <?php }
 				} 
 			}?>
         </div> <!-- .featured-page .clearfix -->

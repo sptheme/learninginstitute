@@ -55,7 +55,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Addon Elements
 	## Buttons
 	## Social Links
-	## Overlay thumbnail
+	## Overlay Post thumbnail
 	## Callout Box
 --------------------------------------------------------------*/
 
@@ -2027,6 +2027,18 @@ object {
     color:#727272;
 }
 
+.our-work .col.col-1,
+.our-work .col.col-2 {
+	margin-bottom: 10px;
+}
+
+.our-work .col.col-2 .post-thumbnail-wrap {
+	background-color: #428342;
+}
+.our-work .col.col-3 .post-thumbnail-wrap {
+	background-color: #eabe0f;
+}
+
 @media only screen and (min-width: 767px) {
     .section-title h2 {
         font-size: 1.625em;
@@ -2034,6 +2046,9 @@ object {
     .section-title p.description {
         font-size: 1em;
         line-height: 1.5em;
+    }
+    .our-work .col.col-2 {
+    	margin-bottom: 20px;
     }
 }
 
@@ -2118,7 +2133,7 @@ ul.social-links {
 }
 
 /*--------------------------------------------------------------
-## Overlay thumbnail
+## Overlay Post thumbnail
 --------------------------------------------------------------*/
 .overlay-wrap {
 	position: relative;
@@ -2145,12 +2160,17 @@ ul.social-links {
     width: 100%;
     transition: all .25s ease-in-out;
 }
-.overlay-wrap:hover 
+.overlay-wrap:hover .overlay-inner.white,
 .overlay-inner.white {
 	background:#fff;
 }
+.overlay-wrap:hover .overlay-inner.black,
 .overlay-inner.black {
 	background:#000;
+}
+.overlay-wrap:hover .overlay-inner.blue,
+.overlay-inner.blue{
+	background: #3399cc;
 }
 .overlay-inner span.title { 
 	font-family: 'Open Sans', sans-serif;
@@ -2168,7 +2188,8 @@ ul.social-links {
 	font-weight: 600; 
 	transition: all .15s ease-in-out; 
 }
-.overlay-inner.black span.title { color: #fff }
+.overlay-inner.black span.title,
+.overlay-inner.blue span.title { color: #fff }
 .overlay-wrap:hover .overlay-inner { 
 	visibility: visible; 
 	opacity: 0.8; 
@@ -2178,6 +2199,74 @@ ul.social-links {
 .overlay-wrap:hover .overlay-inner span.title { 
 	bottom: 60px 
 }
+
+/* Post Thumbnail Effect */
+.post-thumbnail-wrap {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	background-color: #004860;
+}
+.post-thumbnail-wrap img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+}
+.post-thumbnail-wrap .caption-wrap {
+	position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.post-thumbnail-wrap .caption-inner {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+.post-thumbnail-wrap a {
+	display: table-cell;
+	vertical-align: bottom;
+}
+.post-thumbnail-wrap span.title {
+	font-size: 1.125em;
+	line-height: 1.3em; 
+	font-weight: 400;
+	color:#fff;
+	padding: 1em 0.625em;
+	display: block;
+}
+
+	/* Effect SP 1 */
+	.post-thumbnail-wrap.overlay-1 img {
+	    opacity: 0.7;
+	    -webkit-transition: opacity 0.35s;
+	    transition: opacity 0.35s;
+	}
+	.post-thumbnail-wrap.overlay-1:hover img {
+	    opacity: 1;
+	}
+	.post-thumbnail-wrap.overlay-1 span.title {
+		background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+		background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+		text-shadow: 0px 2px 2px #000000;
+    	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+    	-webkit-transition: padding 0.2s;
+	    transition: padding 0.2s;
+
+	}
+	.post-thumbnail-wrap.overlay-1:hover span.title {
+		padding-bottom: 2em;
+	}
+@media only screen and (min-width: 767px) {
+	.post-thumbnail-wrap span.title {
+		font-size: 1.5em;
+		line-height: 1.3;
+	}
+}
+
 
 /*--------------------------------------------------------------
 ## Callout Box
