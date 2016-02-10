@@ -78,11 +78,43 @@
 
 		'fields'		=> array(
 			array(
-				'name'  => __( 'Slideshow', 'wpsp_meta_options' ), 
-				'id'    => $prefix . "slideshow",
-				'desc'	=> __( 'Upload images for slideshow. Option: Recommended image size: 1600px by 640px.', 'wpsp_meta_options' ), 
-				'type'  => 'image_advanced'
+				'name'  => __( 'Slideshow Photos', 'wpsp_meta_options' ), 
+				'id'    => "slideshow_fake_id",
+				'desc'	=> __( '', 'wpsp_meta_options' ), 
+				'type'  => 'heading'
 			),
+				array(
+					'name'  => __( 'Upload Photos', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "slideshow",
+					'desc'	=> __( 'Upload images for slideshow. Option: Recommended image size: 1600px by 640px.', 'wpsp_meta_options' ), 
+					'type'  => 'image_advanced'
+				),
+			array(
+				'name'  => __( 'Main programs', 'wpsp_meta_options' ), 
+				'id'    => "main_programs_fake_id",
+				'desc'	=> __( '', 'wpsp_meta_options' ), 
+				'type'  => 'heading'
+			),
+				array(
+					'name'  => __( 'Highlight the title', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "program_headline",
+					'type'  => 'text'
+				),
+				array(
+					'name'  => __( 'Description', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "program_desc",
+					'type'  => 'textarea',
+					'row'	=> 3
+				),
+				array(
+					'name'  => __( 'Display Main Programs Page', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "main_program_page",
+					'desc'	=> __( 'Please select parent page that containe all of main programs. eg: Areas of Interest', 'wpsp_meta_options' ), 
+					'type'  => 'post',
+					'post_type' => 'page',
+					'field_type'  => 'select_advanced',
+					'placeholder' => __( 'Select an Item', 'wpsp_meta_options' ),
+				),
 		)
     );
 

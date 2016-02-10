@@ -2018,7 +2018,7 @@ object {
 /* Section Title */
 .section-title h2 {
     font-size: 1.250em;
-    line-height: 1.625em;
+    line-height: 1.250em;
     margin-bottom: 0.625em;
 }
 .section-title p.description {
@@ -2030,7 +2030,6 @@ object {
 @media only screen and (min-width: 767px) {
     .section-title h2 {
         font-size: 1.625em;
-        line-height: 2em;
     }
     .section-title p.description {
         font-size: 1em;
