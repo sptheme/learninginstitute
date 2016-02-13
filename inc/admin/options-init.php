@@ -133,26 +133,60 @@
      * ---> START SECTIONS
      *
      */
+    //create a section with no subsections
     Redux::setSection( $opt_name, array(
-        'title'            => __( 'Template', 'redux-framework-hfhc' ),
+        'title'            => __( 'Posts', 'redux-framework-wpsp' ),
+        'id'               => 'post-options',
+        'icon'             => 'el el-file-edit',
+        'fields'     => array(
+            array(
+                'id'       => 'placeholder',
+                'type'     => 'media',
+                'title'    => __( 'Placeholder', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'Use for any post that do not have post featured image.', 'redux-framework-wpsp' ),
+                'desc'     => __( 'Recommended size 960px by 625px', 'redux-framework-wpsp' ),
+                'default'  => array(
+                    'url' => get_template_directory_uri() . '/images/thumbnail-960x625.gif'
+                    )
+            ),
+            $fields = array(
+                'id'       => 'is-post-related',
+                'type'     => 'switch', 
+                'title'    => __('Post related', 'redux-framework-demo'),
+                'subtitle' => __('Show related posts On or Off', 'redux-framework-demo'),
+                'default'  => true,
+            ),
+            $fields = array(
+                'id'       => 'post-related-title',
+                'type'     => 'text', 
+                'title'    => __('Post related title', 'redux-framework-demo'),
+                'subtitle' => __('', 'redux-framework-demo'),
+                'default'  => 'You may also see...',
+            ),
+        )
+    ) );
+
+    //
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Template', 'redux-framework-wpsp' ),
         'id'               => 'basic-template',
-        'desc'             => __( 'These are really basic fields!', 'redux-framework-hfhc' ),
+        'desc'             => __( 'These are really basic fields!', 'redux-framework-wpsp' ),
         'customizer_width' => '400px',
         'icon'             => 'el el-website'
     ) );
 
     Redux::setSection( $opt_name, array(
-        'title'      => __( 'Layout', 'redux-framework-hfhc' ),
+        'title'      => __( 'Layout', 'redux-framework-wpsp' ),
         'id'         => 'layout-hfhc',
         'subsection' => true,
-        'desc'       => __( 'Manage page layout with fullwide, left sidebar and right sidebar', 'redux-framework-hfhc' ),
+        'desc'       => __( 'Manage page layout with fullwide, left sidebar and right sidebar', 'redux-framework-wpsp' ),
         'fields'     => array(
             array(
                 'id'       => 'layout-global',
                 'type'     => 'image_select',
-                'title'    => __( 'Global layout', 'redux-framework-hfhc' ),
-                'subtitle' => __( '', 'redux-framework-hfhc' ),
-                'desc'     => __( 'Other layouts will override this option if they are set', 'redux-framework-hfhc' ),
+                'title'    => __( 'Global layout', 'redux-framework-wpsp' ),
+                'subtitle' => __( '', 'redux-framework-wpsp' ),
+                'desc'     => __( 'Other layouts will override this option if they are set', 'redux-framework-wpsp' ),
                 //Must provide key => value(array:title|img) pairs for radio options
                 'options'  => array(
                     'col-1c' => array(
@@ -173,9 +207,9 @@
             array(
                 'id'       => 'layout-home',
                 'type'     => 'image_select',
-                'title'    => __( 'Home', 'redux-framework-hfhc' ),
-                'subtitle' => __( '', 'redux-framework-hfhc' ),
-                'desc'     => __( '[ is_home ] Posts homepage layout', 'redux-framework-hfhc' ),
+                'title'    => __( 'Home', 'redux-framework-wpsp' ),
+                'subtitle' => __( '', 'redux-framework-wpsp' ),
+                'desc'     => __( '[ is_home ] Posts homepage layout', 'redux-framework-wpsp' ),
                 'options'  => array(
                     'inherit' => array(
                         'alt' => 'Inherit Global Layout',
@@ -199,9 +233,9 @@
             array(
                 'id'       => 'layout-single',
                 'type'     => 'image_select',
-                'title'    => __( 'Single', 'redux-framework-hfhc' ),
-                'subtitle' => __( '', 'redux-framework-hfhc' ),
-                'desc'     => __( '[ is_single ] Single post layout - If a post has a set layout, it will override this.', 'redux-framework-hfhc' ),
+                'title'    => __( 'Single', 'redux-framework-wpsp' ),
+                'subtitle' => __( '', 'redux-framework-wpsp' ),
+                'desc'     => __( '[ is_single ] Single post layout - If a post has a set layout, it will override this.', 'redux-framework-wpsp' ),
                 'options'  => array(
                     'inherit' => array(
                         'alt' => 'Inherit Global Layout',
@@ -225,9 +259,9 @@
             array(
                 'id'       => 'layout-archive',
                 'type'     => 'image_select',
-                'title'    => __( 'Archive', 'redux-framework-hfhc' ),
-                'subtitle' => __( '', 'redux-framework-hfhc' ),
-                'desc'     => __( '[ is_archive ] Category, date, tag and author archive layout', 'redux-framework-hfhc' ),
+                'title'    => __( 'Archive', 'redux-framework-wpsp' ),
+                'subtitle' => __( '', 'redux-framework-wpsp' ),
+                'desc'     => __( '[ is_archive ] Category, date, tag and author archive layout', 'redux-framework-wpsp' ),
                 'options'  => array(
                     'inherit' => array(
                         'alt' => 'Inherit Global Layout',
@@ -251,9 +285,9 @@
             array(
                 'id'       => 'layout-archive-category',
                 'type'     => 'image_select',
-                'title'    => __( 'Archive — Category', 'redux-framework-hfhc' ),
-                'subtitle' => __( '', 'redux-framework-hfhc' ),
-                'desc'     => __( '[ is_category ] Category archive layout', 'redux-framework-hfhc' ),
+                'title'    => __( 'Archive — Category', 'redux-framework-wpsp' ),
+                'subtitle' => __( '', 'redux-framework-wpsp' ),
+                'desc'     => __( '[ is_category ] Category archive layout', 'redux-framework-wpsp' ),
                 'options'  => array(
                     'inherit' => array(
                         'alt' => 'Inherit Global Layout',
@@ -277,9 +311,9 @@
             array(
                 'id'       => 'layout-search',
                 'type'     => 'image_select',
-                'title'    => __( 'Search', 'redux-framework-hfhc' ),
-                'subtitle' => __( '', 'redux-framework-hfhc' ),
-                'desc'     => __( '[ is_search ] Search page layout', 'redux-framework-hfhc' ),
+                'title'    => __( 'Search', 'redux-framework-wpsp' ),
+                'subtitle' => __( '', 'redux-framework-wpsp' ),
+                'desc'     => __( '[ is_search ] Search page layout', 'redux-framework-wpsp' ),
                 'options'  => array(
                     'inherit' => array(
                         'alt' => 'Inherit Global Layout',
@@ -303,9 +337,9 @@
             array(
                 'id'       => 'layout-404',
                 'type'     => 'image_select',
-                'title'    => __( 'Error 404', 'redux-framework-hfhc' ),
-                'subtitle' => __( '', 'redux-framework-hfhc' ),
-                'desc'     => __( '[ is_404 ] Error 404 page layout', 'redux-framework-hfhc' ),
+                'title'    => __( 'Error 404', 'redux-framework-wpsp' ),
+                'subtitle' => __( '', 'redux-framework-wpsp' ),
+                'desc'     => __( '[ is_404 ] Error 404 page layout', 'redux-framework-wpsp' ),
                 'options'  => array(
                     'inherit' => array(
                         'alt' => 'Inherit Global Layout',
@@ -329,9 +363,9 @@
             array(
                 'id'       => 'layout-page',
                 'type'     => 'image_select',
-                'title'    => __( 'Default Page', 'redux-framework-hfhc' ),
-                'subtitle' => __( '', 'redux-framework-hfhc' ),
-                'desc'     => __( '[ is_page ] Default page layout - If a page has a set layout, it will override this.', 'redux-framework-hfhc' ),
+                'title'    => __( 'Default Page', 'redux-framework-wpsp' ),
+                'subtitle' => __( '', 'redux-framework-wpsp' ),
+                'desc'     => __( '[ is_page ] Default page layout - If a page has a set layout, it will override this.', 'redux-framework-wpsp' ),
                 'options'  => array(
                     'inherit' => array(
                         'alt' => 'Inherit Global Layout',
@@ -356,66 +390,66 @@
     ) );
     
     Redux::setSection( $opt_name, array(
-        'title'      => __( 'Sidebar', 'redux-framework-hfhc' ),
+        'title'      => __( 'Sidebar', 'redux-framework-wpsp' ),
         'id'         => 'sidebar-hfhc',
         'subsection' => true,
-        'desc'       => __( 'Create sidebar and apply it on any pages and posts', 'redux-framework-hfhc' ),
+        'desc'       => __( 'Create sidebar and apply it on any pages and posts', 'redux-framework-wpsp' ),
         'fields'     => array(
             array(
                 'id'       => 'sidebar-area',
                 'type'     => 'multi_text',
-                'title'    => __( 'Sidebar area', 'redux-framework-hfhc' ),
-                'subtitle' => __( '', 'redux-framework-hfhc' ),
-                'desc'     => __( '', 'redux-framework-hfhc' )
+                'title'    => __( 'Sidebar area', 'redux-framework-wpsp' ),
+                'subtitle' => __( '', 'redux-framework-wpsp' ),
+                'desc'     => __( '', 'redux-framework-wpsp' )
             ),
             array(
                 'id'       => 'sidebar-home',
                 'type'     => 'select',
                 'data'     => 'sidebar',
-                'title'    => __( 'Home', 'redux-framework-hfhc' ),
-                'desc'     => __( '[ is_home ] Primary', 'redux-framework-hfhc' ),
+                'title'    => __( 'Home', 'redux-framework-wpsp' ),
+                'desc'     => __( '[ is_home ] Primary', 'redux-framework-wpsp' ),
             ),
             array(
                 'id'       => 'sidebar-single',
                 'type'     => 'select',
                 'data'     => 'sidebar',
-                'title'    => __( 'Single', 'redux-framework-hfhc' ),
-                'desc'     => __( '[ is_single ] Primary - If a single post has a unique sidebar, it will override this.', 'redux-framework-hfhc' ),
+                'title'    => __( 'Single', 'redux-framework-wpsp' ),
+                'desc'     => __( '[ is_single ] Primary - If a single post has a unique sidebar, it will override this.', 'redux-framework-wpsp' ),
             ),
             array(
                 'id'       => 'sidebar-archive',
                 'type'     => 'select',
                 'data'     => 'sidebar',
-                'title'    => __( 'Archive', 'redux-framework-hfhc' ),
-                'desc'     => __( '[ is_archive ] Primary', 'redux-framework-hfhc' ),
+                'title'    => __( 'Archive', 'redux-framework-wpsp' ),
+                'desc'     => __( '[ is_archive ] Primary', 'redux-framework-wpsp' ),
             ),
             array(
                 'id'       => 'sidebar-archive-category',
                 'type'     => 'select',
                 'data'     => 'sidebar',
-                'title'    => __( 'Archive — Category', 'redux-framework-hfhc' ),
-                'desc'     => __( '[ is_category ] Primary', 'redux-framework-hfhc' ),
+                'title'    => __( 'Archive — Category', 'redux-framework-wpsp' ),
+                'desc'     => __( '[ is_category ] Primary', 'redux-framework-wpsp' ),
             ),
             array(
                 'id'       => 'sidebar-search',
                 'type'     => 'select',
                 'data'     => 'sidebar',
-                'title'    => __( 'Search', 'redux-framework-hfhc' ),
-                'desc'     => __( '[ <strong>is_search</strong> ] Primary', 'redux-framework-hfhc' ),
+                'title'    => __( 'Search', 'redux-framework-wpsp' ),
+                'desc'     => __( '[ <strong>is_search</strong> ] Primary', 'redux-framework-wpsp' ),
             ),
             array(
                 'id'       => 'sidebar-404',
                 'type'     => 'select',
                 'data'     => 'sidebar',
-                'title'    => __( 'Error 404', 'redux-framework-hfhc' ),
-                'desc'     => __( '[ <strong>is_404</strong> ] Primary', 'redux-framework-hfhc' ),
+                'title'    => __( 'Error 404', 'redux-framework-wpsp' ),
+                'desc'     => __( '[ <strong>is_404</strong> ] Primary', 'redux-framework-wpsp' ),
             ),
             array(
                 'id'       => 'sidebar-page',
                 'type'     => 'select',
                 'data'     => 'sidebar',
-                'title'    => __( 'Page', 'redux-framework-hfhc' ),
-                'desc'     => __( '[ <strong>is_page</strong> ] Primary - If a page has a unique sidebar, it will override this.', 'redux-framework-hfhc' ),
+                'title'    => __( 'Page', 'redux-framework-wpsp' ),
+                'desc'     => __( '[ <strong>is_page</strong> ] Primary - If a page has a unique sidebar, it will override this.', 'redux-framework-wpsp' ),
             ),
         )
     ) );

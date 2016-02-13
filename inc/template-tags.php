@@ -6,15 +6,11 @@
  *
  * @package Learning_Institute
  */
-
-if ( ! function_exists( 'wpsp_posted_on' ) ) :
-/**
- * Prints HTML with meta information for the current post-date/time and author.
- */
-function wpsp_posted_on() {
-	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+if ( ! function_exists( 'wpsp_entry_posted_on' ) ) :
+function wpsp_entry_posted_on() {
+	$time_string = '<span class="fa fa-clock-o"></span><time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+		$time_string = '<span class="fa fa-clock-o"></span><time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
 	}
 
 	$time_string = sprintf( $time_string,
@@ -25,17 +21,52 @@ function wpsp_posted_on() {
 	);
 
 	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'learninginstitute' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+		esc_html_x( '%s', 'post date', 'learninginstitute' ),
+		$time_string
+	);
+	$out = '<ul class="meta clearfix">';
+	$out .= '<li class="posted-on">' . $posted_on . '</li>';
+	$out .= '</ul>';
+	echo $out;
+}
+endif;
+if ( ! function_exists( 'wpsp_posted_on' ) ) :
+/**
+ * Prints HTML with meta information for the current post-date/time and author.
+ */
+function wpsp_posted_on() {
+	$time_string = '<span class="fa fa-clock-o"></span><time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+		$time_string = '<span class="fa fa-clock-o"></span><time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+	}
+
+	$time_string = sprintf( $time_string,
+		esc_attr( get_the_date( 'c' ) ),
+		esc_html( get_the_date() ),
+		esc_attr( get_the_modified_date( 'c' ) ),
+		esc_html( get_the_modified_date() )
+	);
+
+	$posted_on = sprintf(
+		esc_html_x( '%s', 'post date', 'learninginstitute' ),
+		$time_string
 	);
 
 	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'learninginstitute' ),
-		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+		esc_html_x( '%s', 'post author', 'learninginstitute' ),
+		'<span class="fa fa-user"></span><span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 
-	echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
+	$categories_list = sprintf('%s</span>',
+		'<span class="fa fa-folder-o"></span>' . get_the_category_list( esc_html__( ', ', 'learninginstitute' ) )
+	);
 
+	$out = '<ul class="meta clearfix">';
+	$out .= '<li class="posted-on">' . $posted_on . '</li>';
+	$out .= '<li class="byline"> ' . $byline . '</li>';
+	$out .= '<li class="cat-links">' . $categories_list . '</li>';
+	$out .= '</ul>';
+	echo $out;
 }
 endif;
 
@@ -44,21 +75,6 @@ if ( ! function_exists( 'wpsp_entry_footer' ) ) :
  * Prints HTML with meta information for the categories, tags and comments.
  */
 function wpsp_entry_footer() {
-	// Hide category and tag text for pages.
-	if ( 'post' === get_post_type() ) {
-		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( esc_html__( ', ', 'learninginstitute' ) );
-		if ( $categories_list && wpsp_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'learninginstitute' ) . '</span>', $categories_list ); // WPCS: XSS OK.
-		}
-
-		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'learninginstitute' ) );
-		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'learninginstitute' ) . '</span>', $tags_list ); // WPCS: XSS OK.
-		}
-	}
-
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 		echo '<span class="comments-link">';
 		comments_popup_link( esc_html__( 'Leave a comment', 'learninginstitute' ), esc_html__( '1 Comment', 'learninginstitute' ), esc_html__( '% Comments', 'learninginstitute' ) );
@@ -120,28 +136,134 @@ function wpsp_category_transient_flusher() {
 add_action( 'edit_category', 'wpsp_category_transient_flusher' );
 add_action( 'save_post',     'wpsp_category_transient_flusher' );
 
-/*-------------------------------------------------------------------------------*/
-/* [ Custom Style and Javascript ]
-/*-------------------------------------------------------------------------------*/
+if ( ! function_exists( 'wpsp_the_post_navigation' ) ) :
+/**
+ * Display navigation to next/previous post when applicable.
+ *
+ * @todo Remove this function when WordPress 4.3 is released.
+ */
+function wpsp_the_post_navigation() {
+	// Don't print empty markup if there's nowhere to navigate.
+	$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
+	$next     = get_adjacent_post( false, '', false );
+
+	if ( ! $next && ! $previous ) {
+		return;
+	}
+	?>
+	<nav class="navigation post-navigation" role="navigation">
+	    <div class="post-nav-box clearfix">
+	        <h4 class="screen-reader-text"><?php _e( 'Post navigation', 'learninginstitute' ); ?></h4>
+	        <div class="nav-links">
+	            <?php
+	            previous_post_link( '<div class="nav-previous"><div class="nav-indicator">' . _x( 'Previous Post:', 'Previous post', 'learninginstitute' ) . '</div><h4>%link</h4></div>', '%title', true );
+				next_post_link(     '<div class="nav-next"><div class="nav-indicator">' . _x( 'Next Post:', 'Next post', 'learninginstitute' ) . '</div><h4>%link</h4></div>', '%title', true );
+	            ?>
+	        </div><!-- .nav-links -->
+	    </div><!-- .post-nav-box -->
+	</nav><!-- .navigation -->
+	<?php
+}
+endif;
 
 /**
- * Custom style page header background image
+ * Get Post thumbnail
  * 
  * @since 1.0.0
  */
-
-function wpsp_page_header_style() { 
-	global $post; ?>
-	
-	<?php $page_header_bg_img = wp_get_attachment_url( get_post_meta( $post->ID, 'wpsp_masthead_image', true ) );
-	if ( $page_header_bg_img ) { ?>
-		<style type="text/css">	
-			.page-header-background-image { background-image: url(<?php echo $page_header_bg_img; ?>);}
-		</style>	
-	<?php } ?>	
-<?php
+if ( ! function_exists('wpsp_get_post_thumbnail') ) : 
+function wpsp_get_post_thumbnail($size = 'thumbnail') {
+	echo wpsp_post_thumbnail( $size );
 }
-add_action( 'wp_head', 'wpsp_page_header_style' );
+endif;
+
+/**
+ * Return Post thumbnail
+ * 
+ * @since 1.0.0
+ */
+if ( ! function_exists('wpsp_post_thumbnail') ) : 
+function wpsp_post_thumbnail($size = 'thumbnail') {
+	global $post, $redux_wpsp;
+	if (has_post_thumbnail()) {
+	    return get_the_post_thumbnail( $post->ID, $size ) ;
+	} else { 
+		return '<img src="' . esc_url( $redux_wpsp['placeholder']['url']) . '">';
+	} 
+}
+endif; 
+
+/**
+ * Echo post video
+ *
+ * @since 1.0.0
+ */
+function wpsp_post_video( $post_id ) {
+	echo wpsp_get_post_video( $post_id );
+}
+
+/**
+ * Returns post video
+ *
+ * @since 2.0.0
+ */
+if ( ! function_exists('wpsp_get_post_video') ) :
+function wpsp_get_post_video( $post_id = '' ) {
+
+	// Define video variable
+	$video = '';
+
+	// Get correct ID
+	$post_id = $post_id ? $post_id : get_the_ID();
+
+	// Embed
+	if ( $meta = get_post_meta( $post_id, 'wpsp_post_video_embed', true ) ) {
+		$video = $meta;
+	}
+	// Apply filters & return
+	return apply_filters( 'wpsp_get_post_video', $video );
+}
+endif;
+
+/**
+ * Echo post video HTML
+ *
+ * @since 1.0.0
+ */
+if ( ! function_exists('wpsp_post_video_html') ) :
+function wpsp_post_video_html( $video = '' ) {
+	echo wpsp_get_post_video_html( $video );
+}
+endif;
+
+/**
+ * Returns post video HTML
+ *
+ * @since 1.0.0
+ */
+if ( ! function_exists('wpsp_get_post_video_html') ) :
+function wpsp_get_post_video_html( $video = '' ) {
+
+	// Get video
+	$video = $video ? $video : wpsp_get_post_video();
+
+	// Return if video is empty
+	if ( empty( $video ) ) {
+		return;
+	}
+
+	// Check post format for standard post type
+	if ( 'post' == get_post_type() && 'video' != get_post_format() ) {
+		return;
+	}
+
+	// Get oembed code and return
+	if ( ! is_wp_error( $oembed = wp_oembed_get( $video ) ) && $oembed ) {
+		return '<div class="responsive-video-wrap">'. $oembed .'</div>';
+	}
+
+}
+endif;
 
 /*-------------------------------------------------------------------------------*/
 /* [ Dashicons ]

@@ -62,6 +62,11 @@ get_header();
 			}?>
         </div> <!-- .featured-page .clearfix -->
     	<?php endif; ?>
+	</section> <!-- .our-work -->
+
+	<section class="latest-video wpsp-row clearfix">
+		<div class="col span_1_of_2"></div>
+		<div class="col span_1_of_2"></div>
 	</section>
 
 <?php get_footer(); ?>

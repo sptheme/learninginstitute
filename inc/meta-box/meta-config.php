@@ -136,6 +136,44 @@
 		)
     );
 
+    // Post format video
+    $meta_boxes[] = array(
+    	'id'			=> 'format-video',
+		'title'			=> __( 'Format video', 'wpsp_meta_options' ),
+		'post_types'	=> array( 'post' ),
+		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
+		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
+		'autosave'		=> true, // Auto save: true, false (default). Optional.
+
+		'fields'		=> array(
+			array(
+				'name'  => __( 'Video URL', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "post_video_embed",
+				'desc'  => __( 'Enter Video Embed URL from youtube, vimeo or dailymotion', 'wpsp_meta_options'),
+				'type'  => 'text',
+			),
+		)
+    );
+
+    // Post format gallery
+    $meta_boxes[] = array(
+    	'id'			=> 'format-gallery',
+		'title'			=> __( 'Format gallery', 'wpsp_meta_options' ),
+		'post_types'	=> array( 'post' ),
+		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
+		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
+		'autosave'		=> true, // Auto save: true, false (default). Optional.
+
+		'fields'		=> array(
+			array(
+				'name'  => __( 'Upload photos', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "format_gallery_album",
+				'desc'  => __( 'Upload photo into album', 'wpsp_meta_options'),
+				'type'  => 'image_advanced',
+			),
+		)
+    );
+
 	// Page layout options
 	$meta_boxes[] = array(
 		// Meta box id, UNIQUE per meta box. Optional since 4.1.5

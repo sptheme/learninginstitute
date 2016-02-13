@@ -1,6 +1,6 @@
 /* Push classes applied to the body */
 html {
-	height: 100%; /*https://www.kirupa.com/html5/make_body_take_up_full_browser_height.htm*/
+	/*height: 100%;*/ /*https://www.kirupa.com/html5/make_body_take_up_full_browser_height.htm*/
 }
 body {
 	overflow-x: hidden;

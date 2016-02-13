@@ -13,6 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 } ?>
 <?php if (has_post_thumbnail()) : ?>
 	<div id="staff-single-media" class="staff-single-media">
-		<?php echo get_the_post_thumbnail( $post->ID, '', array( the_title_attribute( array( 'echo' => 0 ) ) ) ); ?>
+		<?php echo get_the_post_thumbnail( $post->ID, 'staff-post', array( the_title_attribute( array( 'echo' => 0 ) ) ) ); ?>
 	</div> <!-- .staff-single-media -->
 <?php endif; ?>

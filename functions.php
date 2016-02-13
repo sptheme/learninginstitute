@@ -46,7 +46,10 @@ function learninginstitute_setup() {
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' );
-	add_image_size( 'wpsp-post', 760, 506, true );
+	add_image_size( 'blog-post-full', 960, 625, true );
+	add_image_size( 'blog-post', 750, 488, true );
+	add_image_size('blog-entry', 320, 208, true);
+	add_image_size('staff-post', 320, 320, true);
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -72,11 +75,12 @@ function learninginstitute_setup() {
 	 * See https://developer.wordpress.org/themes/functionality/post-formats/
 	 */
 	add_theme_support( 'post-formats', array(
-		'aside',
-		'image',
+		//'aside',
+		//'image',
 		'video',
-		'quote',
-		'link',
+		'gallery',
+		//'quote',
+		//'link',
 	) );
 }
 endif;
@@ -112,9 +116,13 @@ function learninginstitute_scripts() {
 
 	wp_enqueue_style( 'mobile-menu', get_template_directory_uri() . '/css/mobile-menu.css' );
 	wp_enqueue_style( 'superslides', get_template_directory_uri() . '/css/superslides.css' );
+	wp_enqueue_style( 'magnific-popup', get_template_directory_uri() . '/css/magnific-popup.css' );
 
 	wp_enqueue_script( 'navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), '20151214', true );
+	wp_enqueue_script( 'jquery-fitvideo', get_template_directory_uri() . '/js/vendor/jquery.fitvids.js', array(), '20151214', true );
 	wp_enqueue_script( 'jquery-superslides', get_template_directory_uri() . '/js/vendor/jquery.superslides.min.js', array(), '20151214', true );
+	wp_enqueue_script( 'jquery-magnific-popup', get_template_directory_uri() . '/js/vendor/jquery.magnific-popup.min.js', array(), '20151214', true );
+	wp_enqueue_script( 'jquery-main', get_template_directory_uri() . '/js/main.js', array('jquery'), '20151214', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -133,7 +141,66 @@ function wpsp_admin_scripts_styles( $hook ) {
 }
 add_action('admin_enqueue_scripts', 'wpsp_admin_scripts_styles');
 
+/**
+ * Print customs css
+ */
+function wpsp_print_ie_script(){
+	echo '<!--[if lt IE 9]>'. "\n";
+	echo '<script src="' . esc_url( get_template_directory_uri() . '/js/vendor/html5.js' ) . '"></script>'. "\n";
+	echo '<![endif]-->'. "\n";
+}
+add_action('wp_head', 'wpsp_print_ie_script');
 
+/**
+ * Print customs css and script for theme
+ */
+	
+function wpsp_print_custom_css_script() {
+	global $post;
+?>
+	<style type="text/css">
+	/* custom style */
+	<?php //Custom style page header background imag
+		$page_header_bg_img = wp_get_attachment_url( get_post_meta( $post->ID, 'wpsp_masthead_image', true ) );
+		if ( $page_header_bg_img ) : ?>
+		.page-header-background-image { background-image: url(<?php echo $page_header_bg_img; ?>);}
+	<?php endif; ?>
+
+	</style>
+	<?php if ( is_page() || is_singular() ) : ?>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+
+				// Setup content a link work with magnificPopup
+			    $('a[href*=".jpg"], a[href*=".jpeg"], a[href*=".png"], a[href*=".gif"]').each(function(){
+		        	if ($(this).parents('.gallery').length == 0) {
+			            $(this).magnificPopup({
+			               type: 'image',
+			               removalDelay: 500,
+			               mainClass: 'mfp-fade'
+			            });
+			        }
+			    });
+
+			    // Setup wp gallery work with magnificPopup
+			    $('.gallery').each(function() {
+			        $(this).magnificPopup({
+			            delegate: 'a',
+			            type: 'image',
+			            removalDelay: 300,
+			            mainClass: 'mfp-fade',
+			            gallery: {
+			            	enabled: true,
+			            	navigateByImgClick: true
+			            }
+			        });
+			    });
+		    });
+		</script>
+	<?php endif; ?>
+<?php		
+}
+add_action('wp_head', 'wpsp_print_custom_css_script');
 
 /*
  * Add Redux Framework
@@ -160,10 +227,6 @@ require get_template_directory() . '/inc/meta-box/meta-box.php';
 require get_template_directory() . '/inc/meta-box/meta-config.php';
 
 /**
- * Custom hooks
- */
-require get_template_directory() . '/inc/hooks.php';
-/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/aq_resizer.php';
@@ -171,6 +234,10 @@ require get_template_directory() . '/inc/aq_resizer.php';
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
+/**
+ * Custom hooks
+ */
+require get_template_directory() . '/inc/hooks.php';
 
 /*
  * Add Custom Posts

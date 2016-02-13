@@ -548,6 +548,10 @@ dd {
 	margin: 0 0 1.75em;
 }
 
+figure {
+	margin:0;
+}
+
 img {
 	height: auto;
 	/* Make sure images are scaled correctly. */
@@ -958,6 +962,28 @@ a:active {
 	float: right;
 	text-align: right;
 	width: 50%;
+}
+
+.nav-indicator { 
+    margin-bottom: 0.625em;
+    color: #404040;
+    font-size: 0.938em;
+
+}
+
+.nav-previous h4,
+.nav-next h4 { 
+    font-weight: 600; 
+    font-size: 1.125em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.post-nav-box {
+    padding: 1.250em 0;
+    margin-bottom: 2em;
+    /*border-top: #ebebeb solid 1px;*/
+    border-bottom: #ebebeb solid 1px; 
 }
 
 /*--------------------------------------------------------------
@@ -1511,7 +1537,7 @@ blockquote.aligncenter {
 	.col-1c .content-area,
 	.col-1c .widget-area,
 	.error404 .content-area { 
-		width: 760px; 
+		width: 970px; 
 		margin: 0 auto;
 	}
 }
@@ -1730,7 +1756,7 @@ blockquote.aligncenter {
 ## Posts and pages
 --------------------------------------------------------------*/
 .entry-title {
-	font-size: 1em;
+	font-size: 1.250em;
 	margin: 0 0 0.313em 0;
 }
 .single-post-title {
@@ -1771,6 +1797,17 @@ blockquote.aligncenter {
 .entry-excerpt {
 	padding: 0.625em;;
 }
+/* Post meta */
+.meta,
+.entry .meta { font-size: 0.923em; color: #777; list-style: none; margin: 0 0 0.625em; }
+.meta li,
+.entry .meta li { float: left; margin: 0 1.250em 0.313em 0; }
+.meta li:last-child,
+.entry .meta li:last-child { margin-right: 0 }
+.meta li .fa { margin-right: 0.500em }
+.meta a { color: #777; text-decoration: none; }
+.meta a:hover { color: #000; text-decoration: none; }
+.meta time { display: inline; }
 
 /*--------------------------------------------------------------
 ## Page header image
@@ -1846,6 +1883,22 @@ blockquote.aligncenter {
 	.page-header-background-image .page-header {
 		padding: 2.250em 0;
 	}
+}
+
+/*--------------------------------------------------------------
+## Blog post
+--------------------------------------------------------------*/
+.entry-blog-article .post-thumbnail, 
+.blog-post-video {
+	margin-bottom: 0.625em;
+}
+
+.related-post .entry-title {
+	font-size: 1em;
+	margin: 0.500em 0 0.625em;
+}
+.related-post .meta {
+	font-size: 0.813em;
 }
 
 /*--------------------------------------------------------------
