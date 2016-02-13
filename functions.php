@@ -122,6 +122,19 @@ function learninginstitute_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'learninginstitute_scripts' );
 
+
+/**
+ * Enqueue Custom Admin Styles and Scripts
+ */
+function wpsp_admin_scripts_styles( $hook ) {
+	if ( !in_array($hook, array('post.php','post-new.php')) )
+		return;
+	wp_enqueue_script('post-formats', get_template_directory_uri() . '/js/admin-scripts.js', array( 'jquery' ));
+}
+add_action('admin_enqueue_scripts', 'wpsp_admin_scripts_styles');
+
+
+
 /*
  * Add Redux Framework
  */
