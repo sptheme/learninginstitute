@@ -525,6 +525,36 @@ if ( ! function_exists( 'wpsp_is_photo_gallery_tax' ) ) {
 	}
 }
 
+/**
+ * Checks if on a theme partner category page.
+ *
+ * @since 1.1.0
+ */
+if ( ! function_exists( 'wpsp_is_partner_tax' ) ) {
+	function wpsp_is_partner_tax() {
+		if ( ! is_search() && ( is_tax( 'partner_category' ) || is_tax( 'partner_tag' ) ) ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+
+/**
+ * Checks if on a theme publications category page.
+ *
+ * @since 1.1.0
+ */
+if ( ! function_exists( 'wpsp_is_publications_tax' ) ) {
+	function wpsp_is_publications_tax() {
+		if ( ! is_search() && ( is_tax( 'publications_category' ) || is_tax( 'publications_tag' ) ) ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+
 /*-------------------------------------------------------------------------------*/
 /* [ Sanitize Data ]
 /*-------------------------------------------------------------------------------*/

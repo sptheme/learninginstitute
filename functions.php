@@ -247,3 +247,5 @@ require get_template_directory() . '/inc/custom-posts/cp-portfolio.php';
 require get_template_directory() . '/inc/custom-posts/cp-staff.php';
 require get_template_directory() . '/inc/custom-posts/cp-testimonials.php';
 require get_template_directory() . '/inc/custom-posts/cp-photo-gallery.php';
+require get_template_directory() . '/inc/custom-posts/cp-partner.php';
+require get_template_directory() . '/inc/custom-posts/cp-publications.php';
