@@ -36,7 +36,7 @@ jQuery(document).ready(function($) {
 		});
 	}
 
-	//Switch Metabox with template is selected
+	//Switch Metabox with template was loaded or selected
 	if($('#page_template').val() == 'templates/homepage.php') {
         // show the meta box
         $('#homepage-options').show();
@@ -49,9 +49,11 @@ jQuery(document).ready(function($) {
 
 	$('#page_template').live('change', function(){
 		if ($(this).val() == 'templates/homepage.php') {
-			$('#homepage-options').show();		
+			$('#homepage-options').show();	
+			$('#masthead').hide();	
 		} else {
 			$('#homepage-options').hide();		
+			$('#masthead').show();
 		}
 	});
 
