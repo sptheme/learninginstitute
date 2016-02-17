@@ -282,6 +282,7 @@ th {
 # Fonts icon
 --------------------------------------------------------------*/
 
+.format-video .post-thumbnail:before,
 .menu-item-has-children a:after,
 .social-navigation a:before,
 .dropdown-toggle:after,
@@ -1520,7 +1521,7 @@ blockquote.aligncenter {
 
 @media only screen and (min-width: 992px) {
 	.container {
-		max-width: 970px;
+		width: 970px;
 	}
 	.content-area {
 	    width: 600px;
@@ -2067,7 +2068,9 @@ object {
 /*--------------------------------------------------------------
 ## Homepage
 --------------------------------------------------------------*/
-
+.page-template-homepage .site-content > .container {
+	width: 100%!important;
+}
 /* Section Title */
 .section-title h2 {
     font-size: 1.250em;
@@ -2084,12 +2087,34 @@ object {
 .our-work .col.col-2 {
 	margin-bottom: 10px;
 }
-
 .our-work .col.col-2 .post-thumbnail-wrap {
 	background-color: #428342;
 }
 .our-work .col.col-3 .post-thumbnail-wrap {
 	background-color: #eabe0f;
+}
+
+.latest-video {
+	padding: 1.5em 1em;
+	background-color: #0198cd;
+}
+.latest-video a,
+.latest-video p {
+	color:#fff;
+}
+.latest-video .meta {
+	color:#99ccff;
+}
+.latest-video .col {
+	margin-bottom: 1em;
+}
+.latest-video .post-thumbnail {
+	border:10px solid #fff;
+}
+.latest-video.format-video .post-thumbnail:before {
+	color:#f23635;
+	font-size: 3.125em;
+	margin-left: -25px;
 }
 
 @media only screen and (min-width: 767px) {
@@ -2103,6 +2128,25 @@ object {
     .our-work .col.col-2 {
     	margin-bottom: 20px;
     }
+
+    .latest-video {
+		padding: 2.5em 1.875em;
+		background-color: #fff;
+		background-image: url(images/bg-video-post.gif);
+		background-repeat: repeat-y;
+	}
+	.latest-video a {
+		color:#007acc;
+	}
+	.latest-video p {
+		color:#444444;
+	}
+	.latest-video .meta {
+		color:#777;
+	}
+	.latest-video .col {
+		margin-bottom: 0;
+	}
 }
 
 /* Our Work */
@@ -2320,7 +2364,33 @@ ul.social-links {
 	}
 }
 
-
+/*--------------------------------------------------------------
+## Post format icon
+--------------------------------------------------------------*/
+.format-video .post-thumbnail {
+	position: relative;
+}
+.format-video .post-thumbnail:before {
+	display: block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -12px;
+    margin-left: -12px;
+    font-size: 1.5em;
+    text-align: center;
+    color: #017197;
+    cursor: pointer;
+}
+.format-video:hover .post-thumbnail:before {
+	color:#fff;
+}
+.format-video .post-thumbnail:before {
+    content: "\f16a";
+}
 /*--------------------------------------------------------------
 ## Callout Box
 --------------------------------------------------------------*/

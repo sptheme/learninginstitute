@@ -23,6 +23,6 @@ if ( '0' == $excerpt_length ) {
 <div class="blog-entry-excerpt">
 	<?php wpsp_excerpt( array(
 		'length'   => $excerpt_length,
-		'readmore' => false,
+		'readmore' => true,
 	) ); ?>
 </div><!-- .entry-excerpt -->
