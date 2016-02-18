@@ -67,11 +67,10 @@ i {
 }
 
 blockquote {
-	border: 0 solid #1a1a1a;
+	border: 0 solid #6a6a6a;
 	border-left-width: 4px;
-	color: #686868;
-	font-size: 19px;
-	font-size: 1.1875rem;
+	color: #999999;
+	font-size: 1.250em;
 	font-style: italic;
 	line-height: 1.4736842105;
 	margin: 0 0 1.4736842105em;
