@@ -24,9 +24,9 @@ function wpsp_entry_posted_on() {
 		esc_html_x( '%s', 'post date', 'learninginstitute' ),
 		$time_string
 	);
-	$out = '<ul class="meta clearfix">';
-	$out .= '<li class="posted-on">' . $posted_on . '</li>';
-	$out .= '</ul>';
+	//$out = '<ul class="meta clearfix">';
+	$out = '<div class="posted-on">' . $posted_on . '</div>';
+	//$out .= '</ul>';
 	echo $out;
 }
 endif;
@@ -745,7 +745,7 @@ function wpsp_get_excerpt( $args = array() ) {
 	if ( $readmore ) :
 
 		$read_more_text = isset( $args['read_more_text'] ) ? $args['read_more_text'] : esc_html__( 'Read more', 'learninginstitute' );
-		$output .= '<a href="'. get_permalink( $post_id ) .'" title="'.$read_more_text .'" rel="bookmark" class="wpex-readmore theme-button">'. $read_more_text .' <span class="wpex-readmore-rarr">&rarr;</span></a>';
+		$output .= '<a href="'. get_permalink( $post_id ) .'" title="'.$read_more_text .'" rel="bookmark" class="wpsp-readmore theme-button">'. $read_more_text .' <span class="wpsp-readmore-rarr">&rarr;</span></a>';
 
 	endif;
 

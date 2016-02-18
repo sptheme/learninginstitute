@@ -103,5 +103,54 @@ get_header();
 	<?php endwhile; wp_reset_postdata(); 
 	endif; ?>
 
+	<section class="latest-post-wrap">
+		<div class="container">
+			<header class="section-title">
+				<h2><?php echo $home_meta['wpsp_latest_post_headline'][0]; ?></h2>
+			</header>
+			<div class="latest-post wpsp-row posts-thumb clearfix">
+				<div class="col span_2_of_3">
+				<?php // get video post
+					$post_number = $home_meta['wpsp_latest_post_number'][0];
+					$args = array(
+							'post_type' => 'post',
+							'posts_per_page' => $post_number,
+							'post__not_in' => get_option( 'sticky_posts' ),
+							'tax_query' => array( array(
+					            'taxonomy' => 'post_format',
+					            'field' => 'slug',
+					            'terms' => array('post-format-video'),
+					            'operator' => 'NOT IN'
+					           ) )
+						);
+					$video_post_query = new WP_Query($args);
+
+					if ( $video_post_query->have_posts() ) : 
+						$post_count = 0;
+						while ( $video_post_query->have_posts() ) : $video_post_query->the_post(); 
+							$post_count++;
+							if ( $post_count <= $post_number ) : ?>
+								<article id="post-<?php the_ID(); ?>" <?php post_class( array('wpsp-row', 'clearfix', 'entry-blog-article') ); ?>>
+								<?php get_template_part( 'template-parts/blog/blog-entry-media' ); ?>
+								<?php get_template_part( 'template-parts/blog/blog-entry-title' ); ?>
+								<?php get_template_part( 'template-parts/blog/blog-entry-meta' ); ?>
+								<div class="blog-entry-excerpt">
+									<?php wpsp_excerpt( array(
+										'length'   => 20,
+										'readmore' => false,
+									) ); ?>
+								</div>
+								</article>
+							<?php endif; ?>
+					<?php endwhile; wp_reset_postdata(); 
+					endif; ?>
+				</div>
+				<div class="col span_1_of_3">
+					facebook like box <?php echo $home_meta['wpsp_latest_post_number'][0]; ?>
+				</div>
+			</div>
+		</div> <!-- .container -->
+	</section> <!-- .latest-post-wrap -->
+
 
 <?php get_footer(); ?>

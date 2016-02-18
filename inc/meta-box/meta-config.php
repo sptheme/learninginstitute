@@ -115,6 +115,28 @@
 					'field_type'  => 'select_advanced',
 					'placeholder' => __( 'Select an Item', 'wpsp_meta_options' ),
 				),
+			array(
+				'name'  => __( 'Latest Post', 'wpsp_meta_options' ), 
+				'id'    => "main_latest_post_fake_id",
+				'desc'	=> __( '', 'wpsp_meta_options' ), 
+				'type'  => 'heading'
+			),
+				array(
+					'name'  => __( 'Headline', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "latest_post_headline",
+					'type'  => 'text',
+					'std' => __( 'Latest Post', 'wpsp_meta_options' ), 
+				),	
+				array(
+					'name'  => __( 'Post number', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "latest_post_number",
+					'desc'	=> __( 'Enter number of post to show', 'wpsp_meta_options' ),
+					'type' 	=> 'number',
+					'min'  	=> 0,
+					'max'  	=> 5,
+					'step' 	=> 1,
+					'std'  	=> 3,
+				),	
 		)
     );
 

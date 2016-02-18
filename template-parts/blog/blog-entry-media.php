@@ -18,7 +18,6 @@ $video = wpsp_get_post_video_html();
 // Get single blog layout blocks
 $post_format = get_post_format(); ?>
 
-<div id="post-media">
 <?php if ( $video && 'video' == $post_format ) : ?>	
 	<?php printf( '<div class="blog-post-video">%s</div>',
 				wpsp_get_post_video_html()
@@ -29,5 +28,4 @@ $post_format = get_post_format(); ?>
 				wpsp_get_esc_title(), 
 				wpsp_post_thumbnail('blog-post')  
 			); ?>
-<?php endif;?>
-</div> <!-- #post-media --> 	
+<?php endif;?> 	
