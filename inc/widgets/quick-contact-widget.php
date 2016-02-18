@@ -23,14 +23,16 @@ class WPSP_Quick_Contact_Widget extends WP_Widget {
      * @since 1.0.0
      */
     public function __construct() {
-        $id = 'wpsp-quick-contact-widget';
-        $name = 'HFH - '. __( 'Quick contact', 'wpsp_admin' );
-        $widget_ops = array(
+        $branding = wpsp_get_theme_branding(false);
+        $branding = $branding ? $branding . ' - ' : '';
+        parent::__construct(
+            'wpsp-quick-contact-widget',
+            $branding . esc_html__( 'Business Info', 'wpsp_admin' ),
+            $widget_ops = array(
                 'classname'         => 'widget-quick-contact',
                 'description'   => __( 'A widget to display short contact information.', 'wpsp_admin' )
-            );
-        $control_ops = array();
-        parent::__construct( $id, $name, $widget_ops, $control_ops );
+            )
+        );
     }
 
     /**
