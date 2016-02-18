@@ -6,6 +6,20 @@
  *
  * @package Learning_Institute
  */
+
+
+if ( ! function_exists( 'wpsp_get_theme_branding' ) ) :
+function wpsp_get_theme_branding( $branding = true ) {
+	$fullname = WPSP_THEME_BRANDING;		
+	$prefix = WPSP_THEME_BRANDING_PREFIX;
+	if ( $branding ) {
+		return $fullname;
+	} else {
+		return $prefix;
+	}
+}
+endif;
+
 if ( ! function_exists( 'wpsp_entry_posted_on' ) ) :
 function wpsp_entry_posted_on() {
 	$time_string = '<span class="fa fa-clock-o"></span><time class="entry-date published updated" datetime="%1$s">%2$s</time>';

@@ -7,6 +7,15 @@
  * @package Learning_Institute
  */
 
+/**
+ * Defines the constants for use within the theme.
+ *
+ * @since 1.0.0
+ */
+// Theme branding
+define( 'WPSP_THEME_BRANDING', 'Learning Institute' );
+define( 'WPSP_THEME_BRANDING_PREFIX', 'LI' );
+
 if ( ! function_exists( 'learninginstitute_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.

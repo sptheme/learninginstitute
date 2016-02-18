@@ -1315,13 +1315,12 @@ blockquote.aligncenter {
 
 .widget .widget-title {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 16px;
-	font-size: 1rem;
+	font-size: 1.625em;
+	font-weight: 600;
 	letter-spacing: 0.046875em;
 	line-height: 1.3125;
 	margin: 0 0 1em;
 	border-bottom: 4px solid #1a1a1a;
-	text-transform: uppercase;
 }
 
 .widget .widget-title:empty {
@@ -2122,12 +2121,18 @@ object {
 .latest-video .post-thumbnail {
 	border:10px solid #fff;
 }
+.latest-video .post-thumbnail:hover {
+	border-color: #4fb94a;
+}
 .latest-video.format-video .post-thumbnail:before {
 	color:#f23635;
 	font-size: 3.125em;
 	margin-left: -25px;
 }
 
+.latest-post .section-title h2 {
+	margin-top: 0;
+}
 .latest-post .entry-blog-article{
 	border-bottom:1px dotted #adadad;
 	margin-bottom: 0.813em;
@@ -2143,6 +2148,12 @@ object {
 }
 .latest-post .blog-entry-excerpt p {
 	margin-bottom: 0.438em;
+}
+
+.page-template-homepage .widget-title {
+	border-bottom: none;
+	font-size: 1.625em;
+	margin-bottom: 0.625em;
 }
 
 @media only screen and (min-width: 767px) {
@@ -2435,7 +2446,7 @@ ul.social-links {
     color: #017197;
     cursor: pointer;
 }
-.format-video:hover .post-thumbnail:before {
+.format-video .post-thumbnail:hover:before {
 	color:#fff;
 }
 .format-video .post-thumbnail:before {
