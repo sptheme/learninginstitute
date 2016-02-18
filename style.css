@@ -56,6 +56,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## Buttons
 	## Social Links
 	## Overlay Post thumbnail
+	## Post format icon
 	## Callout Box
 --------------------------------------------------------------*/
 
@@ -2071,6 +2072,10 @@ object {
 .page-template-homepage .site-content > .container {
 	width: 100%!important;
 }
+.page-template-homepage .site-content {
+	padding-left: 0;
+	padding-right: 0;
+}
 /* Section Title */
 .section-title h2 {
     font-size: 1.250em;
@@ -2094,6 +2099,10 @@ object {
 	background-color: #eabe0f;
 }
 
+.latest-video-wrap {
+	background-color: #f3f3f3;
+	padding: 1.250em 0;
+}
 .latest-video {
 	padding: 1.5em 1em;
 	background-color: #0198cd;
@@ -2125,15 +2134,24 @@ object {
         font-size: 1em;
         line-height: 1.5em;
     }
+    .our-work {
+    	padding: 1.875em 0;
+    }
     .our-work .col.col-2 {
     	margin-bottom: 20px;
     }
 
+    .latest-video-wrap {
+    	padding: 3.125em 0;
+    }
     .latest-video {
 		padding: 2.5em 1.875em;
 		background-color: #fff;
 		background-image: url(images/bg-video-post.gif);
 		background-repeat: repeat-y;
+	}
+	.latest-video .entry-title {
+		font-size: 1.5em;
 	}
 	.latest-video a {
 		color:#007acc;

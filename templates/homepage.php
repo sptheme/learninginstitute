@@ -69,7 +69,7 @@ get_header();
 	<?php // get video post
 		$args = array(
 				'post_type' => 'post',
-				'posts_per_pages' => 1,
+				'posts_per_page' => 1,
 				'tax_query' => array( array(
 		            'taxonomy' => 'post_format',
 		            'field' => 'slug',
@@ -82,13 +82,14 @@ get_header();
 		if ( $video_post_query->have_posts() ) : 
 			while ( $video_post_query->have_posts() ) : $video_post_query->the_post(); ?>
 
-	<section class="latest-video">
-		<div class="container wpsp-row clearfix">
+	<section class="latest-video-wrap">
+		<div class="container">
+			<div class="latest-video wpsp-row clearfix">
 			<div class="col span_1_of_2">
 				<?php printf( '<div class="post-thumbnail"><a class="popup-youtube" itemprop="url" href="%1$s" rel="bookmark" title="%2$s">%3$s</a></div>', 
 					wpsp_get_post_video(), 
 					wpsp_get_esc_title(), 
-					wpsp_post_thumbnail('blog-entry')  
+					wpsp_post_thumbnail('blog-post')  
 				); ?>
 			</div>
 			<div class="col span_1_of_2">
@@ -96,6 +97,7 @@ get_header();
 				<?php get_template_part( 'template-parts/blog/blog-entry-meta' ); ?>
 				<?php get_template_part( 'template-parts/blog/blog-entry-excerpt' ); ?>
 			</div>
+			</div> <!-- .latest-video -->
 		</div> <!-- .container -->
 	</section>
 	<?php endwhile; wp_reset_postdata(); 
