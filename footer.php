@@ -16,22 +16,23 @@
 	<?php wpsp_hook_content_bottom(); ?>
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="join-us wpsp-row no-margin-grid clearfix">
-			<div class="col span_1_of_2"><h3><?php esc_html_e( 'Join us on:', 'learninginstitute' );?></h3></div>
-			<div class="col span_1_of_2">
-				<ul class="social-links">
-					<li><a href="https://www.facebook.com/" target="_blank"><span class="screen-reader-text">Facebook</span></a></li>
-					<li><a href="https://www.twitter.com/" target="_blank"><span class="screen-reader-text">Twitter</span></a></li>
-					<li><a href="https://www.linkedin.com/" target="_blank"><span class="screen-reader-text">Linkedin</span></a></li>
-					<li><a href="https://www.youtube.com/" target="_blank"><span class="screen-reader-text">Youtube</span></a></li>
-					<li><a href="https://www.instagram.com/" target="_blank"><span class="screen-reader-text">Instagram</span></a></li>
-				</ul>
-			</div>
-		</div> <!-- .social-links -->
-		<div class="email-subscriber wpsp-row no-margin-grid clearfix">
-			<div class="col span_2_of_3"><p><?php _e( 'Be the first to know the learning Institute News and Programs updates', 'learninginstitute' ); ?></p></div>
-			<div class="col span_1_of_3"><a class="button yellow" href="#"><?php esc_html_e( 'Sign Up Now', 'learninginstitute' ); ?></a></div>
-		</div> <!-- .email-subscriber -->
+		<div class="join-us">
+			<div class="container wpsp-row wpsp-row no-margin-grid clearfix">
+				<div class="col span_1_of_2"><h3><?php esc_html_e( 'Join us on:', 'learninginstitute' );?></h3></div>
+				<div class="col span_1_of_2">
+					<ul class="social-links">
+						<li><a href="https://www.facebook.com/" target="_blank"><span class="screen-reader-text">Facebook</span></a></li>
+						<li><a href="https://www.twitter.com/" target="_blank"><span class="screen-reader-text">Twitter</span></a></li>
+						<li><a href="https://www.linkedin.com/" target="_blank"><span class="screen-reader-text">Linkedin</span></a></li>
+						<li><a href="https://www.youtube.com/" target="_blank"><span class="screen-reader-text">Youtube</span></a></li>
+						<li><a href="https://www.instagram.com/" target="_blank"><span class="screen-reader-text">Instagram</span></a></li>
+					</ul><!-- .social-links -->
+				</div>
+			</div> <!-- .container -->
+		</div> <!-- .join-us -->
+		
+		<?php if ( is_active_sidebar( 'signup-sidebar' ) ) dynamic_sidebar( 'signup-sidebar' ); ?>
+
 		<div class="footer-sidebar">
 			<div class="container wpsp-row clearfix">
 				<div id="footer-sidebar-1" class="col span_1_of_3">

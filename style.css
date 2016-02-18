@@ -1469,15 +1469,15 @@ blockquote.aligncenter {
 .widget_nav_menu li:before { content: "\f105"; }
 
 /* Quick contact widget */
-.widget-quick-contact li{
+.wpsp-quick-contact-widget li{
 	border-bottom: none;
 	padding: 0.313em 0;
 	clear: left;
 }
-.widget-quick-contact li.address:before,
-.widget-quick-contact li.telephone:before,
-.widget-quick-contact li.fax:before,
-.widget-quick-contact li.email:before {
+.wpsp-quick-contact-widget li.address:before,
+.wpsp-quick-contact-widget li.telephone:before,
+.wpsp-quick-contact-widget li.fax:before,
+.wpsp-quick-contact-widget li.email:before {
 	font-family: 'Fontawesome';
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
@@ -1486,17 +1486,22 @@ blockquote.aligncenter {
     margin-right: 0.625em;
     padding-bottom: 0.625em;
 }
-.widget-quick-contact li.address:before {
+.wpsp-quick-contact-widget li.address:before {
 	content: '\f041';
 }
-.widget-quick-contact li.telephone:before {
+.wpsp-quick-contact-widget li.telephone:before {
 	content: '\f095';
 }
-.widget-quick-contact li.fax:before {
+.wpsp-quick-contact-widget li.fax:before {
 	content: '\f1ac';
 }
-.widget-quick-contact li.email:before {
+.wpsp-quick-contact-widget li.email:before {
 	content: '\f0e0';
+}
+
+/* Callout Widget */
+.wpsp-call-to-action-widget {
+	margin-bottom: 0;
 }
 
 /*--------------------------------------------------------------
@@ -1613,20 +1618,24 @@ blockquote.aligncenter {
 }
 .join-us ul.social-links li a:before {
 		font-size: 30px!important;
-	}
-.email-subscriber {
+}
+
+.callout-wrap {
 	background-color: #4fb94a;
 	padding: 1.875em 0;
+	font-size: 1.231em;
 	color:#fff;
+	text-align: center;
 }
-.email-subscriber .span_2_of_3 p {
-	margin-bottom: 1em;
+.callout-wrap .callout-content p {
+	margin-bottom: 0;
 }
-.email-subscriber .span_1_of_3 {
-	font-size: 1em;
-	text-transform: uppercase;
-	text-align: left;
+.callout-wrap .callout-button a.button {
+	display: block;
+	text-align: center;
+	margin-top: 2%;
 }
+
 .footer-sidebar {
 	display: none;
 	color:#92d0ff;
@@ -1648,7 +1657,7 @@ blockquote.aligncenter {
 	color:#92d0ff;
 }
 .join-us,
-.email-subscriber,
+.callout-wrap,
 .footer-sidebar {
 	padding-left: 5%;
     padding-right: 5%;
@@ -1687,6 +1696,24 @@ blockquote.aligncenter {
 	.email-subscriber .span_1_of_3 {
 		font-size: 1.875em;
 	}
+
+	.callout-wrap .callout-left {
+		width: 70%;
+		float: left;
+	}
+	.callout-wrap .callout-right {
+		width: 28%;
+		float: right;
+	}
+	.callout-wrap .callout-content {
+		font-size: 1.5em;
+		line-height: 1.3;
+		text-align: right;
+	}
+	.callout-wrap .callout-button {
+		font-size: 1.875em;
+	}
+
 	.footer-sidebar {
 		display: block;
 	}

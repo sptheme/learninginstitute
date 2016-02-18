@@ -29,7 +29,7 @@ class WPSP_Quick_Contact_Widget extends WP_Widget {
             'wpsp-quick-contact-widget',
             $branding . esc_html__( 'Business Info', 'wpsp_admin' ),
             $widget_ops = array(
-                'classname'         => 'widget-quick-contact',
+                'classname'         => 'wpsp-quick-contact-widget',
                 'description'   => __( 'A widget to display short contact information.', 'wpsp_admin' )
             )
         );
