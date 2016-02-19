@@ -144,6 +144,7 @@ add_action( 'wp_enqueue_scripts', 'learninginstitute_scripts' );
  * Enqueue Custom Admin Styles and Scripts
  */
 function wpsp_admin_scripts_styles( $hook ) {
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/fonts/font-awesome/css/font-awesome.min.css' );
 	if ( !in_array($hook, array('post.php','post-new.php')) )
 		return;
 	wp_enqueue_script('post-formats', get_template_directory_uri() . '/js/admin-scripts.js', array( 'jquery' ));
@@ -250,6 +251,10 @@ require get_template_directory() . '/inc/meta-box/meta-config.php';
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/aq_resizer.php';
+/**
+ * Sanitize inputted data.
+ */
+require get_template_directory() . '/inc/sanitize-data.php';
 /**
  * Custom template tags for this theme.
  */

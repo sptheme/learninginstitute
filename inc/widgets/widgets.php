@@ -31,6 +31,15 @@ function wpsp_widgets_init() {
 		'after_title'   => '</h2>',
 	) );
 	register_sidebar( array(
+		'name'          => esc_html__( 'Social Footer Sidebar', 'learninginstitute' ),
+		'id'            => 'social-footer-sidebar',
+		'description'   => '',
+		'before_widget' => '<div id="%1$s" class="container clearfix %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3>',
+		'after_title'   => '</h3>',
+	) );
+	register_sidebar( array(
 		'name'          => esc_html__( 'Sign Up Sidebar', 'learninginstitute' ),
 		'id'            => 'signup-sidebar',
 		'description'   => '',
@@ -211,7 +220,8 @@ function wpsp_custom_widgets() {
     $widgets = array(
         'quick-contact',
         'facebook-page',
-        'call-to-action'
+        'call-to-action',
+        'social-fontawesome'
     );
 
     // Loop through widgets and load their files

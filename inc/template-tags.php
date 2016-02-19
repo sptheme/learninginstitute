@@ -279,6 +279,43 @@ function wpsp_get_post_video_html( $video = '' ) {
 }
 endif;
 
+/**
+ * Returns correct social button class
+ *
+ * @since 3.0.0
+ */
+if ( ! function_exists('wpsp_get_social_button_class') ) :
+function wpsp_get_social_button_class( $style ) {
+
+	// Set theme default style
+	$style = $style ? $style : 'flat-rounded';
+	$style = apply_filters( 'wpsp_default_social_button_style', $style );
+
+	// None
+	if ( 'none' == $style ) {
+		$style = 'wpsp-social-btn-no-style';
+	}
+
+	// Minimal
+	elseif ( 'minimal' == $style ) {
+		$style = 'wpsp-social-btn-minimal';
+	}
+
+	// Flat
+	elseif ( 'flat' == $style ) {
+		$style = 'wpsp-social-btn-flat wpsp-bg-gray';
+	} 
+
+	// Flat Color
+	elseif ( 'flat-color' == $style ) {
+		$style = 'wpsp-social-btn-flat wpsp-social-bg';
+	} 
+
+	// Apply filters & return style
+	return apply_filters( 'wpsp_get_social_button_class', 'wpsp-social-btn '. $style );
+}
+endif;
+
 /*-------------------------------------------------------------------------------*/
 /* [ Dashicons ]
 /*-------------------------------------------------------------------------------*/

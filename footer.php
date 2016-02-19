@@ -16,24 +16,17 @@
 	<?php wpsp_hook_content_bottom(); ?>
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="join-us">
-			<div class="container wpsp-row wpsp-row no-margin-grid clearfix">
-				<div class="col span_1_of_2"><h3><?php esc_html_e( 'Join us on:', 'learninginstitute' );?></h3></div>
-				<div class="col span_1_of_2">
-					<ul class="social-links">
-						<li><a href="https://www.facebook.com/" target="_blank"><span class="screen-reader-text">Facebook</span></a></li>
-						<li><a href="https://www.twitter.com/" target="_blank"><span class="screen-reader-text">Twitter</span></a></li>
-						<li><a href="https://www.linkedin.com/" target="_blank"><span class="screen-reader-text">Linkedin</span></a></li>
-						<li><a href="https://www.youtube.com/" target="_blank"><span class="screen-reader-text">Youtube</span></a></li>
-						<li><a href="https://www.instagram.com/" target="_blank"><span class="screen-reader-text">Instagram</span></a></li>
-					</ul><!-- .social-links -->
-				</div>
-			</div> <!-- .container -->
-		</div> <!-- .join-us -->
-		
-		<?php if ( is_active_sidebar( 'signup-sidebar' ) ) dynamic_sidebar( 'signup-sidebar' ); ?>
+		<div id="footer-top">
+			<div class="join-us">
+				<div class="container clearfix">
+					<?php if ( is_active_sidebar( 'social-footer-sidebar' ) ) dynamic_sidebar( 'social-footer-sidebar' ); ?>
+				</div> <!-- .container -->
+			</div> <!-- .join-us -->
+			
+			<?php if ( is_active_sidebar( 'signup-sidebar' ) ) dynamic_sidebar( 'signup-sidebar' ); ?>
+		</div> <!-- #footer-top -->
 
-		<div class="footer-sidebar">
+		<div id="footer-bottom" class="footer-sidebar">
 			<div class="container wpsp-row clearfix">
 				<div id="footer-sidebar-1" class="col span_1_of_3">
 				<?php if ( is_active_sidebar( 'footer-sidebar' ) ) : ?>

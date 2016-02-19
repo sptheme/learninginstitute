@@ -122,8 +122,8 @@ class WPSP_Call_To_Action_Widget extends WP_Widget {
         <p>
             <label for="<?php echo $this->get_field_id('target'); ?>"><?php _e('Link Target:', 'wpsp_admin'); ?></label>
             <select class='wpsp-widget-select' name="<?php echo $this->get_field_name('target'); ?>" id="<?php echo $this->get_field_id('target'); ?>">
-                <option value="blank" <?php if ($instance['target'] == 'blank') { ?>selected="selected"<?php } ?>><?php _e( 'Blank', 'wpsp_admin' ); ?></option>
-                <option value="self" <?php if ($instance['target'] == 'self') { ?>selected="selected"<?php } ?>><?php _e( 'Self', 'wpsp_admin' ); ?></option>
+                <option value="blank" <?php selected( $instance['target'], 'blank' ) ?>><?php esc_html_e( 'Blank', 'wpsp_admin' ); ?></option>
+                <option value="self" <?php selected( $instance['target'], 'self' ) ?>><?php esc_html_e( 'Self', 'wpsp_admin' ); ?></option>
             </select>
         </p>
 <?php    
