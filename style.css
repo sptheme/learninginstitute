@@ -1507,7 +1507,7 @@ blockquote.aligncenter {
 	margin: 0 
 }
 .wpsp-fa-social-widget ul { 
-	list-style: none 
+	list-style: none;
 }
 .wpsp-fa-social-widget ul li { 
 	margin: 0; 
@@ -1634,14 +1634,18 @@ blockquote.aligncenter {
 	margin-top: 0.5em;
 	font-size: 1.154em;
 }
-.join-us ul.social-links li a{
+.join-us .wpsp-fa-social-widget ul {
+	margin: 0;
+	font-size: 1.846em;
+}
+.join-us .wpsp-fa-social-widget ul li {
+	margin: 0;
+}
+.join-us .wpsp-fa-social-widget ul li a{
 	color:#fff;
 }
-.join-us ul.social-links li a:hover{
+.join-us .wpsp-fa-social-widget ul li a:hover{
 	color: #02baf8;
-}
-.join-us ul.social-links li a:before {
-		font-size: 30px!important;
 }
 
 .callout-wrap {
@@ -1699,12 +1703,17 @@ blockquote.aligncenter {
 		margin-top: 0.875em;
 		padding-right: 0.625em;
 	}
-	.join-us ul.social-links li {
-		padding: 0 1.5em;
-		border-left: 1px solid #009cbb;
+	.join-us h3,
+	.join-us .wpsp-fa-social-widget{
+		width: 50%;
+		float: left;
+		padding: 0 0.769em;
 	}
-	.join-us ul.social-links li a:before {
-		font-size: 42px!important;
+	.join-us .wpsp-fa-social-widget ul {
+		font-size: 3.231em;
+	}
+	.join-us .wpsp-fa-social-widget ul li {
+		border-left: 1px solid #009cbb;
 	}
 	.email-subscriber .span_2_of_3 p {
 		margin-bottom: 0;
@@ -2291,41 +2300,6 @@ a.button:hover {
 }
 .button.green:hover {
 	background-color: #4aad45;
-}
-
-/*--------------------------------------------------------------
-## Social Links
---------------------------------------------------------------*/
-ul.social-links {
-	margin: 0;
-	padding: 0;
-}
-.social-links a:before {
-	display: inline-block;
-    padding: 6px;
-    font-family: 'Fontawesome';
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-    content: '\f0c0';
-}
-.social-links li {
-	display: inline-block;
-	padding: 0 0.313em;
-}
-.social-links a[href*="facebook.com"]::before {
-	content: '\f09a';
-}
-.social-links a[href*="twitter.com"]::before {
-	content: '\f099';
-}
-.social-links a[href*="youtube.com"]::before {
-	content: '\f16a';
-}
-.social-links a[href*="linkedin.com"]::before {
-	content: '\f0e1';
-}
-.social-links a[href*="instagram.com"]::before {
-	content: '\f16d';
 }
 
 /*--------------------------------------------------------------
