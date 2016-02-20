@@ -16,11 +16,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div id="publication-entry-media" class="publication-entry-media">
-	<div class="post-thumbnail">
-	<?php if (has_post_thumbnail()) { 
-			the_post_thumbnail( 'blog-post-portrait' ) ;
-		} else {
-			echo '<img src="' . esc_url( $redux_wpsp['portrait-placeholder']['url']) . '">';
-		} ?>
-	</div>	
+	<div class="post-thumbnail"><?php wpsp_get_post_thumbnail('thumb-portrait'); ?></div>	
 </div> <!-- .publication-entry-media -->

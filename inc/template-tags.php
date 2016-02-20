@@ -202,7 +202,25 @@ function wpsp_post_thumbnail($size = 'thumbnail') {
 	if (has_post_thumbnail()) {
 	    return get_the_post_thumbnail( $post->ID, $size ) ;
 	} else { 
-		return '<img src="' . esc_url( $redux_wpsp['landscape-placeholder']['url']) . '">';
+		return wpsp_thumbnail_placeholder($size);
+	} 
+}
+endif; 
+
+/**
+ * Return thumbnail placeholder
+ * 
+ * @since 1.0.0
+ */
+if ( ! function_exists('wpsp_thumbnail_placeholder') ) : 
+function wpsp_thumbnail_placeholder($size = 'thumb-landscape') {
+	global $redux_wpsp;
+	if ( 'thumb-portrait' == $size ) {
+		return '<img src="' . esc_url( $redux_wpsp['portrait-placeholder']['url']) . '">';
+	} if ( 'thumb-square' == $size ) {
+		return '<img src="' . esc_url( $redux_wpsp['square-placeholder']['url']) . '">';
+	}else {
+	    return '<img src="' . esc_url( $redux_wpsp['landscape-placeholder']['url']) . '">';
 	} 
 }
 endif; 

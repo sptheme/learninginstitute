@@ -55,10 +55,11 @@ function learninginstitute_setup() {
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' );
-	add_image_size( 'blog-post-landscape', 960, 625, true );
-	add_image_size( 'blog-post-portrait', 480, 691, true );
-	add_image_size('blog-post-square', 480, 480, true);
-	add_image_size('blog-entry', 750, 488, true);
+	add_image_size( 'thumb-full', 960, 625, true );
+	add_image_size('thumb-landscape', 750, 488, true);
+	add_image_size( 'thumb-portrait', 480, 691, true );
+	add_image_size('thumb-square', 480, 480, true);
+	
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(

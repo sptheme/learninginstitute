@@ -14,9 +14,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 	global $redux_wpsp;
 ?>
 <div id="staff-single-media" class="staff-single-media">
-<?php if (has_post_thumbnail()) : ?>
-	<?php echo get_the_post_thumbnail( $post->ID, 'blog-post-square', array( the_title_attribute( array( 'echo' => 0 ) ) ) ); ?>
-<?php else: ?>	
-<img src="<?php echo esc_url( $redux_wpsp['square-placeholder']['url']); ?>">
-<?php endif; ?>
+	<?php wpsp_get_post_thumbnail('thumb-square'); ?>
 </div> <!-- .staff-single-media -->
