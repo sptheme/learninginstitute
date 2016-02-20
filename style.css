@@ -44,6 +44,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## Posts and pages
 	## Page header image
 	## Staff post type
+	## Publication post type
 	## Asides
 	## Comments
 # Infinite scroll
@@ -1537,10 +1538,6 @@ blockquote.aligncenter {
   margin: 0 auto;
   max-width: 100%;
 }
-.site-content {
-	padding-left: 5%;
-    padding-right: 5%;
-}
 .site-main,
 .widget-area {
 	padding-top: 2.5em;
@@ -1684,16 +1681,23 @@ blockquote.aligncenter {
 	padding-top: 0;
 	color:#92d0ff;
 }
-.join-us,
-.callout-wrap,
-.footer-sidebar {
-	padding-left: 5%;
-    padding-right: 5%;
-}
 .site-info {
 	padding: 0.769em;
 	background-color: #00394b;
 	text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+	.our-work,
+	.latest-post,
+	.latest-publications,
+	.join-us,
+	.callout-wrap,
+	.footer-sidebar,
+	.site-content {
+		padding-left: 5%;
+	    padding-right: 5%;
+	}
 }
 
 @media only screen and (min-width: 992px) {
@@ -1999,6 +2003,31 @@ blockquote.aligncenter {
 }
 
 /*--------------------------------------------------------------
+## Publication post type
+--------------------------------------------------------------*/
+.publication-entry-media {
+	width: 25%;
+	float: left;
+	padding-right: 1em;
+}
+h3.publication-entry-title {
+	clear: none;
+	padding: 1em 0;
+}
+.publication-entry-meta ul {
+	overflow: hidden;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	color:#8e8e8e;
+}
+.publication-entry-meta ul li {
+	display: block;
+	float: left;
+	padding-right:0.313em;
+}
+
+/*--------------------------------------------------------------
 ## Asides
 --------------------------------------------------------------*/
 .blog .format-aside .entry-title,
@@ -2208,7 +2237,23 @@ object {
 .latest-post .blog-entry-excerpt p {
 	margin-bottom: 0.438em;
 }
-
+.latest-post .entry-blog-article:last-child,
+.latest-post.wpsp-row .col,
+.latest-publications.wpsp-row .col {
+	margin-bottom: 0;
+}
+.latest-publications .entry-publication-article {
+	background-color:#f7f7f7;
+}
+.latest-publications .publication-entry-title {
+	font-size: 0.938em;
+	color: #3a3a3a;
+	padding-top: 0.625em;
+}
+.latest-publications .publication-entry-meta ul {
+	font-size: 0.813em;
+	color:#666666;
+}
 .page-template-homepage .widget-title {
 	border-bottom: none;
 	font-size: 1.625em;

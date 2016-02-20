@@ -117,7 +117,7 @@
 				),
 			array(
 				'name'  => __( 'Latest Post', 'wpsp_meta_options' ), 
-				'id'    => "main_latest_post_fake_id",
+				'id'    => "latest_post_fake_id",
 				'desc'	=> __( '', 'wpsp_meta_options' ), 
 				'type'  => 'heading'
 			),
@@ -136,7 +136,29 @@
 					'max'  	=> 5,
 					'step' 	=> 1,
 					'std'  	=> 3,
+				),
+			array(
+				'name'  => __( 'Publications', 'wpsp_meta_options' ), 
+				'id'    => "publication_fake_id",
+				'desc'	=> __( '', 'wpsp_meta_options' ), 
+				'type'  => 'heading'
+			),
+				array(
+					'name'  => __( 'Headline', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "publication_headline",
+					'type'  => 'text',
+					'std' => __( 'Download Publications', 'wpsp_meta_options' ), 
 				),	
+				array(
+					'name'  => __( 'Post number', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "pub_post_number",
+					'desc'	=> __( 'Enter number of post to show', 'wpsp_meta_options' ),
+					'type' 	=> 'number',
+					'min'  	=> 0,
+					'max'  	=> 10,
+					'step' 	=> 1,
+					'std'  	=> 3,
+				),		
 		)
     );
 
@@ -154,6 +176,35 @@
 				'name'  => __( 'Position', 'wpsp_meta_options' ), 
 				'id'    => $prefix . "staff_position",
 				'type'  => 'text',
+			),
+		)
+    );
+
+    // Publications post type
+    $meta_boxes[] = array(
+    	'id'			=> 'publication-options',
+		'title'			=> __( 'Publication Options', 'wpsp_meta_options' ),
+		'post_types'	=> array( 'publications' ),
+		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
+		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
+		'autosave'		=> true, // Auto save: true, false (default). Optional.
+
+		'fields'		=> array(
+			array(
+				'name'  => __( 'File Upload (En)', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "pub_file_en",
+				'desc'  => __( 'Upload English version. Keep blank if do not have', 'wpsp_meta_options'),
+				'type'             => 'file_advanced',
+				'max_file_uploads' => 1,
+				'mime_type'        => 'application,pdf,doc,docx'
+			),
+			array(
+				'name'  => __( 'File Upload (Kh)', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "pub_file_kh",
+				'desc'  => __( 'Upload Khmer version. Keep blank if do not have', 'wpsp_meta_options'),
+				'type'             => 'file_advanced',
+				'max_file_uploads' => 1,
+				'mime_type'        => ''
 			),
 		)
     );

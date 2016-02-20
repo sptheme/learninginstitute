@@ -66,7 +66,7 @@ get_header();
     	</div> <!-- .container -->
 	</section> <!-- .our-work -->
 
-	<?php // get video post
+	<?php // Only video post
 		$args = array(
 				'post_type' => 'post',
 				'posts_per_page' => 1,
@@ -103,6 +103,22 @@ get_header();
 	<?php endwhile; wp_reset_postdata(); 
 	endif; ?>
 
+	<?php // Latest Post exclude video post format
+	$post_number = $home_meta['wpsp_latest_post_number'][0];
+	$args = array(
+			'post_type' => 'post',
+			'posts_per_page' => $post_number,
+			'post__not_in' => get_option( 'sticky_posts' ),
+			'tax_query' => array( array(
+	            'taxonomy' => 'post_format',
+	            'field' => 'slug',
+	            'terms' => array('post-format-video'),
+	            'operator' => 'NOT IN'
+	           ) )
+		);
+	$post_query = new WP_Query($args);
+
+	if ( $post_query->have_posts() ) : ?>
 	<section class="latest-post-wrap">
 		<div class="container">
 			<div class="latest-post wpsp-row posts-thumb clearfix">
@@ -110,40 +126,24 @@ get_header();
 					<header class="section-title">
 						<h2><?php echo $home_meta['wpsp_latest_post_headline'][0]; ?></h2>
 					</header>
-					<?php // get video post
-						$post_number = $home_meta['wpsp_latest_post_number'][0];
-						$args = array(
-								'post_type' => 'post',
-								'posts_per_page' => $post_number,
-								'post__not_in' => get_option( 'sticky_posts' ),
-								'tax_query' => array( array(
-						            'taxonomy' => 'post_format',
-						            'field' => 'slug',
-						            'terms' => array('post-format-video'),
-						            'operator' => 'NOT IN'
-						           ) )
-							);
-						$video_post_query = new WP_Query($args);
-
-						if ( $video_post_query->have_posts() ) : 
-							$post_count = 0;
-							while ( $video_post_query->have_posts() ) : $video_post_query->the_post(); 
-								$post_count++;
-								if ( $post_count <= $post_number ) : ?>
-									<article id="post-<?php the_ID(); ?>" <?php post_class( array('wpsp-row', 'clearfix', 'entry-blog-article') ); ?>>
-									<?php get_template_part( 'template-parts/blog/blog-entry-media' ); ?>
-									<?php get_template_part( 'template-parts/blog/blog-entry-title' ); ?>
-									<?php get_template_part( 'template-parts/blog/blog-entry-meta' ); ?>
-									<div class="blog-entry-excerpt">
-										<?php wpsp_excerpt( array(
-											'length'   => 20,
-											'readmore' => false,
-										) ); ?>
-									</div>
-									</article>
-								<?php endif; ?>
-						<?php endwhile; wp_reset_postdata(); 
-						endif; ?>
+					<?php  
+					$post_count = 0;
+					while ( $post_query->have_posts() ) : $post_query->the_post(); 
+						$post_count++;
+						if ( $post_count <= $post_number ) : ?>
+							<article id="post-<?php the_ID(); ?>" <?php post_class( array('wpsp-row', 'clearfix', 'entry-blog-article') ); ?>>
+							<?php get_template_part( 'template-parts/blog/blog-entry-media' ); ?>
+							<?php get_template_part( 'template-parts/blog/blog-entry-title' ); ?>
+							<?php get_template_part( 'template-parts/blog/blog-entry-meta' ); ?>
+							<div class="blog-entry-excerpt">
+								<?php wpsp_excerpt( array(
+									'length'   => 20,
+									'readmore' => false,
+								) ); ?>
+							</div>
+							</article>
+						<?php endif; ?>
+					<?php endwhile; wp_reset_postdata(); ?>
 				</div> <!-- .col .span_2_of_3 -->
 				<div id="home-sidebar" class="col span_1_of_3">
 					<?php if ( is_active_sidebar( 'home-sidebar' ) ) dynamic_sidebar( 'home-sidebar' ); ?>
@@ -151,6 +151,31 @@ get_header();
 			</div>
 		</div> <!-- .container -->
 	</section> <!-- .latest-post-wrap -->
+	<?php endif; // end loop - latest post ?>
 
+	<?php // Latest Publication post type
+	$post_number = $home_meta['wpsp_pub_post_number'][0];
+	$args = array(
+			'post_type' => 'publications',
+			'posts_per_page' => $post_number,
+		);
+	$publication_query = new WP_Query($args);
+
+	if ( $publication_query->have_posts() ) : ?>
+	<section class="publications-wrap">
+		<div class="container">
+		<div class="latest-publications wpsp-row clearfix">
+			<header class="section-title">
+				<h2><?php echo $home_meta['wpsp_publication_headline'][0]; ?></h2>
+			</header>
+
+			<?php while ( $publication_query->have_posts() ) : $publication_query->the_post(); ?>
+				<div class="col span_1_of_2">
+				<?php get_template_part( 'template-parts/publication/publication-entry-layout' ); ?>
+				</div>
+			<?php endwhile; wp_reset_postdata(); ?>	
+		</div>
+	</section>
+	<?php endif; // end loop - latest publication ?>
 
 <?php get_footer(); ?>

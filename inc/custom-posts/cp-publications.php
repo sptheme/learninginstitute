@@ -104,7 +104,7 @@ if ( ! class_exists( 'WPSP_Cp_Publications' ) ) {
 				),
 				'supports' => array(
 					'title',
-					'editor',
+					//'editor',
 					'excerpt',
 					'thumbnail',
 					'comments',
