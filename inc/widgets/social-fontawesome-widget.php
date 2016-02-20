@@ -325,7 +325,7 @@ if ( ! class_exists( 'WPSP_Fontawesome_Social_Widget' ) ) {
 
             <?php
             // Styles
-            $social_styles = apply_filters( 'wpex_social_button_styles', array(
+            $social_styles = apply_filters( 'wpsp_social_button_styles', array(
                                 ''                   => esc_html__( 'Skin Default', 'wpsp_admin' ),
                                 'minimal'            => esc_html_x( 'Minimal', 'Social Button Style', 'wpsp_admin' ),
                                 'none'               => esc_html__( 'None', 'wpsp_admin' ),

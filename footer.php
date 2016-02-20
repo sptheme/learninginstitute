@@ -17,12 +17,13 @@
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div id="footer-top">
+		<?php if ( is_active_sidebar( 'social-footer-sidebar' ) ) : ?>
 			<div class="join-us">
 				<div class="container clearfix">
-					<?php if ( is_active_sidebar( 'social-footer-sidebar' ) ) dynamic_sidebar( 'social-footer-sidebar' ); ?>
+					<?php  dynamic_sidebar( 'social-footer-sidebar' ); ?>
 				</div> <!-- .container -->
 			</div> <!-- .join-us -->
-			
+		<?php endif; ?>	
 			<?php if ( is_active_sidebar( 'signup-sidebar' ) ) dynamic_sidebar( 'signup-sidebar' ); ?>
 		</div> <!-- #footer-top -->
 

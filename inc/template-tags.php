@@ -288,7 +288,7 @@ if ( ! function_exists('wpsp_get_social_button_class') ) :
 function wpsp_get_social_button_class( $style ) {
 
 	// Set theme default style
-	$style = $style ? $style : 'flat-rounded';
+	$style = $style ? $style : 'flat-color';
 	$style = apply_filters( 'wpsp_default_social_button_style', $style );
 
 	// None
