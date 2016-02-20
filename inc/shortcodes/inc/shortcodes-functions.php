@@ -177,7 +177,7 @@ function wpsp_staff_shortcode( $atts, $content = null ){
 	}
 
 	$defaults = array(
-			'post_type' => 'staff',
+			'post_type' => 'publications',
 			'posts_per_page' => $post_count
 		);
 	$args = wp_parse_args( $args, $defaults );

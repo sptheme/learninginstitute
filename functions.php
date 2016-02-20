@@ -172,7 +172,7 @@ function wpsp_print_custom_css_script() {
 	<style type="text/css">
 	/* custom style */
 	<?php //Custom style page header background imag
-		$page_header_bg_img = wp_get_attachment_url( get_post_meta( $post->ID, 'wpsp_masthead_image', true ) );
+		$page_header_bg_img = wp_get_attachment_url( rwmb_meta( 'wpsp_masthead_image') );
 		if ( $page_header_bg_img ) : ?>
 		.page-header-background-image { background-image: url(<?php echo $page_header_bg_img; ?>);}
 	<?php endif; ?>

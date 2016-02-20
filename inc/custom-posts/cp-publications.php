@@ -76,7 +76,7 @@ if ( ! class_exists( 'WPSP_Cp_Publications' ) ) {
 			$slug             = $slug ? $slug : 'publications-item';
 			$menu_icon        = get_option( 'publications_admin_icon' );
 			$menu_icon        = $menu_icon ? $menu_icon : 'media-document';
-			$publications_search = true;
+			$publications_search = false;
 
 			// Args
 			$args = array(

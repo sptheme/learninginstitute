@@ -1319,11 +1319,12 @@ blockquote.aligncenter {
 
 .widget .widget-title {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 1.625em;
+	font-size: 1.125em;
 	font-weight: 600;
 	letter-spacing: 0.046875em;
 	line-height: 1.3125;
 	margin: 0 0 1em;
+	padding-bottom: 0.375em;
 	border-bottom: 4px solid #1a1a1a;
 }
 
@@ -1531,6 +1532,19 @@ blockquote.aligncenter {
 /* Callout Widget */
 .wpsp-call-to-action-widget {
 	margin-bottom: 0;
+}
+
+/* widget-tax-nav-menu */
+.widget-tax-nav-menu .widget-title {
+	border-bottom: none;
+	padding: 0;
+	background-color: #017197;
+	color:#ffffff;
+	padding: 0.625em;
+	margin-bottom: 0;
+}
+.widget-tax-nav-menu ul {
+	background-color: #f7f7f7;
 }
 
 /*--------------------------------------------------------------
@@ -1883,6 +1897,7 @@ blockquote.aligncenter {
 .search .entry-header h1,
 .archive .entry-header h1 {
 	font-size: 2em;
+	margin-bottom: 0.750em;
 }
 .search article.hentry {
 	border-bottom: 1px dotted #999;

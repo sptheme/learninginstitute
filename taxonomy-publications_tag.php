@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying archive pages.
+ * The template for displaying pulication category taxonomy.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -9,16 +9,19 @@
 
 get_header(); ?>
 
+<?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
+
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
 		<?php
+
 		if ( have_posts() ) : ?>
 
 			<header class="entry-header">
-				<?php
+				<?php 
 					the_archive_title( '<h1 class="entry-title">', '</h1>' );
-					the_archive_description( '<div class="taxonomy-description">', '</div>' );
+					the_archive_description( '<div class="taxonomy-description">', '</div>' ); 
 				?>
 			</header><!-- .entry-header -->
 
@@ -31,7 +34,7 @@ get_header(); ?>
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 				 */
-				get_template_part( 'template-parts/blog/blog-entry-layout' );
+				get_template_part( 'template-parts/publication/publication-entry-layout' );
 
 			endwhile;
 

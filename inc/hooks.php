@@ -22,7 +22,8 @@ function wpsp_hook_content_bottom() {
 function wpsp_page_header() {
 	if ( is_home() || is_front_page() || is_page_template( 'templates/homepage.php' ) )
 		return;
-	get_template_part( 'template-parts/page-header' );
+	
+	get_template_part( 'template-parts/page-header' );	
 }
 add_action( 'wpsp_hook_content_top', 'wpsp_page_header' );
 
