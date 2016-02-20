@@ -23,8 +23,10 @@ $page_subheadline = get_post_meta( get_the_ID(), 'wpsp_masthead_desc', true );
 
 <div id="page-header" class="page-header page-header-background-image" style="background-image:url(<?php echo $page_header_bg_img; ?>);">
 	<div class="page-header-inner">
-		<h1 class="page-header-title"><?php echo esc_html__( $page_header_title ); ?></h1>
-		<p class="page-subheadline"><?php echo esc_html__( $page_subheadline ); ?></p>
+		<div class="container clearfix">
+			<h1 class="page-header-title"><?php the_title(); ?></h1>
+			<p class="page-subheadline"><?php echo esc_html__( $page_subheadline ); ?></p>
+		</div>
 	</div> <!-- .page-header-inner -->
 	<span class="page-header-overlay"></span>
 </div> <!-- #page-header -->

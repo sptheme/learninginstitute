@@ -47,12 +47,12 @@
 
 		'fields'		=> array(
 			array(
-				'name'  => __( 'Headline', 'wpsp_meta_options' ), 
+				'name'  => __( 'Sub headline', 'wpsp_meta_options' ), 
 				'id'    => $prefix . "masthead_title",
 				'type'  => 'text',
 			),
 			array(
-				'name'  => __( 'Sub Headline', 'wpsp_meta_options' ), 
+				'name'  => __( 'Description of Headline', 'wpsp_meta_options' ), 
 				'id'    => $prefix . "masthead_desc",
 				'type'  => 'textarea',
 				'row'	=> 3

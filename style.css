@@ -1949,8 +1949,16 @@ blockquote.aligncenter {
 	.page-header-background-image {
 	   	height: 400px;
 	}
-	.page-header-background-image .page-header {
+	.page-header-background-image .page-header-inner {
 		padding: 2.250em 0;
+		color: #f7f7f7;
+	}
+	.page-header-background-image h1.page-header-title{
+		font-size: 3em;
+		margin-bottom: 0.417em;
+	}
+	.page-header-background-image p.page-subheadline {
+		font-size: 1.125em;
 	}
 }
 

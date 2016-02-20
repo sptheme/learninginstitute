@@ -10,9 +10,11 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<?php if ( !empty(get_post_meta( get_the_ID(), 'wpsp_masthead_title', true )) ) : ?>
 	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<h2 class="entry-title"><?php echo get_post_meta( get_the_ID(), 'wpsp_masthead_title', true ); ?></h2>
 	</header><!-- .entry-header -->
+	<?php endif; ?>
 
 	<div class="entry-content">
 		<?php
