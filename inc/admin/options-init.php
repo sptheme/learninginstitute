@@ -133,30 +133,20 @@
      * ---> START SECTIONS
      *
      */
-    //create a section with no subsections
+    //Post sections
     Redux::setSection( $opt_name, array(
         'title'            => __( 'Posts', 'redux-framework-wpsp' ),
         'id'               => 'post-options',
         'icon'             => 'el el-file-edit',
         'fields'     => array(
             array(
-                'id'       => 'placeholder',
-                'type'     => 'media',
-                'title'    => __( 'Placeholder', 'redux-framework-wpsp' ),
-                'subtitle' => __( 'Use for any post that do not have post featured image.', 'redux-framework-wpsp' ),
-                'desc'     => __( 'Recommended size 960px by 625px', 'redux-framework-wpsp' ),
-                'default'  => array(
-                    'url' => get_template_directory_uri() . '/images/thumbnail-960x625.gif'
-                    )
-            ),
-            $fields = array(
                 'id'       => 'is-post-related',
                 'type'     => 'switch', 
                 'title'    => __('Post related', 'redux-framework-demo'),
                 'subtitle' => __('Show related posts On or Off', 'redux-framework-demo'),
                 'default'  => true,
             ),
-            $fields = array(
+            array(
                 'id'       => 'post-related-title',
                 'type'     => 'text', 
                 'title'    => __('Post related title', 'redux-framework-demo'),
@@ -165,6 +155,114 @@
             ),
         )
     ) );
+
+    // Staff Post sections
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Staff', 'redux-framework-wpsp' ),
+        'id'               => 'staff-options',
+        'desc'             => __( '', 'redux-framework-wpsp' ),
+        'customizer_width' => '400px',
+        'icon'             => 'el el-user'
+    ) );
+     Redux::setSection( $opt_name, array(
+        'title'      => __( 'Single', 'redux-framework-wpsp' ),
+        'id'         => 'staff-post-option',
+        'subsection' => true,
+        'desc'       => __( 'Manage staff post options', 'redux-framework-wpsp' ),
+        'fields'     => array(
+            array(
+                'id'       => 'layout-single-staff',
+                'type'     => 'image_select',
+                'title'    => __( 'Single staff layout', 'redux-framework-wpsp' ),
+                'subtitle' => __( '', 'redux-framework-wpsp' ),
+                'desc'     => __( 'Other layouts will override this option if they are set', 'redux-framework-wpsp' ),
+                //Must provide key => value(array:title|img) pairs for radio options
+                'options'  => array(
+                    'col-1c' => array(
+                        'alt' => '1 Column',
+                        'img' => ReduxFramework::$_url . 'assets/img/1col.png'
+                    ),
+                    'col-2cl' => array(
+                        'alt' => '2 Column Left',
+                        'img' => ReduxFramework::$_url . 'assets/img/2cl.png'
+                    ),
+                    'col-2cr' => array(
+                        'alt' => '2 Column Right',
+                        'img' => ReduxFramework::$_url . 'assets/img/2cr.png'
+                    )
+                ),
+                'default'  => 'col-1c',
+            ),
+            array(
+                'id'       => 'sidebar-single-staff',
+                'type'     => 'select',
+                'data'     => 'sidebar',
+                'title'    => __( 'Single staff sidebar', 'redux-framework-wpsp' ),
+                'desc'     => __( '[ is_home ] Primary', 'redux-framework-wpsp' ),
+            ),
+            array(
+                'id'       => 'is-staff-post-related',
+                'type'     => 'switch', 
+                'title'    => __('Post related', 'redux-framework-demo'),
+                'subtitle' => __('Show related posts On or Off', 'redux-framework-demo'),
+                'default'  => true,
+            ),
+            array(
+                'id'       => 'staff-post-related-title',
+                'type'     => 'text', 
+                'title'    => __('Post related title', 'redux-framework-demo'),
+                'subtitle' => __('', 'redux-framework-demo'),
+                'default'  => 'You may also see...',
+            ),
+        )
+    ) ); 
+
+    // Placeholder section
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Placeholder', 'redux-framework-wpsp' ),
+        'id'               => 'placeholder-options',
+        'desc'             => __( '', 'redux-framework-wpsp' ),
+        'customizer_width' => '400px',
+        'icon'             => 'el el-picture'
+    ) );
+     Redux::setSection( $opt_name, array(
+        'title'      => __( 'General', 'redux-framework-wpsp' ),
+        'id'         => 'placehodler-option',
+        'subsection' => true,
+        'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'redux-framework-wpsp' ),
+        'fields'     => array(
+            array(
+                'id'       => 'landscape-placeholder',
+                'type'     => 'media',
+                'title'    => __( 'Landscape Placeholder', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'Use for any post that do not have post featured image.', 'redux-framework-wpsp' ),
+                'desc'     => __( 'Recommended size 960px by 625px', 'redux-framework-wpsp' ),
+                'default'  => array(
+                    'url' => get_template_directory_uri() . '/images/thumbnail-landscape.gif'
+                    )
+            ),
+            array(
+                'id'       => 'portrait-placeholder',
+                'type'     => 'media',
+                'title'    => __( 'Portrait Placeholder', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'Use for publication post that do not have post featured image.', 'redux-framework-wpsp' ),
+                'desc'     => __( 'Recommended size 480px by 691px', 'redux-framework-wpsp' ),
+                'default'  => array(
+                    'url' => get_template_directory_uri() . '/images/thumbnail-portrait.gif'
+                    )
+            ),
+            array(
+                'id'       => 'square-placeholder',
+                'type'     => 'media',
+                'title'    => __( 'Square Placeholder', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'Use for staff post that do not have post featured image.', 'redux-framework-wpsp' ),
+                'desc'     => __( 'Recommended size 480px by 480px', 'redux-framework-wpsp' ),
+                'default'  => array(
+                    'url' => get_template_directory_uri() . '/images/thumbnail-square.gif'
+                    )
+            ),
+        )
+    ) ); 
 
     //
     Redux::setSection( $opt_name, array(
@@ -177,7 +275,7 @@
 
     Redux::setSection( $opt_name, array(
         'title'      => __( 'Layout', 'redux-framework-wpsp' ),
-        'id'         => 'layout-hfhc',
+        'id'         => 'layout-post',
         'subsection' => true,
         'desc'       => __( 'Manage page layout with fullwide, left sidebar and right sidebar', 'redux-framework-wpsp' ),
         'fields'     => array(
@@ -391,7 +489,7 @@
     
     Redux::setSection( $opt_name, array(
         'title'      => __( 'Sidebar', 'redux-framework-wpsp' ),
-        'id'         => 'sidebar-hfhc',
+        'id'         => 'sidebar-post',
         'subsection' => true,
         'desc'       => __( 'Create sidebar and apply it on any pages and posts', 'redux-framework-wpsp' ),
         'fields'     => array(

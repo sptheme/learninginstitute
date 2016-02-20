@@ -12,6 +12,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }  
 
+global $redux_wpsp; 
+
+// Return if disabled
+if ( ! $redux_wpsp['is-staff-post-related'] ) {
+	return;
+}
+
 // Get post id
 $post_id = get_the_ID();
 
