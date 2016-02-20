@@ -8,7 +8,7 @@
 /**
  * Print script and style of shortcodes
  */
-add_action( 'wp_enqueue_scripts', 'add_script_style_sc' );
+//add_action( 'wp_enqueue_scripts', 'add_script_style_sc' );
 
 function add_script_style_sc() {
 	global $post;
@@ -27,6 +27,7 @@ function wpsp_add_shortcodes() {
 	//add_shortcode( 'button', 'wpsp_button_shortcode' );
 	add_shortcode( 'callout_box', 'wpsp_callout_box_shortcode' );
 	add_shortcode( 'sc_staff', 'wpsp_staff_shortcode' );
+	add_shortcode( 'sc_publication', 'wpsp_publication_shortcode' );
 	
 	
 }
@@ -162,8 +163,9 @@ function wpsp_staff_shortcode( $atts, $content = null ){
 		'cols' => null
 	), $atts ) );
 
-	$args = array(
-			'post_type' => 'staff',
+	$args = array();
+	if ( $term_id != '-1' ) {
+		$args = array(
 			'tax_query' => array(
 					array(
 						'taxonomy' => 'staff_category',
@@ -171,8 +173,16 @@ function wpsp_staff_shortcode( $atts, $content = null ){
 						'terms'    => array($term_id)
 					)
 				),
-				'posts_per_page' => $post_count
+			);
+	}
+
+	$defaults = array(
+			'post_type' => 'staff',
+			'posts_per_page' => $post_count
 		);
+	$args = wp_parse_args( $args, $defaults );
+	extract( $args );
+
 	$staff_query = new WP_Query($args);
 
 	if ( $staff_query->have_posts() ) { ?>
@@ -189,6 +199,70 @@ function wpsp_staff_shortcode( $atts, $content = null ){
 				<?php get_template_part( 'template-parts/staff/staff-entry-media' ); ?>
 				<?php get_template_part( 'template-parts/staff/staff-entry-content' ); ?>
 				</div> <!-- .inner-staff-entry -->
+			</article><!-- #post-## -->
+	<?php endwhile; wp_reset_postdata(); ?>
+
+		</div> <!-- .wpsp-row .clearfix -->
+	<?php	
+	} else {
+		echo esc_html__( 'Sorry, new content will coming soon.', 'learninginstitute' );
+	}
+
+	return ob_get_clean();
+}
+endif;
+
+
+if ( ! function_exists( 'wpsp_publication_shortcode' ) ) :
+/**
+ * publication shortcode
+ *
+ * Options: Show all publication / by Category
+ *
+ */
+function wpsp_publication_shortcode( $atts, $content = null ){
+	ob_start();
+	extract( shortcode_atts( array(
+		'term_id' => null,
+		'post_count' => null,
+		'cols' => null
+	), $atts ) );
+
+	$args = array();
+	if ( $term_id != '-1' ) {
+		$args = array(
+			'tax_query' => array(
+					array(
+						'taxonomy' => 'publications_category',
+						'field'    => 'id',
+						'terms'    => array($term_id)
+					)
+				),
+			);
+	}
+
+	$defaults = array(
+			'post_type' => 'publications',
+			'posts_per_page' => $post_count
+		);
+	$args = wp_parse_args( $args, $defaults );
+	extract( $args );
+
+	$publication_query = new WP_Query($args);
+
+	if ( $publication_query->have_posts() ) { ?>
+		<div class="wpsp-row clearfix">
+
+	<?php while ( $publication_query->have_posts() ) : $publication_query->the_post(); ?>
+	<?php
+		$entry_classes = array( 'entry-publication-article' );
+		$entry_classes[] = 'col';
+		$entry_classes[] = 'span_1_of_'. $cols; 
+	?>	
+			<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
+				<?php get_template_part( 'template-parts/publication/publication-entry-media' ); ?>
+				<?php get_template_part( 'template-parts/publication/publication-entry-title' ); ?>	
+				<?php get_template_part( 'template-parts/publication/publication-entry-meta' ); ?>
 			</article><!-- #post-## -->
 	<?php endwhile; wp_reset_postdata(); ?>
 

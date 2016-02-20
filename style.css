@@ -1879,8 +1879,9 @@ blockquote.aligncenter {
 .meta a:hover { color: #000; text-decoration: none; }
 .meta time { display: inline; }
 
-/* Search */
-.search .entry-header h1 {
+/* Search & Archive */
+.search .entry-header h1,
+.archive .entry-header h1 {
 	font-size: 2em;
 }
 .search article.hentry {
@@ -2027,6 +2028,10 @@ blockquote.aligncenter {
 /*--------------------------------------------------------------
 ## Publication post type
 --------------------------------------------------------------*/
+.entry-publication-article {
+	background-color:#f7f7f7;
+	overflow: hidden;
+}
 .publication-entry-media {
 	width: 25%;
 	float: left;
@@ -2034,7 +2039,7 @@ blockquote.aligncenter {
 }
 h3.publication-entry-title {
 	clear: none;
-	padding: 1em 0;
+	padding: 0.8em 0.8em 0 0;
 }
 .publication-entry-meta ul {
 	overflow: hidden;
@@ -2263,9 +2268,6 @@ object {
 .latest-post.wpsp-row .col,
 .latest-publications.wpsp-row .col {
 	margin-bottom: 0;
-}
-.latest-publications .entry-publication-article {
-	background-color:#f7f7f7;
 }
 .latest-publications .publication-entry-title {
 	font-size: 0.938em;
