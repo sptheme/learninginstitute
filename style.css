@@ -646,7 +646,7 @@ input[type="reset"][disabled]:focus,
 input[type="submit"],
 input[type="submit"][disabled]:hover,
 input[type="submit"][disabled]:focus {
-	background: #1a1a1a;
+	background: #017197;
 	border: 0;
 	border-radius: 2px;
 	color: #fff;
@@ -666,7 +666,7 @@ input[type="reset"]:hover,
 input[type="reset"]:focus,
 input[type="submit"]:hover,
 input[type="submit"]:focus {
-	background: #007196;
+	background: #4fb94a;
 }
 
 button:focus,
