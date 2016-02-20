@@ -20,10 +20,10 @@ $post_format = get_post_format(); ?>
 
 
 <?php if ( $video && 'video' == $post_format ) : ?>	
-	<div id="post-media">
-	<?php printf( '<div class="blog-post-video">%s</div>',
+	<div id="blog-single-video">
+	<?php printf( '<div class="blog-single-video">%s</div>',
 				wpsp_get_post_video_html()
 			); ?>
-	</div> <!-- #post-media --> 		
+	</div> <!-- #blog-single-video --> 		
 <?php endif;?>
 

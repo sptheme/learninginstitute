@@ -19,11 +19,11 @@ $video = wpsp_get_post_video_html();
 $post_format = get_post_format(); ?>
 
 <?php if ( $video && 'video' == $post_format ) : ?>	
-	<?php printf( '<div class="blog-post-video">%s</div>',
+	<?php printf( '<div class="blog-entry-video">%s</div>',
 				wpsp_get_post_video_html()
 			); ?>
 	<?php else: ?>
-	<?php printf( '<div class="post-thumbnail"><a itemprop="url" href="%1$s" rel="bookmark" title="%2$s">%3$s</a></div>', 
+	<?php printf( '<div id="blog-entry-media" class="blog-entry-media"><div class="post-thumbnail"><a itemprop="url" href="%1$s" rel="bookmark" title="%2$s">%3$s</a></div></div>', 
 				wpsp_get_permalink(), 
 				wpsp_get_esc_title(), 
 				wpsp_post_thumbnail('blog-post')  

@@ -1954,8 +1954,9 @@ blockquote.aligncenter {
 /*--------------------------------------------------------------
 ## Blog post
 --------------------------------------------------------------*/
-.entry-blog-article .post-thumbnail, 
-.blog-post-video {
+.blog-entry-media,
+.blog-entry-video, 
+.blog-single-video {
 	margin-bottom: 0.625em;
 }
 
@@ -2485,7 +2486,7 @@ a.button:hover {
 /*--------------------------------------------------------------
 ## Post thumb list style
 --------------------------------------------------------------*/
-.posts-thumb .entry-blog-article .post-thumbnail {
+.posts-thumb .entry-blog-article .blog-entry-media {
 	float: left;
 	width: 140px;
 	margin-right: 1em;
