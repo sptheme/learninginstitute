@@ -54,6 +54,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Templates
 	## Homepage
 # Addon Elements
+	## Paging navigation
 	## Buttons
 	## Social Links
 	## Overlay Post thumbnail
@@ -1878,6 +1879,14 @@ blockquote.aligncenter {
 .meta a:hover { color: #000; text-decoration: none; }
 .meta time { display: inline; }
 
+/* Search */
+.search .entry-header h1 {
+	font-size: 2em;
+}
+.search article.hentry {
+	border-bottom: 1px dotted #999;
+}
+
 /*--------------------------------------------------------------
 ## Page header image
 --------------------------------------------------------------*/
@@ -2323,6 +2332,36 @@ object {
 /*--------------------------------------------------------------
 # Addon Elements
 --------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Paging navigation
+--------------------------------------------------------------*/
+.paging-navigation {
+    text-align: center;
+    margin: 3em 0;
+}
+.paging-navigation ul {
+    margin: 0;
+}
+
+.paging-navigation li { display: inline; }
+
+a.page-numbers,
+span.page-numbers {
+     padding: 5px 12px;
+     color: #333;
+}
+
+a:hover.page-numbers {
+    color: #000;
+}
+
+.paging-navigation .current {
+    font-weight: bold;
+    background-color: #0099cc;
+    color: #ffffff;
+    border:1px solid #02baf8;
+}
 
 /*--------------------------------------------------------------
 ## Buttons

@@ -7,7 +7,7 @@
  * @package Learning_Institute
  */
 
-$custom_page_header_bg_img = wp_get_attachment_url( get_post_meta( $post->ID, 'wpsp_masthead_image', true ) );
+$custom_page_header_bg_img = wp_get_attachment_url( rwmb_meta( 'wpsp_masthead_image') );
 $default_bg_img = array(
 				get_template_directory_uri() . '/images/place-holder-1600-650-1.jpg',
 				get_template_directory_uri() . '/images/place-holder-1600-650-2.jpg',
