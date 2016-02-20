@@ -10,12 +10,17 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
-} ?>
+} 
+
+	global $redux_wpsp;
+?>
 
 <div id="publication-entry-media" class="publication-entry-media">
-	<?php printf( '<div class="post-thumbnail"><a itemprop="url" href="%1$s" rel="bookmark" title="%2$s">%3$s</a></div>', 
-			wpsp_get_permalink(), 
-			wpsp_get_esc_title(), 
-			wpsp_post_thumbnail('blog-post')  
-		); ?>
+	<div class="post-thumbnail">
+	<?php if (has_post_thumbnail()) { 
+			the_post_thumbnail( 'blog-post-portrait' ) ;
+		} else {
+			echo '<img src="' . esc_url( $redux_wpsp['portrait-placeholder']['url']) . '">';
+		} ?>
+	</div>	
 </div> <!-- .publication-entry-media -->

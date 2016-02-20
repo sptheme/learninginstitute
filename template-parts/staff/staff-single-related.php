@@ -67,7 +67,7 @@ if ( $related_query->have_posts() ) : ?>
 
 <section id="staff-single-related">
 	<?php
-		$heading = 'Related Staff';
+		$heading = $redux_wpsp['staff-post-related-title'];
 		$heading = $heading ? $heading : esc_html__( 'Related Staff', 'learninginstitute' );
 		// If Heading text isn't empty
 	if ( $heading ) : ?>

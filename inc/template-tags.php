@@ -202,7 +202,7 @@ function wpsp_post_thumbnail($size = 'thumbnail') {
 	if (has_post_thumbnail()) {
 	    return get_the_post_thumbnail( $post->ID, $size ) ;
 	} else { 
-		return '<img src="' . esc_url( $redux_wpsp['placeholder']['url']) . '">';
+		return '<img src="' . esc_url( $redux_wpsp['landscape-placeholder']['url']) . '">';
 	} 
 }
 endif; 
