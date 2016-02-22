@@ -22,20 +22,26 @@ get_header(); ?>
 				?>
 			</header><!-- .entry-header -->
 
+			<div class="posts-thumb clearfix">
 			<?php
 			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+			while ( have_posts() ) : the_post(); ?>
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/blog/blog-entry-layout' );
+				<article id="post-<?php the_ID(); ?>" <?php post_class( array('wpsp-row', 'clearfix', 'entry-blog-article') ); ?>>
+					<?php get_template_part( 'template-parts/blog/blog-entry-media' ); ?>
+					<?php get_template_part( 'template-parts/blog/blog-entry-title' ); ?>
+					<?php get_template_part( 'template-parts/blog/blog-entry-meta' ); ?>
+					<div class="blog-entry-excerpt">
+						<?php wpsp_excerpt( array(
+							'length'   => 20,
+							'readmore' => false,
+						) ); ?>
+					</div>
+				</article>
 
-			endwhile;
-
-			the_posts_navigation();
+			<?php endwhile; ?>
+			</div>
+			<?php the_posts_navigation();
 
 		else :
 

@@ -2264,7 +2264,6 @@ object {
 	margin-top: 0;
 }
 .latest-post .entry-blog-article{
-	border-bottom:1px dotted #adadad;
 	margin-bottom: 0.813em;
 }
 .latest-post .entry-title {
@@ -2554,6 +2553,9 @@ a.button:hover {
 /*--------------------------------------------------------------
 ## Post thumb list style
 --------------------------------------------------------------*/
+.posts-thumb .entry-blog-article{
+	border-bottom:1px dotted #adadad;
+}
 .posts-thumb .entry-blog-article .blog-entry-media {
 	float: left;
 	width: 140px;
