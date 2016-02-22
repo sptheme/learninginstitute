@@ -56,7 +56,9 @@
 		<div class="site-info clearfix">
 			<div class="copyright"><?php esc_html_e( 'All content copyright © 2010, The Learning Institute. All Rights Reserved.', 'learninginstitute' ); ?></div>
 			<nav id="footer-navigation" class="footer-navigation" role="navigation">			
-				<?php wp_nav_menu( array( 'theme_location' => 'footer', 'menu_id' => 'footer-menu', 'menu_class' => 'nav-menu-footer', 'container' => false ) ); ?>
+				<?php if ( has_nav_menu( 'footer' ) ) { 
+						wp_nav_menu( array( 'theme_location' => 'footer', 'menu_id' => 'footer-menu', 'menu_class' => 'nav-menu-footer', 'container' => false ) ); 
+					}?>
 			</nav><!-- #site-navigation -->
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
@@ -73,7 +75,9 @@
 			<?php endif; ?>
 	    </div>
 	    
-	    <?php wp_nav_menu( array( 'container' => false, 'menu_id' => 'menu-mobile', 'theme_location' => 'mobile', 'menu_class' => 'mobile-nav' ) ); ?>
+	    <?php if ( has_nav_menu( 'mobile' ) ) {
+	    		wp_nav_menu( array( 'container' => false, 'menu_id' => 'menu-mobile', 'theme_location' => 'mobile', 'menu_class' => 'mobile-nav' ) ); 
+	    	}?>
     </div> <!-- #inner-mobile-menu -->
 </nav>
 
