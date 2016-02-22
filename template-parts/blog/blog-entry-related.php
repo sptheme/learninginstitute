@@ -29,7 +29,7 @@ $classes[] = 'col-'. $post_count; ?>
 	<?php printf( '<a itemprop="url" href="%1$s" rel="bookmark" title="%2$s">%3$s</a>', 
 				wpsp_get_permalink(), 
 				wpsp_get_esc_title(), 
-				wpsp_post_thumbnail('blog-entry')  
+				wpsp_post_thumbnail('thumb-landscape')  
 			); ?>
 	<?php get_template_part( 'template-parts/blog/blog-entry-title' ); ?>
 	<?php get_template_part( 'template-parts/blog/blog-entry-meta' ); ?>
