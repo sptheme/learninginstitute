@@ -180,7 +180,7 @@ function wpsp_print_custom_css_script() {
 	<?php // Background image for contact page
 		$page_contact_bg_img = wp_get_attachment_url( rwmb_meta( 'wpsp_contact_bg_image') ); 
 		if ( $page_contact_bg_img ) : ?>
-			body.page-template-contact #page { 
+			.page-template-contact .site-content { 
 				background-image: url(<?php echo $page_contact_bg_img; ?>); 
 				background-position: 50% 0;
 				background-size: cover;
