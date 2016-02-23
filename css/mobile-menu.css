@@ -11,8 +11,11 @@ body {
 /* Menu Trigger */
 .menu-toggle {
   position: absolute;
-  right:15px;
-  height: 40px;
+  right:1em;
+  top: 2em;
+  padding: 0.625em 1em;
+  font-size: 0.813em;
+  font-weight: 400;
   z-index: 99;
   background-color: #00a651;
 }

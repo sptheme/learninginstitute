@@ -26,8 +26,6 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'learninginstitute' ); ?></a>
 
-	<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'learninginstitute' ); ?></button>
-
 	<header id="masthead" class="site-header" role="banner">
 		<div class="container clearfix">
 			<div class="site-branding">
@@ -35,6 +33,9 @@
 					<a itemprop="url" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="<?php bloginfo( 'name' ); ?>"></a>
 				<?php if( !is_singular() ) echo '</h1>'; else echo '</h2>'; ?>
 			</div><!-- .site-branding -->
+			<?php if ( has_nav_menu( 'mobile' ) ) : ?>
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'learninginstitute' ); ?></button>
+			<?php endif; ?>
 
 			<div id="search-top" class="site-search-top search-form-small">
 			<?php get_search_form(); ?>
