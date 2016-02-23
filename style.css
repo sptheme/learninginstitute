@@ -2346,6 +2346,62 @@ object {
 }
 
 /*--------------------------------------------------------------
+## About
+--------------------------------------------------------------*/
+.welcome-message {
+	background-color: #7f6e5c;
+}
+.welcome-message .col.body-msg {
+	padding: 1.250em!important;
+	color: #ffffff;
+}
+.welcome-message h3{
+	margin-top: 0;
+	margin-bottom: 0.455em;
+}
+.about-entry-content {
+	background-color: #ebebeb;
+	padding: 1.250em;
+}
+.about-entry-content h1,
+.about-entry-content h2,
+.about-entry-content h3,
+.about-entry-content h4,
+.about-entry-content h5,
+.about-entry-content h6 {
+	margin-top: 0;
+}
+
+.welcome-message,
+.about-entry-content {
+	margin-bottom: 1.250em;
+}
+
+.our-mission.post-thumbnail-wrap img,
+.our-value.post-thumbnail-wrap img {
+	opacity: 0.3!important;
+}
+.our-mission.post-thumbnail-wrap {
+	background-color: #4caf50;
+}
+.our-mission.post-thumbnail-wrap .caption-wrap,
+.our-value.post-thumbnail-wrap .caption-wrap {
+	font-style: italic;
+	padding: 1.250em;
+}
+.our-mission p,
+.our-value p {
+	margin-bottom: 0;
+}
+
+@media only screen and (min-width: 767px) {
+	.welcome-message h3{
+		font-size: 2em;
+		margin-bottom: 0.313em;
+	}
+}
+
+/*--------------------------------------------------------------
 # Addon Elements
 --------------------------------------------------------------*/
 
@@ -2503,11 +2559,16 @@ a.button:hover {
     top: 0;
     width: 100%;
     height: 100%;
+    color:#ffffff;
 }
 .post-thumbnail-wrap .caption-inner {
 	display: table;
 	width: 100%;
 	height: 100%;
+}
+.post-thumbnail-wrap .entry-caption {
+	display: table-cell;
+	vertical-align: bottom;
 }
 .post-thumbnail-wrap a {
 	display: table-cell;
@@ -2609,6 +2670,18 @@ a.button:hover {
 		font-size: 1.125em;
 		line-height: 1.375em;
 	}
+}
+
+/*--------------------------------------------------------------
+## Separator
+--------------------------------------------------------------*/
+span.h-sep {
+	display: inline-block;
+	width: 25px;
+	height: 1px;
+	margin-right: 0.625em;
+	margin-bottom: 0.313em;
+	background-color: #ffffff;
 }
 
 /*--------------------------------------------------------------

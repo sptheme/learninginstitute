@@ -162,6 +162,122 @@
 		)
     );
 
+	// About
+    $meta_boxes[] = array(
+    	'id'			=> 'about-options',
+		'title'			=> __( 'About Options', 'wpsp_meta_options' ),
+		'post_types'	=> array( 'page' ),
+		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
+		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
+		'autosave'		=> true, // Auto save: true, false (default). Optional.
+
+		'fields'		=> array(
+			array(
+				'name'  => __( 'Welcome', 'wpsp_meta_options' ), 
+				'id'    => "welcome_msg_fake_id",
+				'desc'	=> __( 'Write welcome message of CEO/Managing Direcotr with photo', 'wpsp_meta_options' ), 
+				'type'  => 'heading'
+			),
+				array(
+					'name'  => __( 'Title', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "welcome_headline",
+					'type'  => 'text'
+				),
+				array(
+					'name'  => __( 'Body message', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "welcome_message",
+					'type'  => 'wysiwyg',
+					'raw'   => false,
+					'options' => array(
+						'textarea_rows' => 4,
+						'teeny'         => true,
+						'media_buttons' => false,
+					),
+				),
+				array(
+					'name'  => __( 'Profile photo', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "profile_photo",
+					'desc'  => __( 'Upload photo of CEO/Managing Director', 'wpsp_meta_options'),
+					'type'  => 'image_advanced',
+					'max_file_uploads' => 1,
+				),
+			array(
+				'name'  => __( 'Our Mission', 'wpsp_meta_options' ), 
+				'id'    => "our_mission_fake_id",
+				'desc'	=> __( '', 'wpsp_meta_options' ), 
+				'type'  => 'heading'
+			),
+				array(
+					'name'  => __( 'Title', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "mission_headline",
+					'type'  => 'text'
+				),
+				array(
+					'name'  => __( 'Description', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "mission_desc",
+					'type'  => 'textarea',
+					'row'	=> 4
+				),
+				array(
+					'name'  => __( 'Background image', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "mission_photo",
+					'desc'  => __( 'Upload background image for our mission, should be the same size as our value image', 'wpsp_meta_options'),
+					'type'  => 'image_advanced',
+					'max_file_uploads' => 1,
+				),
+			array(
+				'name'  => __( 'Our Value', 'wpsp_meta_options' ), 
+				'id'    => "our_value_fake_id",
+				'desc'	=> __( '', 'wpsp_meta_options' ), 
+				'type'  => 'heading'
+			),
+				array(
+					'name'  => __( 'Title', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "value_headline",
+					'type'  => 'text'
+				),
+				array(
+					'name'  => __( 'Description', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "value_desc",
+					'type'  => 'textarea',
+					'row'	=> 4
+				),
+				array(
+					'name'  => __( 'Background image', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "value_photo",
+					'desc'  => __( 'Upload background image for our value, should be the same size as our mission image', 'wpsp_meta_options'),
+					'type'  => 'image_advanced',
+					'max_file_uploads' => 1,
+				),			
+			array(
+				'name'  => __( 'Main programs', 'wpsp_meta_options' ), 
+				'id'    => "main_programs_fake_id",
+				'desc'	=> __( '', 'wpsp_meta_options' ), 
+				'type'  => 'heading'
+			),
+				array(
+					'name'  => __( 'Highlight the title', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "program_headline",
+					'type'  => 'text'
+				),
+				array(
+					'name'  => __( 'Description', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "program_desc",
+					'type'  => 'textarea',
+					'row'	=> 3
+				),
+				array(
+					'name'  => __( 'Display Main Programs Page', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "main_program_page",
+					'desc'	=> __( 'Please select parent page that containe all of main programs. eg: Areas of Interest', 'wpsp_meta_options' ), 
+					'type'  => 'post',
+					'post_type' => 'page',
+					'field_type'  => 'select_advanced',
+					'placeholder' => __( 'Select an Item', 'wpsp_meta_options' ),
+				),	
+		)
+    );	
+
 	// Staff post type
     $meta_boxes[] = array(
     	'id'			=> 'staff-options',

@@ -37,24 +37,35 @@ jQuery(document).ready(function($) {
 	}
 
 	//Switch Metabox with template was loaded or selected
-	if($('#page_template').val() == 'templates/homepage.php') {
-        // show the meta box
-        $('#homepage-options').show();
-        $('#masthead').hide();
-    } else {
-        // hide your meta box
-        $('#homepage-options').hide();
-        $('#masthead').show();
-    }
+	var $masthead = $('#masthead'),
+	$homepage = $('#homepage-options'),
+	$about = $('#about-options');
+	
+	function hide_meta_template() {
+		$homepage.hide();
+        $about.hide();
+        //default meta box
+        $masthead.show();
+	}
 
-	$('#page_template').live('change', function(){
-		if ($(this).val() == 'templates/homepage.php') {
-			$('#homepage-options').show();	
-			$('#masthead').hide();	
-		} else {
-			$('#homepage-options').hide();		
-			$('#masthead').show();
+	if ( $('#page_template').length ) {
+		hide_meta_template();
+		
+		var page_tempaltes = ['homepage', 'about'];
+		var selected_page_template = $('#page_template').val().replace('templates/', '').replace('.php', '');
+		//console.log( selected_page_template );
+		if(jQuery.inArray(selected_page_template,page_tempaltes) != '-1') {			
+			$('#'+selected_page_template+'-options').show();
 		}
-	});
+
+		$('#page_template').live('change', function(){
+			hide_meta_template();
+			selected_page_template = $(this).val().replace('templates/', '').replace('.php', '');
+			//console.log( selected_page_template );
+			if(jQuery.inArray(selected_page_template,page_tempaltes) != '-1') {			
+				$('#'+selected_page_template+'-options').show();
+			}
+		});
+	} 
 
 });
