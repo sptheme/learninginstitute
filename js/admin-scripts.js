@@ -39,11 +39,13 @@ jQuery(document).ready(function($) {
 	//Switch Metabox with template was loaded or selected
 	var $masthead = $('#masthead'),
 	$homepage = $('#homepage-options'),
-	$about = $('#about-options');
+	$about = $('#about-options'),
+	$contact = $('#contact-options');
 	
 	function hide_meta_template() {
 		$homepage.hide();
         $about.hide();
+        $contact.hide();
         //default meta box
         $masthead.show();
 	}
@@ -51,11 +53,14 @@ jQuery(document).ready(function($) {
 	if ( $('#page_template').length ) {
 		hide_meta_template();
 		
-		var page_tempaltes = ['homepage', 'about'];
+		var page_tempaltes = ['homepage', 'about', 'contact'];
 		var selected_page_template = $('#page_template').val().replace('templates/', '').replace('.php', '');
 		//console.log( selected_page_template );
 		if(jQuery.inArray(selected_page_template,page_tempaltes) != '-1') {			
 			$('#'+selected_page_template+'-options').show();
+			if ( 'contact' == selected_page_template ) {
+				$masthead.hide();
+			}
 		}
 
 		$('#page_template').live('change', function(){
@@ -64,6 +69,9 @@ jQuery(document).ready(function($) {
 			//console.log( selected_page_template );
 			if(jQuery.inArray(selected_page_template,page_tempaltes) != '-1') {			
 				$('#'+selected_page_template+'-options').show();
+				if ( 'contact' == selected_page_template ) {
+					$masthead.hide();
+				}
 			}
 		});
 	} 

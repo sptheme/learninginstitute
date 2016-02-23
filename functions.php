@@ -177,6 +177,15 @@ function wpsp_print_custom_css_script() {
 		.page-header-background-image { background-image: url(<?php echo $page_header_bg_img; ?>);}
 	<?php endif; ?>
 
+	<?php // Background image for contact page
+		$page_contact_bg_img = wp_get_attachment_url( rwmb_meta( 'wpsp_contact_bg_image') ); 
+		if ( $page_contact_bg_img ) : ?>
+			body.page-template-contact #page { 
+				background-image: url(<?php echo $page_contact_bg_img; ?>); 
+				background-position: 50% 0;
+				background-size: cover;
+			}
+		<?php endif; ?>
 	</style>
 	<?php if ( is_page() || is_singular() ) : ?>
 		<script type="text/javascript">

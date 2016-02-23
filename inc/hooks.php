@@ -20,7 +20,7 @@ function wpsp_hook_content_bottom() {
  * Get custom page header template part, will apply on top of post/page
  */
 function wpsp_page_header() {
-	if ( is_home() || is_front_page() || is_page_template( 'templates/homepage.php' ) )
+	if ( is_home() || is_front_page() || is_page_template( 'templates/homepage.php' ) || is_page_template( 'templates/contact.php' ) )
 		return;
 	
 	get_template_part( 'template-parts/page-header' );	

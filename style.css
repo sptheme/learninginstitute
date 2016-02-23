@@ -1320,7 +1320,6 @@ blockquote.aligncenter {
 .widget .widget-title {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 1.125em;
-	font-weight: 600;
 	letter-spacing: 0.046875em;
 	line-height: 1.3125;
 	margin: 0 0 1em;
@@ -1599,6 +1598,9 @@ blockquote.aligncenter {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+.site-header {
+	background-color: #ffffff;
+}
 .site-branding {
 	max-width: 150px;
 	float: left;
@@ -2400,6 +2402,35 @@ object {
 		margin-bottom: 0.313em;
 	}
 }
+
+/*--------------------------------------------------------------
+## Contact
+--------------------------------------------------------------*/
+.page-template-contact .site-content{
+	color: #ffffff;
+}
+.page-header-contact {
+	padding: 2.250em 0;	
+	text-align: center;
+}
+.page-header-contact .entry-title {
+	font-size: 3em;
+	margin-bottom: 0.417em;
+}
+.page-header-contact .description {
+	font-size: 1.125em;
+	margin-bottom: 0;
+}
+.page-template-contact .widget-title {
+	border-bottom: none;
+	font-weight: 600;
+	margin-bottom: 0.625em;
+	padding-bottom: 0;
+}
+.rwmb-map-canvas {
+	border:5px solid #f1f1f1;
+}
+
 
 /*--------------------------------------------------------------
 # Addon Elements

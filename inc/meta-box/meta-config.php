@@ -278,6 +278,49 @@
 		)
     );	
 
+	// Contact
+    $meta_boxes[] = array(
+    	'id'			=> 'contact-options',
+		'title'			=> __( 'Contact Options', 'wpsp_meta_options' ),
+		'post_types'	=> array( 'page' ),
+		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
+		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
+		'autosave'		=> true, // Auto save: true, false (default). Optional.
+		
+		'fields'		=> array(	
+			array(
+					'name'  => __( 'Short Description', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "contact_desc",
+					'type'  => 'textarea',
+					'row'	=> 4
+				),
+			array(
+				'name'  => __( 'Map', 'wpsp_meta_options' ), 
+				'id'    => "map_fake_id",
+				'desc'	=> __( '', 'wpsp_meta_options' ), 
+				'type'  => 'heading'
+			),
+				array(
+					'name'  => __( 'Location', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "marker",
+					'type'  => 'map',
+					'std'   => '11.546921,104.917905',
+				),
+			array(
+				'name'  => __( 'Background Image', 'wpsp_meta_options' ), 
+				'id'    => "background_fake_id",
+				'desc'	=> __( '', 'wpsp_meta_options' ), 
+				'type'  => 'heading'
+			),
+				array(
+					'name'  => __( 'Upload image', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "contact_bg_image",
+					'type'  => 'image_advanced',
+					'max_file_uploads' => 1,
+				),	
+		)
+    );		
+
 	// Staff post type
     $meta_boxes[] = array(
     	'id'			=> 'staff-options',
