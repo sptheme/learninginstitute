@@ -39,6 +39,33 @@ function wpsp_post_shortcode_ajax(){
 					</td>
 				</tr>
 				<tr>
+					<?php $field = 'post_excerpt'; ?>
+					<th><label for="<?php echo $field; ?>"><?php _e( 'Show post excerpt: ', 'wpsp_shortcode' ); ?></label></th>
+					<td>
+						<select name="<?php echo $field; ?>" id="<?php echo $field; ?>">
+							<option class="level-0" value="1"><?php _e( 'Show', 'wpsp_shortcode' ); ?></option>
+							<option class="level-0" value="0"><?php _e( 'Hide', 'wpsp_shortcode' ); ?></option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<?php $field = 'post_style'; ?>
+					<th><label for="<?php echo $field; ?>"><?php _e( 'Post style: ', 'wpsp_shortcode' ); ?></label></th>
+					<td>
+						<select name="<?php echo $field; ?>" id="<?php echo $field; ?>">
+							<option class="level-0" value=""><?php _e( 'Simple', 'wpsp_shortcode' ); ?></option>
+							<option class="level-0" value="bg-bottom"><?php _e( 'Background', 'wpsp_shortcode' ); ?></option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<?php $field = 'post_offset'; ?>
+					<th><label for="<?php echo $field; ?>"><?php _e( 'Post offset: ', 'wpsp_shortcode' ); ?></label></th>
+					<td>
+						<input type="text" name="<?php echo $field; ?>" id="<?php echo $field; ?>" value="" /> <smal>(number of post to displace or pass over)</small>
+					</td>
+				</tr>
+				<tr>
 					<?php $field = 'post_count'; ?>
 					<th><label for="<?php echo $field; ?>"><?php _e( 'Number of post: ', 'wpsp_shortcode' ); ?></label></th>
 					<td>

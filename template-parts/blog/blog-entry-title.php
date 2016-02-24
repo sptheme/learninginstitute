@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } ?>
 
-<h3 id="blog-entry-title" class="entry-title blog-entry-title">
+<h3 id="blog-entry-title" class="entry-title entry-blog-title">
 	<a href="<?php wpsp_permalink();?>" title="<?php echo wpsp_esc_title(); ?>" rel="bookmark"><?php the_title(); ?></a>	
 </h3>
 

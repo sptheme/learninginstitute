@@ -20,10 +20,10 @@
 		<?php
 			the_content();
 
-			wp_link_pages( array(
+			/*wp_link_pages( array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'learninginstitute' ),
 				'after'  => '</div>',
-			) );
+			) );*/
 		?>
 	</div><!-- .entry-content -->
 

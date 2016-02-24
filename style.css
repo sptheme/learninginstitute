@@ -2039,6 +2039,33 @@ blockquote.aligncenter {
 .related-post .meta {
 	font-size: 0.813em;
 }
+/* Blog entry post */
+.entry-blog-article .post-thumbnail {
+	margin-bottom: 1em;
+}
+.entry-blog-article .post-thumbnail a:hover img {
+	opacity: 0.5;
+}
+.entry-blog-article .posted-on {
+	font-size: 0.813em;
+}
+
+.entry-blog-article.bg-bottom .post-thumbnail{
+	border:5px solid #017197;
+	margin-bottom: 0;
+}
+.entry-blog-article .entry-blog-title {
+	font-size: 1em;
+}
+.entry-blog-article.bg-bottom .entry-blog-content {
+	background-color: #017197;
+	padding: 0.625em; 
+}
+.entry-blog-article.bg-bottom .entry-blog-content a,
+.entry-blog-article.bg-bottom .entry-blog-content p,
+.entry-blog-article.bg-bottom .entry-blog-content .posted-on {
+	color: #ffffff;
+}
 
 /* Gallery post format */
 .gallery .post-thumbnail-wrap a {
@@ -2727,6 +2754,7 @@ a.button:hover {
 --------------------------------------------------------------*/
 .post-thumbnail {
 	position: relative;
+	background-color: #017197;
 	border:5px solid #eaeaea;
 }
 .format-standard .post-thumbnail a:before,

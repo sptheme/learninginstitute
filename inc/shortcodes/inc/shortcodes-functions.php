@@ -288,6 +288,9 @@ function wpsp_post_shortcode( $atts, $content = null ){
 	extract( shortcode_atts( array(
 		'term_id' => null,
 		'post_format' => null,
+		'post_excerpt' => null,
+		'post_style' => null,
+		'post_offset' => null,
 		'post_count' => null,
 		'cols' => null
 	), $atts ) );
@@ -303,6 +306,11 @@ function wpsp_post_shortcode( $atts, $content = null ){
 			            'operator' => 'IN'
 			          )
 				),
+			);
+	}
+	if ( $post_offset != '' ) {
+		$args = array(
+				'offset' => $post_offset
 			);
 	}
 	$defaults = array(
@@ -328,6 +336,7 @@ function wpsp_post_shortcode( $atts, $content = null ){
 		<?php while ( $post_query->have_posts() ) : $post_query->the_post(); ?>
 		<?php // entry-class
 		$entry_classes = array( 'entry-blog-article' );
+		$entry_classes[] = $post_style;
 		$entry_classes[] = 'col';
 		$entry_classes[] = 'span_1_of_'. $cols; ?>	
 				<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
@@ -336,9 +345,11 @@ function wpsp_post_shortcode( $atts, $content = null ){
 						wpsp_get_esc_title(), 
 						wpsp_post_thumbnail('thumb-landscape')  
 					); ?>
+					<div class="entry-blog-content">
 					<?php get_template_part( 'template-parts/blog/blog-entry-title' ); ?>	
 					<?php get_template_part( 'template-parts/blog/blog-entry-meta' ); ?>
-					<?php get_template_part( 'template-parts/blog/blog-entry-excerpt' ); ?>
+					<?php if ( $post_excerpt ) get_template_part( 'template-parts/blog/blog-entry-excerpt' ); ?>
+					</div>
 				</article><!-- #post-## -->
 		<?php endwhile; wp_reset_postdata(); ?>
 		</div>
