@@ -58,7 +58,7 @@ jQuery(document).ready(function($) {
 		//console.log( selected_page_template );
 		if(jQuery.inArray(selected_page_template,page_tempaltes) != '-1') {			
 			$('#'+selected_page_template+'-options').show();
-			if ( 'contact' == selected_page_template ) {
+			if ( 'contact' == selected_page_template || 'home' == selected_page_template ) {
 				$masthead.hide();
 			}
 		}
@@ -69,7 +69,7 @@ jQuery(document).ready(function($) {
 			//console.log( selected_page_template );
 			if(jQuery.inArray(selected_page_template,page_tempaltes) != '-1') {			
 				$('#'+selected_page_template+'-options').show();
-				if ( 'contact' == selected_page_template ) {
+				if ( 'contact' == selected_page_template || 'home' == selected_page_template ) {
 					$masthead.hide();
 				}
 			}

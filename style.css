@@ -820,8 +820,10 @@ a:active {
 	font-size: 1em;
 	font-weight: 400;
 	display: block;
-	float: right;
+	clear: right;
+	float: left;
 	margin-top: 0.923em;
+	margin-left: 0.923em;
 }
 
 .main-navigation ul {
