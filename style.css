@@ -1589,7 +1589,7 @@ blockquote.aligncenter {
 	.col-1c .content-area,
 	.col-1c .widget-area,
 	.error404 .content-area { 
-		width: 970px; 
+		width: 750px; 
 		margin: 0 auto;
 	}
 }
@@ -2043,6 +2043,9 @@ blockquote.aligncenter {
 .entry-blog-article .post-thumbnail {
 	margin-bottom: 1em;
 }
+.entry-blog-article .overlay-2 .post-thumbnail {
+	margin-bottom: 0;
+}
 .entry-blog-article .post-thumbnail a:hover img {
 	opacity: 0.5;
 }
@@ -2050,31 +2053,32 @@ blockquote.aligncenter {
 	font-size: 0.813em;
 }
 
-.entry-blog-article.bg-bottom .post-thumbnail{
+.entry-blog-article.post-highlight .post-thumbnail{
 	border:5px solid #017197;
 	margin-bottom: 0;
 }
 .entry-blog-article .entry-blog-title {
 	font-size: 1em;
 }
-.entry-blog-article.bg-bottom .entry-blog-content {
+.entry-blog-article.post-highlight .entry-blog-content {
 	background-color: #017197;
 	padding: 0.625em; 
 }
-.entry-blog-article.bg-bottom .entry-blog-content a,
-.entry-blog-article.bg-bottom .entry-blog-content p,
-.entry-blog-article.bg-bottom .entry-blog-content .posted-on {
+.entry-blog-article.post-highlight .entry-blog-content a,
+.entry-blog-article.post-highlight .entry-blog-content p,
+.entry-blog-article.post-highlight .entry-blog-content .posted-on {
 	color: #ffffff;
 }
 
+
 /* Gallery post format */
-.gallery .post-thumbnail-wrap a {
+.post-thumbnail-wrap.overlay-2 a {
 	vertical-align: middle;
 	text-align: center;
 }
-.gallery .post-thumbnail-wrap {
+/*.gallery .post-thumbnail-wrap {
 	border: 5px solid #eaeaea;
-}
+}*/
 
 /*--------------------------------------------------------------
 ## Staff post type
@@ -2719,7 +2723,11 @@ a.button:hover {
 		padding-bottom: 2em;
 	}
 
-	/* Effect SP 1 */
+	/* Effect SP 2 */
+	.post-thumbnail-wrap.overlay-2 a {
+		vertical-align: middle;
+		text-align: center;
+	}
 	.post-thumbnail-wrap.overlay-2 span.title {
 		background-color: #48b24e;
 		color: #fff;

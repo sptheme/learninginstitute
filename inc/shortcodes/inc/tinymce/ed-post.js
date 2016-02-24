@@ -36,6 +36,7 @@
 		var options = { 
 			'term_id' : null,
 			'post_format' : null,
+			'post_meta' : null,
 			'post_excerpt' : null,
 			'post_style' : null,
 			'post_offset' : null,

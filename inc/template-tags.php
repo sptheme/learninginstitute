@@ -77,7 +77,7 @@ function wpsp_posted_on() {
 
 	$out = '<ul class="meta clearfix">';
 	$out .= '<li class="posted-on">' . $posted_on . '</li>';
-	$out .= '<li class="byline"> ' . $byline . '</li>';
+	//$out .= '<li class="byline"> ' . $byline . '</li>';
 	$out .= '<li class="cat-links">' . $categories_list . '</li>';
 	$out .= '</ul>';
 	echo $out;

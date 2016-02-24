@@ -39,6 +39,16 @@ function wpsp_post_shortcode_ajax(){
 					</td>
 				</tr>
 				<tr>
+					<?php $field = 'post_meta'; ?>
+					<th><label for="<?php echo $field; ?>"><?php _e( 'Show post meta: ', 'wpsp_shortcode' ); ?></label></th>
+					<td>
+						<select name="<?php echo $field; ?>" id="<?php echo $field; ?>">
+							<option class="level-0" value="1"><?php _e( 'Show', 'wpsp_shortcode' ); ?></option>
+							<option class="level-0" value="0"><?php _e( 'Hide', 'wpsp_shortcode' ); ?></option>
+						</select>
+					</td>
+				</tr>
+				<tr>
 					<?php $field = 'post_excerpt'; ?>
 					<th><label for="<?php echo $field; ?>"><?php _e( 'Show post excerpt: ', 'wpsp_shortcode' ); ?></label></th>
 					<td>
@@ -54,7 +64,8 @@ function wpsp_post_shortcode_ajax(){
 					<td>
 						<select name="<?php echo $field; ?>" id="<?php echo $field; ?>">
 							<option class="level-0" value=""><?php _e( 'Simple', 'wpsp_shortcode' ); ?></option>
-							<option class="level-0" value="bg-bottom"><?php _e( 'Background', 'wpsp_shortcode' ); ?></option>
+							<option class="level-0" value="post-highlight"><?php _e( 'Highlight', 'wpsp_shortcode' ); ?></option>
+							<option class="level-0" value="overlay-2"><?php _e( 'Effect', 'wpsp_shortcode' ); ?></option>
 						</select>
 					</td>
 				</tr>

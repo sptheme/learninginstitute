@@ -288,6 +288,7 @@ function wpsp_post_shortcode( $atts, $content = null ){
 	extract( shortcode_atts( array(
 		'term_id' => null,
 		'post_format' => null,
+		'post_meta' => null,
 		'post_excerpt' => null,
 		'post_style' => null,
 		'post_offset' => null,
@@ -336,10 +337,19 @@ function wpsp_post_shortcode( $atts, $content = null ){
 		<?php while ( $post_query->have_posts() ) : $post_query->the_post(); ?>
 		<?php // entry-class
 		$entry_classes = array( 'entry-blog-article' );
-		$entry_classes[] = $post_style;
 		$entry_classes[] = 'col';
 		$entry_classes[] = 'span_1_of_'. $cols; ?>	
 				<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
+				<?php if ( 'overlay-2' == $post_style ) : ?>
+					<div class="post-thumbnail-wrap overlay-2">
+						<div class="post-thumbnail"><?php wpsp_get_post_thumbnail('thumb-landscape'); ?></div>
+						<div class="caption-wrap">
+							<div class="caption-inner">
+							<a href="<?php wpsp_permalink();?>" title="<?php echo wpsp_esc_title(); ?>" rel="bookmark"><span class="title"><?php the_title(); ?></span></a>
+							</div>
+						</div>
+					</div>
+				<?php else: ?>	
 					<?php printf( '<div class="post-thumbnail"><a itemprop="url" href="%1$s" rel="bookmark" title="%2$s">%3$s</a></div>', 
 						wpsp_get_permalink(), 
 						wpsp_get_esc_title(), 
@@ -347,9 +357,10 @@ function wpsp_post_shortcode( $atts, $content = null ){
 					); ?>
 					<div class="entry-blog-content">
 					<?php get_template_part( 'template-parts/blog/blog-entry-title' ); ?>	
-					<?php get_template_part( 'template-parts/blog/blog-entry-meta' ); ?>
+					<?php if ( $post_meta ) get_template_part( 'template-parts/blog/blog-entry-meta' ); ?>
 					<?php if ( $post_excerpt ) get_template_part( 'template-parts/blog/blog-entry-excerpt' ); ?>
 					</div>
+				<?php endif; ?>		
 				</article><!-- #post-## -->
 		<?php endwhile; wp_reset_postdata(); ?>
 		</div>

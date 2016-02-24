@@ -27,7 +27,7 @@ $photo_count = 0;
 		<?php if ( $photo_count == 1 ) : ?>
 		<div class="col span_1_of_4">
 			<div class="post-thumbnail-wrap overlay-2">
-				<img src="<?php echo $photo['url'];?>">
+				<div class="post-thumbnail"><img src="<?php echo $photo['url'];?>"></div>
 				<div class="caption-wrap">
 					<div class="caption-inner">
 					<a href="<?php wpsp_permalink();?>" title="<?php echo wpsp_esc_title(); ?>" rel="bookmark"><span class="title"><?php the_title(); ?></span></a>

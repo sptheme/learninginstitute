@@ -29,9 +29,9 @@ $post_format = get_post_format(); ?>
 <?php elseif ( $photos && 'gallery' == $post_format ) : ?>	
 	<div class="gallery wpsp-row clearfix">
 	<?php foreach ($photos as $photo ) : ?>
-		<div class="col span_1_of_4">
+		<div class="col span_1_of_3">
 			<div class="post-thumbnail-wrap overlay-2">
-				<img src="<?php echo $photo['url'];?>">
+				<div class="post-thumbnail"><img src="<?php echo $photo['url'];?>"></div>
 				<div class="caption-wrap">
 					<div class="caption-inner">
 					<a href="<?php echo $photo['full_url'];?>" rel="bookmark" title="<?php echo $photo['title'];?>"><span class="title"><?php echo esc_html__('View Photo', 'learninginstitute'); ?></span></a>
