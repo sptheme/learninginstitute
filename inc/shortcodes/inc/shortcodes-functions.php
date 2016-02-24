@@ -28,7 +28,7 @@ function wpsp_add_shortcodes() {
 	add_shortcode( 'callout_box', 'wpsp_callout_box_shortcode' );
 	add_shortcode( 'sc_staff', 'wpsp_staff_shortcode' );
 	add_shortcode( 'sc_publication', 'wpsp_publication_shortcode' );
-	
+	add_shortcode( 'sc_post', 'wpsp_post_shortcode' );
 	
 }
 add_action( 'init', 'wpsp_add_shortcodes' );
@@ -272,6 +272,80 @@ function wpsp_publication_shortcode( $atts, $content = null ){
 		echo esc_html__( 'Sorry, new content will coming soon.', 'learninginstitute' );
 	}
 
+	return ob_get_clean();
+}
+endif;
+
+if ( ! function_exists( 'wpsp_post_shortcode' ) ) :
+/**
+ * post shortcode
+ *
+ * Options: Show all post / by Category
+ *
+ */
+function wpsp_post_shortcode( $atts, $content = null ){
+	ob_start();
+	extract( shortcode_atts( array(
+		'term_id' => null,
+		'post_format' => null,
+		'post_count' => null,
+		'cols' => null
+	), $atts ) );
+
+	$args = array();
+	if ( $post_format != 'post-format-standard' ) {
+		$args = array(
+			'tax_query' => array(
+					array(
+			            'taxonomy' => 'post_format',
+			            'field' => 'slug',
+			            'terms' => array($post_format),
+			            'operator' => 'IN'
+			          )
+				),
+			);
+	}
+	$defaults = array(
+			'post_type' => 'post',
+			'category__in' => $term_id,
+			'posts_per_page' => $post_count,
+			'tax_query' => array( 
+					array(
+			            'taxonomy' => 'post_format',
+			            'field' => 'slug',
+			            'terms' => array('post-format-quote','post-format-audio','post-format-gallery','post-format-image','post-format-link','post-format-video'),
+			            'operator' => 'NOT IN'
+			           ) 
+				)
+		);
+	$args = wp_parse_args( $args, $defaults );
+	extract( $args );
+
+	$post_query = new WP_Query($args);
+
+	if ( $post_query->have_posts() ) { ?>
+		<div class="wpsp-row clearfix">
+		<?php while ( $post_query->have_posts() ) : $post_query->the_post(); ?>
+		<?php // entry-class
+		$entry_classes = array( 'entry-blog-article' );
+		$entry_classes[] = 'col';
+		$entry_classes[] = 'span_1_of_'. $cols; ?>	
+				<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
+					<?php printf( '<div class="post-thumbnail"><a itemprop="url" href="%1$s" rel="bookmark" title="%2$s">%3$s</a></div>', 
+						wpsp_get_permalink(), 
+						wpsp_get_esc_title(), 
+						wpsp_post_thumbnail('thumb-landscape')  
+					); ?>
+					<?php get_template_part( 'template-parts/blog/blog-entry-title' ); ?>	
+					<?php get_template_part( 'template-parts/blog/blog-entry-meta' ); ?>
+					<?php get_template_part( 'template-parts/blog/blog-entry-excerpt' ); ?>
+				</article><!-- #post-## -->
+		<?php endwhile; wp_reset_postdata(); ?>
+		</div>
+	<?php	
+	} else {
+		echo esc_html__( 'Sorry, new content will coming soon.', 'learninginstitute' );
+	}
 	return ob_get_clean();
 }
 endif;

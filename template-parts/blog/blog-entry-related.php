@@ -26,7 +26,7 @@ $classes[] = 'col-'. $post_count; ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
 	<div class="blog-entry-inner">
-	<?php printf( '<a itemprop="url" href="%1$s" rel="bookmark" title="%2$s">%3$s</a>', 
+	<?php printf( '<div class="post-thumbnail"><a itemprop="url" href="%1$s" rel="bookmark" title="%2$s">%3$s</a></div>', 
 				wpsp_get_permalink(), 
 				wpsp_get_esc_title(), 
 				wpsp_post_thumbnail('thumb-landscape')  

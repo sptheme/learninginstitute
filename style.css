@@ -285,7 +285,9 @@ th {
 # Fonts icon
 --------------------------------------------------------------*/
 
-.format-video .post-thumbnail:before,
+.format-standard .post-thumbnail a:before,
+.format-video .post-thumbnail a:before,
+.format-gallery .post-thumbnail a:before,
 .menu-item-has-children a:after,
 .social-navigation a:before,
 .dropdown-toggle:after,
@@ -771,6 +773,11 @@ input[type="search"].search-field {
 a {
 	color: #007acc;
 	text-decoration: none;
+	-webkit-transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out;
+       -moz-transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out;
+        -ms-transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out;
+         -o-transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out;
+            transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out;
 }
 
 a:hover,
@@ -2033,6 +2040,15 @@ blockquote.aligncenter {
 	font-size: 0.813em;
 }
 
+/* Gallery post format */
+.gallery .post-thumbnail-wrap a {
+	vertical-align: middle;
+	text-align: center;
+}
+.gallery .post-thumbnail-wrap {
+	border: 5px solid #eaeaea;
+}
+
 /*--------------------------------------------------------------
 ## Staff post type
 --------------------------------------------------------------*/
@@ -2222,6 +2238,7 @@ object {
 	display: block;
 }
 
+
 /*--------------------------------------------------------------
 # Templates
 --------------------------------------------------------------*/
@@ -2259,6 +2276,11 @@ object {
 	background-color: #eabe0f;
 }
 
+.our-work .post-thumbnail-wrap span.title {
+	font-size: 1.125em;
+	line-height: 1.3em;
+}
+
 .latest-video-wrap {
 	background-color: #f3f3f3;
 	padding: 1.250em 0;
@@ -2283,7 +2305,7 @@ object {
 .latest-video .post-thumbnail:hover {
 	border-color: #4fb94a;
 }
-.latest-video.format-video .post-thumbnail:before {
+.latest-video.format-video .post-thumbnail a:before {
 	color:#f23635;
 	font-size: 3.125em;
 	margin-left: -25px;
@@ -2342,6 +2364,10 @@ object {
     .our-work .col.col-2 {
     	margin-bottom: 20px;
     }
+    .our-work .post-thumbnail-wrap span.title {
+		font-size: 1.5em;
+		line-height: 1.3;
+	}
 
     .latest-video-wrap {
     	padding: 3.125em 0;
@@ -2409,6 +2435,10 @@ object {
 .our-mission.post-thumbnail-wrap img,
 .our-value.post-thumbnail-wrap img {
 	opacity: 0.3!important;
+}
+.our-mission.post-thumbnail-wrap:hover img,
+.our-value.post-thumbnail-wrap:hover img {
+	opacity: 0.5!important;
 }
 .our-mission.post-thumbnail-wrap {
 	background-color: #4caf50;
@@ -2602,14 +2632,16 @@ a.button:hover {
 	position: relative;
 	display: block;
 	overflow: hidden;
-	background-color: #004860;
+	background-color: #004860;	
 }
 .post-thumbnail-wrap img {
     position: relative;
     display: block;
     width: 100%;
     height: 100%;
-    opacity: 0.5;
+}
+.post-thumbnail-wrap:hover img {
+	opacity: 0.5;
 }
 .post-thumbnail-wrap .caption-wrap {
 	position: absolute;
@@ -2633,9 +2665,6 @@ a.button:hover {
 	vertical-align: bottom;
 }
 .post-thumbnail-wrap span.title {
-	font-size: 1.125em;
-	line-height: 1.3em; 
-	font-weight: 400;
 	color:#fff;
 	padding: 1em 0.625em;
 	display: block;
@@ -2662,13 +2691,22 @@ a.button:hover {
 	.post-thumbnail-wrap.overlay-1:hover span.title {
 		padding-bottom: 2em;
 	}
-@media only screen and (min-width: 767px) {
-	.post-thumbnail-wrap span.title {
-		font-size: 1.5em;
-		line-height: 1.3;
-	}
-}
 
+	/* Effect SP 1 */
+	.post-thumbnail-wrap.overlay-2 span.title {
+		background-color: #48b24e;
+		color: #fff;
+		font-size: 0.813em;
+		padding: 0.625em;
+		display: inline-block;
+		opacity: 0;
+		-webkit-transition: opacity 0.35s;
+	    transition: opacity 0.35s;
+	}
+
+	.post-thumbnail-wrap.overlay-2:hover span.title {
+		opacity: 1;
+	}
 /*--------------------------------------------------------------
 ## Post thumb list style
 --------------------------------------------------------------*/
@@ -2687,10 +2725,13 @@ a.button:hover {
 /*--------------------------------------------------------------
 ## Post format icon
 --------------------------------------------------------------*/
-.format-video .post-thumbnail {
+.post-thumbnail {
 	position: relative;
+	border:5px solid #eaeaea;
 }
-.format-video .post-thumbnail:before {
+.format-standard .post-thumbnail a:before,
+.format-video .post-thumbnail a:before,
+.format-gallery .post-thumbnail a:before {
 	display: block;
     width: 24px;
     height: 24px;
@@ -2705,11 +2746,19 @@ a.button:hover {
     color: #017197;
     cursor: pointer;
 }
-.format-video .post-thumbnail:hover:before {
+.format-standard .post-thumbnail a:hover:before,
+.format-video .post-thumbnail a:hover:before,
+.format-gallery .post-thumbnail a:hover:before {
 	color:#fff;
 }
-.format-video .post-thumbnail:before {
+.format-standard .post-thumbnail a:before {
+    content: "\f15c ";
+}
+.format-video .post-thumbnail a:before {
     content: "\f16a";
+}
+.format-gallery .post-thumbnail a:before {
+    content: "\f03e";
 }
 /*--------------------------------------------------------------
 ## Callout Box

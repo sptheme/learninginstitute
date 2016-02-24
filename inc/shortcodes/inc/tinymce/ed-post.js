@@ -36,7 +36,7 @@
 		var options = { 
 			'term_id' : null,
 			'post_format' : null,
-			'post_num' : null,
+			'post_count' : null,
 			'cols' : null,
 			};
 		var shortcode = '[sc_post';

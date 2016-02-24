@@ -18,6 +18,7 @@ function wpsp_shortcodes_register_mce_button_3( $buttons ) {
 	array_push( $buttons, 'callout' );
 	array_push( $buttons, 'staff' );
 	array_push( $buttons, 'publication' );
+	array_push( $buttons, 'post' );
 
     return $buttons;
 }
@@ -58,7 +59,7 @@ function wpsp_shortcodes_add_tinymce_plugin($plugin_array) {
 	if ( $post_type == 'page' ) {
 		$plugin_array['staff']				= ED_JS_URL . 'ed-staff.js';
 		$plugin_array['publication']		= ED_JS_URL . 'ed-publication.js';
-		//$plugin_array['post']				= ED_JS_URL . 'ed-post.js';
+		$plugin_array['post']				= ED_JS_URL . 'ed-post.js';
 	}
 	
     return $plugin_array;
@@ -83,4 +84,4 @@ add_action( 'admin_head', 'wpsp_shortcodes_add_mce_button' );
 
 load_template( SC_INC_DIR . 'popup/ajax-staff-shortcode.php' );
 load_template( SC_INC_DIR . 'popup/ajax-publication-shortcode.php' );
-// load_template( SC_INC_DIR . 'popup/ajax-post-shortcode.php' );
+load_template( SC_INC_DIR . 'popup/ajax-post-shortcode.php' );

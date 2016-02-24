@@ -34,12 +34,12 @@ function wpsp_post_shortcode_ajax(){
 						<select name="<?php echo $field; ?>" id="<?php echo $field; ?>">
 							<option class="level-0" value="post-format-standard"><?php _e( 'Standard', 'wpsp_shortcode' ); ?></option>
 							<option class="level-0" value="post-format-video"><?php _e( 'Video', 'wpsp_shortcode' ); ?></option>
-							<option class="level-0" value="post-format-audio"><?php _e( 'Audio', 'wpsp_shortcode' ); ?></option>
+							<option class="level-0" value="post-format-gallery"><?php _e( 'Gallery', 'wpsp_shortcode' ); ?></option>
 						</select>
 					</td>
 				</tr>
 				<tr>
-					<?php $field = 'post_num'; ?>
+					<?php $field = 'post_count'; ?>
 					<th><label for="<?php echo $field; ?>"><?php _e( 'Number of post: ', 'wpsp_shortcode' ); ?></label></th>
 					<td>
 						<input type="text" name="<?php echo $field; ?>" id="<?php echo $field; ?>" value="4" /> <smal>(-1 for show all)</small>
