@@ -288,6 +288,7 @@ th {
 .format-standard .post-thumbnail a:before,
 .format-video .post-thumbnail a:before,
 .format-gallery .post-thumbnail a:before,
+.page.type-page .post-thumbnail a:before,
 .menu-item-has-children a:after,
 .social-navigation a:before,
 .dropdown-toggle:after,
@@ -1984,13 +1985,13 @@ blockquote.aligncenter {
 .page-header-background-image .page-header-title {
 	position: relative;
 	color: #fff;
-	font-size: 1em;
+	font-size: 1.125em;
 	z-index: 2;
 }
 .page-header-background-image .page-subheadline {
 	position: relative;
 	color: #fff;
-	font-size: 0.813em;
+	font-size: 1em;
     margin: 0;
     margin-bottom: 0;
     z-index: 2;
@@ -2049,24 +2050,29 @@ blockquote.aligncenter {
 .entry-blog-article .post-thumbnail a:hover img {
 	opacity: 0.5;
 }
-.entry-blog-article .posted-on {
-	font-size: 0.813em;
+.entry-blog-article .entry-title {
+	font-size: 1em;
 }
-
+.entry-blog-article .posted-on {
+	font-size: 0.750em;
+}
+.entry-blog-article .blog-entry-excerpt {
+	font-size: 0.875em;
+}
+.entry-blog-article.post-highlight .entry-title {
+	font-size: 1.250em;
+}
 .entry-blog-article.post-highlight .post-thumbnail{
 	border:5px solid #017197;
 	margin-bottom: 0;
 }
-.entry-blog-article .entry-blog-title {
-	font-size: 1em;
-}
-.entry-blog-article.post-highlight .entry-blog-content {
+.entry-blog-article.post-highlight .entry-post-content-wrap {
 	background-color: #017197;
 	padding: 0.625em; 
 }
-.entry-blog-article.post-highlight .entry-blog-content a,
-.entry-blog-article.post-highlight .entry-blog-content p,
-.entry-blog-article.post-highlight .entry-blog-content .posted-on {
+.entry-blog-article.post-highlight .entry-post-content-wrap a,
+.entry-blog-article.post-highlight .entry-post-content-wrap p,
+.entry-blog-article.post-highlight .entry-post-content-wrap .posted-on {
 	color: #ffffff;
 }
 
@@ -2781,7 +2787,8 @@ a.button:hover {
 }
 .format-standard .post-thumbnail a:before,
 .format-video .post-thumbnail a:before,
-.format-gallery .post-thumbnail a:before {
+.format-gallery .post-thumbnail a:before,
+.page.type-page .post-thumbnail a:before {
 	display: block;
     width: 24px;
     height: 24px;
@@ -2798,10 +2805,12 @@ a.button:hover {
 }
 .format-standard .post-thumbnail a:hover:before,
 .format-video .post-thumbnail a:hover:before,
-.format-gallery .post-thumbnail a:hover:before {
+.format-gallery .post-thumbnail a:hover:before,
+.page.type-page .post-thumbnail a:hover:before {
 	color:#fff;
 }
-.format-standard .post-thumbnail a:before {
+.format-standard .post-thumbnail a:before,
+.page.type-page .post-thumbnail a:before {
     content: "\f15c ";
 }
 .format-video .post-thumbnail a:before {

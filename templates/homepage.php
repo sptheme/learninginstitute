@@ -28,6 +28,7 @@ get_header();
 	        <div class="featured-page wpsp-row clearfix">
 	    	<?php
 	    		$page_count = 0;
+	    		$cols = 2;
 	    		$args = array (
 					'child_of' => $home_meta['wpsp_main_program_page'][0],
 					'sort_column' => 'menu_order',
@@ -45,7 +46,7 @@ get_header();
 		            	if ( $page_count <= 3 ) { 
 		            		$entry_classes = array( 'page-entry-overlay' );
 							$entry_classes[] = 'col';
-							$entry_classes[] = wpsp_grid_class(2); 
+							$entry_classes[] = wpsp_grid_class($cols); 
 							$entry_classes[] = 'col-' . $page_count; ?>
 							<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
 								<div class="entry-page post-thumbnail-wrap overlay-1">

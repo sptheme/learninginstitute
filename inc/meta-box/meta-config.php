@@ -278,6 +278,38 @@
 		)
     );	
 
+	// Featured Pages
+    $meta_boxes[] = array(
+    	'id'			=> 'featured-pages-options',
+		'title'			=> __( 'Featured Pages Options', 'wpsp_meta_options' ),
+		'post_types'	=> array( 'page' ),
+		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
+		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
+		'autosave'		=> true, // Auto save: true, false (default). Optional.
+
+		'fields'		=> array(
+			array(
+				'name'  => __( 'Parent page', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "featured_parent_page",
+				'desc'	=> __( 'Please select parent page to display child pages as featured page. eg: Areas of Interest', 'wpsp_meta_options' ), 
+				'type'  => 'post',
+				'post_type' => 'page',
+				'field_type'  => 'select_advanced',
+				'placeholder' => __( 'Select an Item', 'wpsp_meta_options' ),
+			),
+			array(
+				'name'  => __( 'Page columns', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "page_col",
+				'desc'	=> __( 'How many columns to display child page', 'wpsp_meta_options' ),
+				'type' 	=> 'number',
+				'min'  	=> 0,
+				'max'  	=> 5,
+				'step' 	=> 1,
+				'std'  	=> 3,
+			),
+		)
+    );	
+
 	// Contact
     $meta_boxes[] = array(
     	'id'			=> 'contact-options',

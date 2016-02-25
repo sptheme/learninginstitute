@@ -358,11 +358,13 @@ function wpsp_post_shortcode( $atts, $content = null ){
 						wpsp_get_esc_title(), 
 						wpsp_post_thumbnail('thumb-landscape')  
 					); ?>
-					<div class="entry-blog-content">
-					<?php get_template_part( 'template-parts/blog/blog-entry-title' ); ?>	
-					<?php if ( $post_meta ) get_template_part( 'template-parts/blog/blog-entry-meta' ); ?>
-					<?php if ( $post_excerpt ) get_template_part( 'template-parts/blog/blog-entry-excerpt' ); ?>
-					</div>
+					<div class="entry-post-content-wrap">
+						<div class="entry-blog-content">
+						<?php get_template_part( 'template-parts/blog/blog-entry-title' ); ?>	
+						<?php if ( $post_meta ) get_template_part( 'template-parts/blog/blog-entry-meta' ); ?>
+						</div>
+						<?php if ( $post_excerpt ) get_template_part( 'template-parts/blog/blog-entry-excerpt' ); ?>
+					</div> <!-- .entry-post-content-wrap -->
 				<?php endif; ?>		
 				</article><!-- #post-## -->
 		<?php endwhile; wp_reset_postdata(); ?>
