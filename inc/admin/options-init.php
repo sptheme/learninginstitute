@@ -198,7 +198,7 @@
                 'type'     => 'select',
                 'data'     => 'sidebar',
                 'title'    => __( 'Single staff sidebar', 'redux-framework-wpsp' ),
-                'desc'     => __( '[ is_home ] Primary', 'redux-framework-wpsp' ),
+                'desc'     => __( 'Staff sidebar', 'redux-framework-wpsp' ),
             ),
             array(
                 'id'       => 'is-staff-post-related',
@@ -216,6 +216,53 @@
             ),
         )
     ) ); 
+
+    // Publications Post sections
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Publications', 'redux-framework-wpsp' ),
+        'id'               => 'publication-options',
+        'desc'             => __( '', 'redux-framework-wpsp' ),
+        'customizer_width' => '400px',
+        'icon'             => 'el el-list-alt'
+    ) );
+     Redux::setSection( $opt_name, array(
+        'title'      => __( 'Archive', 'redux-framework-wpsp' ),
+        'id'         => 'publication-archive-option',
+        'subsection' => true,
+        'desc'       => __( 'Manage publication archive options', 'redux-framework-wpsp' ),
+        'fields'     => array(
+            array(
+                'id'       => 'layout-archive-publication',
+                'type'     => 'image_select',
+                'title'    => __( 'Single publication layout', 'redux-framework-wpsp' ),
+                'subtitle' => __( '', 'redux-framework-wpsp' ),
+                'desc'     => __( 'Other layouts will override this option if they are set', 'redux-framework-wpsp' ),
+                //Must provide key => value(array:title|img) pairs for radio options
+                'options'  => array(
+                    'col-1c' => array(
+                        'alt' => '1 Column',
+                        'img' => ReduxFramework::$_url . 'assets/img/1col.png'
+                    ),
+                    'col-2cl' => array(
+                        'alt' => '2 Column Left',
+                        'img' => ReduxFramework::$_url . 'assets/img/2cl.png'
+                    ),
+                    'col-2cr' => array(
+                        'alt' => '2 Column Right',
+                        'img' => ReduxFramework::$_url . 'assets/img/2cr.png'
+                    )
+                ),
+                'default'  => 'col-1c',
+            ),
+            array(
+                'id'       => 'sidebar-archive-publication',
+                'type'     => 'select',
+                'data'     => 'sidebar',
+                'title'    => __( 'Archive publication sidebar', 'redux-framework-wpsp' ),
+                'desc'     => __( 'Pulication sidebar for archive page', 'redux-framework-wpsp' ),
+            ),
+        )    
+    ) );
 
     // Placeholder section
     Redux::setSection( $opt_name, array(
