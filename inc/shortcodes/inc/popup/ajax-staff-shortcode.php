@@ -37,6 +37,16 @@ function wpsp_staff_shortcode_ajax(){
 					</td>
 				</tr>
 				<tr>
+					<?php $field = 'post_style'; ?>
+					<th><label for="<?php echo $field; ?>"><?php _e( 'Post style: ', 'wpsp_shortcode' ); ?></label></th>
+					<td>
+						<select name="<?php echo $field; ?>" id="<?php echo $field; ?>">
+							<option class="level-0" value=""><?php _e( 'Simple', 'wpsp_shortcode' ); ?></option>
+							<option class="level-0" value="post-highlight"><?php _e( 'Highlight', 'wpsp_shortcode' ); ?></option>
+						</select>
+					</td>
+				</tr>
+				<tr>
 					<?php $field = 'cols'; ?>
 					<th><label for="<?php echo $field; ?>"><?php _e( 'Columns: ', 'wpsp_shortcode' ); ?></label></th>
 					<td>
@@ -44,6 +54,8 @@ function wpsp_staff_shortcode_ajax(){
 							<option class="level-0" value="2">2</option>
 							<option class="level-0" selected="selected" value="3">3</option>
 							<option class="level-0" value="4">4</option>
+							<option class="level-0" value="5">5</option>
+							<option class="level-0" value="6">6</option>
 						</select>
 					</td>
 				</tr>

@@ -57,8 +57,8 @@ function learninginstitute_setup() {
 	add_theme_support( 'post-thumbnails' );
 	add_image_size( 'thumb-full', 960, 625, true );
 	add_image_size('thumb-landscape', 750, 488, true);
-	add_image_size( 'thumb-portrait', 480, 691, true );
-	add_image_size('thumb-square', 480, 480, true);
+	add_image_size( 'thumb-portrait', 360, 518, true );
+	add_image_size('thumb-square', 360, 360, true);
 	
 
 	// This theme uses wp_nav_menu() in one location.

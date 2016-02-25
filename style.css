@@ -2108,6 +2108,20 @@ blockquote.aligncenter {
 	text-align: center;
 	padding-bottom: 0.938em;
 }
+.staff-entry.post-highlight .staff-entry-inner, 
+.staff-entry.post-highlight .staff-single-media {
+	border:5px solid #017197;
+	padding: 0;
+}
+.staff-entry.post-highlight .staff-entry-content {
+	background-color: #017197;
+}
+.staff-entry.post-highlight .staff-entry-content, 
+.staff-entry.post-highlight .staff-entry-content a,
+.staff-entry.post-highlight .staff-entry-position {
+	color: #ffffff;
+}
+
 .staff-single-media {
 	margin-bottom: 1.5em;
 }

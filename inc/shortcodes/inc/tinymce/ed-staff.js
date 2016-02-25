@@ -36,6 +36,7 @@
 		var options = { 
 			'term_id' : null,
 			'post_count' : null,
+			'post_style' : null,
 			'cols' : null
 			};
 		var shortcode = '[sc_staff';

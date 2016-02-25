@@ -160,6 +160,7 @@ function wpsp_staff_shortcode( $atts, $content = null ){
 	extract( shortcode_atts( array(
 		'term_id' => null,
 		'post_count' => null,
+		'post_style' => null,
 		'cols' => null
 	), $atts ) );
 
@@ -177,7 +178,7 @@ function wpsp_staff_shortcode( $atts, $content = null ){
 	}
 
 	$defaults = array(
-			'post_type' => 'publications',
+			'post_type' => 'staff',
 			'posts_per_page' => $post_count
 		);
 	$args = wp_parse_args( $args, $defaults );
@@ -191,6 +192,7 @@ function wpsp_staff_shortcode( $atts, $content = null ){
 	<?php while ( $staff_query->have_posts() ) : $staff_query->the_post(); ?>
 	<?php
 		$entry_classes = array( 'staff-entry' );
+		$entry_classes[] = $post_style;
 		$entry_classes[] = 'col';
 		$entry_classes[] = 'span_1_of_'. $cols; 
 	?>	
@@ -337,6 +339,7 @@ function wpsp_post_shortcode( $atts, $content = null ){
 		<?php while ( $post_query->have_posts() ) : $post_query->the_post(); ?>
 		<?php // entry-class
 		$entry_classes = array( 'entry-blog-article' );
+		$entry_classes[] = $post_style;
 		$entry_classes[] = 'col';
 		$entry_classes[] = 'span_1_of_'. $cols; ?>	
 				<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
