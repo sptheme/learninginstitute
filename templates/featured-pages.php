@@ -46,7 +46,11 @@ get_header();
 				if ( !empty($featured_pages) ) {
 					foreach ( $featured_pages as $page ) { ?>
 						<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
-							<div class="post-thumbnail"><a href="<?php wpsp_permalink($page->ID);?>" title="<?php echo wpsp_esc_title($page->ID); ?>" rel="bookmark"><?php wpsp_get_post_thumbnail('thumb-landscape'); ?></a></div>
+							<div class="post-thumbnail">
+								<a href="<?php wpsp_permalink($page->ID);?>" title="<?php echo wpsp_esc_title($page->ID); ?>" rel="bookmark">
+									<?php echo get_the_post_thumbnail( $page->ID, 'thumb-landscape' ); ?>
+								</a>
+							</div>
 							<div class="entry-post-content-wrap">
 								<div class="entry-blog-content">
 									<h3 id="blog-entry-title" class="entry-title entry-blog-title">
@@ -55,10 +59,10 @@ get_header();
 								</div> <!-- .entry-blog-content -->
 								<?php if ( $post_excerpt ) { ?>
 								<div class="blog-entry-excerpt">
-									<?php wpsp_excerpt( array(
+									<?php /*wpsp_excerpt( array(
 										'length'   => $excerpt_length,
 										'readmore' => true,
-									) ); ?>
+									) );*/ echo $page->post_excerpt; ?>
 								</div>
 								<?php } ?>
 							</div> <!-- .entry-post-content-wrap -->

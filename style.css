@@ -2074,7 +2074,8 @@ blockquote.aligncenter {
 }
 .entry-blog-article.post-highlight .entry-post-content-wrap a,
 .entry-blog-article.post-highlight .entry-post-content-wrap p,
-.entry-blog-article.post-highlight .entry-post-content-wrap .posted-on {
+.entry-blog-article.post-highlight .entry-post-content-wrap .posted-on,
+.entry-blog-article.post-highlight .blog-entry-excerpt {
 	color: #ffffff;
 }
 

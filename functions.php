@@ -96,6 +96,16 @@ function learninginstitute_setup() {
 endif;
 add_action( 'after_setup_theme', 'learninginstitute_setup' );
 
+
+/**
+ * Enables the Excerpt meta box in Page edit screen.
+ */
+function wpsp_add_excerpt_support_for_pages() {
+	add_post_type_support( 'page', 'excerpt' );
+}
+add_action( 'init', 'wpsp_add_excerpt_support_for_pages' );
+
+
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
@@ -115,15 +125,15 @@ function learninginstitute_scripts() {
 	wp_enqueue_style( 'learninginstitute-style', get_stylesheet_uri() );
 
 	//Add Google Fonts (English): Merriweather and Open Sans
-	wp_enqueue_style( 'google-font-english', 'https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic' );
-	wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css' );
+	//wp_enqueue_style( 'google-font-english', 'https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic' );
+	//wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css' );
 
 	//Add Google Font (Khmer): Hanuman
 	//wp_enqueue_style( 'google-font-khmer', 'https://fonts.googleapis.com/css?family=Hanuman:400,700' );
 
 	//Enabling Local Web Fonts
-	//wp_enqueue_style( 'local-fonts-english', get_template_directory_uri() . '/fonts/custom-fonts.css' );
-	//wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/fonts/font-awesome/css/font-awesome.min.css' );
+	wp_enqueue_style( 'local-fonts-english', get_template_directory_uri() . '/fonts/custom-fonts.css' );
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/fonts/font-awesome/css/font-awesome.min.css' );
 
 	wp_enqueue_style( 'mobile-menu', get_template_directory_uri() . '/css/mobile-menu.css' );
 	wp_enqueue_style( 'superslides', get_template_directory_uri() . '/css/superslides.css' );
