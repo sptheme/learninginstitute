@@ -2613,7 +2613,8 @@ object {
 	margin-bottom: 0.625em;
 	padding-bottom: 0;
 }
-.rwmb-map-canvas {
+.rwmb-map-canvas,
+iframe.google-map {
 	border:5px solid #f1f1f1;
 }
 
