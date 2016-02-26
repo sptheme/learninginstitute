@@ -225,7 +225,7 @@
         'customizer_width' => '400px',
         'icon'             => 'el el-list-alt'
     ) );
-     Redux::setSection( $opt_name, array(
+    Redux::setSection( $opt_name, array(
         'title'      => __( 'Archive', 'redux-framework-wpsp' ),
         'id'         => 'publication-archive-option',
         'subsection' => true,
