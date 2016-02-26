@@ -181,7 +181,7 @@ if ( ! class_exists( 'WPSP_Cp_Testimonials' ) ) {
 			// Define and sanitize options
 			$name = esc_html( get_option( 'testimonials_cat_labels' ) );
 			$name = $name ? $name : esc_html__( 'Testimonials Categories', 'wpsp' );
-			$slug = get_option( 'testimonials_tag_slug' );
+			$slug = get_option( 'testimonials_cat_slug' );
 			$slug = $slug ? $slug : 'testimonials-category';
 
 			// Define testimonials category arguments

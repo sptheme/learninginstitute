@@ -156,6 +156,64 @@
         )
     ) );
 
+    // Portfolio Post sections
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Portfolio', 'redux-framework-wpsp' ),
+        'id'               => 'portfolio-options',
+        'desc'             => __( '', 'redux-framework-wpsp' ),
+        'customizer_width' => '400px',
+        'icon'             => 'el el-list-alt'
+    ) );
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Archive', 'redux-framework-wpsp' ),
+        'id'         => 'portfolio-archive-option',
+        'subsection' => true,
+        'desc'       => __( 'Manage portfolio archive options', 'redux-framework-wpsp' ),
+        'fields'     => array(
+            array(
+                'id'       => 'column-archive-portfolio',
+                'type'     => 'radio',
+                'title'    => __( 'Post columns', 'redux-framework-wpsp' ),
+                'desc'     => __( 'Select column number to show post', 'redux-framework-wpsp' ),
+                'options'  => array(
+                    '2' => '2 Columns',
+                    '3' => '3 Columns'
+                ),
+                'default'  => '2'
+            ),
+            array(
+                'id'       => 'layout-archive-portfolio',
+                'type'     => 'image_select',
+                'title'    => __( 'Archive layout', 'redux-framework-wpsp' ),
+                'subtitle' => __( '', 'redux-framework-wpsp' ),
+                'desc'     => __( 'Other layouts will override this option if they are set', 'redux-framework-wpsp' ),
+                //Must provide key => value(array:title|img) pairs for radio options
+                'options'  => array(
+                    'col-1c' => array(
+                        'alt' => '1 Column',
+                        'img' => ReduxFramework::$_url . 'assets/img/1col.png'
+                    ),
+                    'col-2cl' => array(
+                        'alt' => '2 Column Left',
+                        'img' => ReduxFramework::$_url . 'assets/img/2cl.png'
+                    ),
+                    'col-2cr' => array(
+                        'alt' => '2 Column Right',
+                        'img' => ReduxFramework::$_url . 'assets/img/2cr.png'
+                    )
+                ),
+                'default'  => 'col-1c',
+            ),
+            array(
+                'id'       => 'sidebar-archive-portfolio',
+                'type'     => 'select',
+                'data'     => 'sidebar',
+                'title'    => __( 'Archive portfolio sidebar', 'redux-framework-wpsp' ),
+                'desc'     => __( 'Portfolio sidebar for archive page', 'redux-framework-wpsp' ),
+            ),
+        ) 
+    ) );
+
     // Staff Post sections
     Redux::setSection( $opt_name, array(
         'title'            => __( 'Staff', 'redux-framework-wpsp' ),
@@ -234,7 +292,7 @@
             array(
                 'id'       => 'layout-archive-publication',
                 'type'     => 'image_select',
-                'title'    => __( 'Single publication layout', 'redux-framework-wpsp' ),
+                'title'    => __( 'Archive layout', 'redux-framework-wpsp' ),
                 'subtitle' => __( '', 'redux-framework-wpsp' ),
                 'desc'     => __( 'Other layouts will override this option if they are set', 'redux-framework-wpsp' ),
                 //Must provide key => value(array:title|img) pairs for radio options

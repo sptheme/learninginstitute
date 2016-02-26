@@ -7,6 +7,14 @@
  * @package Learning_Institute
  */
 
+if ( ! function_exists( 'wpsp_limit_title_lenght' ) ) :
+	function wpsp_limit_title_lenght($length, $replacer = '...') {
+		 $string = the_title('','',FALSE);
+		 if(strlen($string) > $length)
+		 $string = (preg_match('/^(.*)\W.*$/', substr($string, 0, $length+1), $matches) ? $matches[1] : substr($string, 0, $length)) . $replacer;
+		 echo $string;
+	}
+endif;
 
 if ( ! function_exists( 'wpsp_get_theme_branding' ) ) :
 function wpsp_get_theme_branding( $branding = true ) {
@@ -577,11 +585,39 @@ function wpsp_get_dashicons_array() {
  */
 if ( ! function_exists( 'wpsp_is_portfolio_tax' ) ) {
 	function wpsp_is_portfolio_tax() {
-		if ( ! is_search() && ( is_tax( 'portfolio_category' ) || is_tax( 'portfolio_tag' ) ) ) {
+		if ( ! is_search() && ( is_tax( 'portfolio_category' ) || is_tax( 'portfolio_province' ) || is_tax( 'portfolio_tag' ) ) ) {
 			return true;
 		} else {
 			return false;
 		}
+	}
+}
+
+/**
+ * Portfolio status.
+ *
+ * @since 1.1.0
+ */
+if ( ! function_exists( 'wpsp_portfolio_status' ) ) {
+	function wpsp_portfolio_status( $status ) {
+		switch ( $status ) :
+
+			case '1':
+				return esc_html__( 'In Progress', 'learninginstitute' );
+
+			break;
+
+			case '2':
+				return esc_html__( 'Suspended', 'learninginstitute' );
+
+			break;
+
+			case '3':
+				return esc_html__( 'Completed', 'learninginstitute' );
+
+			break;
+
+		endswitch;
 	}
 }
 

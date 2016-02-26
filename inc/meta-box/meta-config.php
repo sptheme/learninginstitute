@@ -352,12 +352,44 @@
 				),	
 		)
     );		
+	
+	// Portfolio post type
+    $meta_boxes[] = array(
+    	'id'			=> 'portfolio-options',
+		'title'			=> __( 'Portfolio options', 'wpsp_meta_options' ),
+		'post_types'	=> array( 'portfolio' ),
+		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
+		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
+		'autosave'		=> true, // Auto save: true, false (default). Optional.
+
+		'fields'		=> array(
+			array(
+				'name'  => __( 'Status', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "portfolio_status",
+				'type'  => 'radio',
+				'options' => array(
+					'1' => __( 'In Progress', 'wpsp_meta_options' ),
+					'2' => __( 'Suspended', 'wpsp_meta_options' ),
+					'3' => __( 'Completed', 'wpsp_meta_options' ),
+				),
+			),
+			array(
+				'name'  => __( 'Number of progress', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "portfolio_progress",
+				'desc'	=> __( 'Range from 0 to 100', 'wpsp_meta_options' ),
+				'type'  => 'number',
+				'min'  => 0,
+				'max'  	=> 100,
+				'step' => 10,
+			),
+		)
+    );
 
 	// Staff post type
     $meta_boxes[] = array(
     	'id'			=> 'staff-options',
 		'title'			=> __( 'Personal information', 'wpsp_meta_options' ),
-		'post_types'	=> array( 'staff', 'portfolio' ),
+		'post_types'	=> array( 'staff' ),
 		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
 		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
 		'autosave'		=> true, // Auto save: true, false (default). Optional.

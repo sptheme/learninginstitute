@@ -22,7 +22,7 @@ get_header();
 				<?php the_content(); ?>
 			</section> <!-- .about-entry-content -->
 
-			<?php 
+			<?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; 
 				$args = array(
 	    			'post_type' 	=> 	'publications', 
 				    's' 			=> 	$_GET['p'], 

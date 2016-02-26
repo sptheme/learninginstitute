@@ -181,7 +181,7 @@ if ( ! class_exists( 'WPSP_Cp_Partner' ) ) {
 			// Define and sanitize options
 			$name = esc_html( get_option( 'partner_cat_labels' ) );
 			$name = $name ? $name : esc_html__( 'Partner Categories', 'wpsp' );
-			$slug = get_option( 'partner_tag_slug' );
+			$slug = get_option( 'partner_cat_slug' );
 			$slug = $slug ? $slug : 'partner-category';
 
 			// Define partner category arguments

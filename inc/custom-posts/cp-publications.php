@@ -181,7 +181,7 @@ if ( ! class_exists( 'WPSP_Cp_Publications' ) ) {
 			// Define and sanitize options
 			$name = esc_html( get_option( 'publications_cat_labels' ) );
 			$name = $name ? $name : esc_html__( 'Publications Categories', 'wpsp' );
-			$slug = get_option( 'publications_tag_slug' );
+			$slug = get_option( 'publications_cat_slug' );
 			$slug = $slug ? $slug : 'publications-category';
 
 			// Define publications category arguments

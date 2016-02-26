@@ -55,7 +55,7 @@ jQuery(document).ready(function($) {
 	if ( $('#page_template').length ) {
 		hide_meta_template();
 		
-		var page_tempaltes = ['homepage', 'about', 'featured-pages', 'publications-filter', 'contact'];
+		var page_tempaltes = ['homepage', 'about', 'featured-pages', 'contact'];
 		var selected_page_template = $('#page_template').val().replace('templates/', '').replace('.php', '');
 		//console.log( selected_page_template );
 		if(jQuery.inArray(selected_page_template,page_tempaltes) != '-1') {			

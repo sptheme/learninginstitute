@@ -43,6 +43,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Content
 	## Posts and pages
 	## Page header image
+	## Portfolio post type
 	## Staff post type
 	## Publication post type
 	## Asides
@@ -2086,6 +2087,80 @@ blockquote.aligncenter {
 /*.gallery .post-thumbnail-wrap {
 	border: 5px solid #eaeaea;
 }*/
+
+/*--------------------------------------------------------------
+## Portfolio post type
+--------------------------------------------------------------*/
+.portfolio-single-meta .portfolio-province {
+	display: inline-block;
+	padding-right: 0.5em;
+}
+.portfolio-single-content {
+	margin: 1.5em 0 0;	
+}
+
+
+/* Portfolio entry */
+.portfolio-entry-article .post-thumbnail {
+	margin-bottom: 0.813em;
+}
+.portfolio-entry-article.post-highlight .post-thumbnail {
+	margin-bottom: 0;
+	border:5px solid #017197;
+}
+.portfolio-entry-article.post-highlight .portfolio-entry-content {
+	background-color: #017197;
+	padding: 0.5em;
+}
+.portfolio-entry-article.post-highlight .portfolio-entry-content,
+.portfolio-entry-article.post-highlight .portfolio-entry-content a,
+.portfolio-entry-article.post-highlight .portfolio-entry-meta .portfolio-province a:hover {
+	color: #ffffff;
+}
+.portfolio-entry-article.post-highlight .portfolio-entry-meta {
+	overflow: hidden;
+}
+.portfolio-entry-article.post-highlight .portfolio-entry-meta .portfolio-province {
+	display: block;
+}
+.portfolio-entry-article.post-highlight .portfolio-entry-meta,
+.portfolio-entry-article.post-highlight .portfolio-province a,
+.portfolio-entry-article.post-highlight .portfolio-entry-title a:hover {
+	color:#56d4ff;
+}
+.portfolio-entry-article.post-highlight .portfolio-entry-meta .portfolio-status,
+.portfolio-entry-article.post-highlight .portfolio-entry-meta .portfolio-progress {
+	display: inline-block;
+	text-transform: uppercase;
+}
+.portfolio-entry-article.post-highlight .portfolio-entry-meta .portfolio-progress {
+	font-size: 3em;
+	font-weight: 600;
+}
+
+@media only screen and (min-width: 767px) {
+	.portfolio-entry-article.post-highlight .portfolio-entry-meta .portfolio-status,
+	.portfolio-entry-article.post-highlight .portfolio-entry-meta .portfolio-progress {
+		display: block;
+		position: absolute;
+	}
+	.portfolio-entry-article.post-highlight .portfolio-entry-meta .portfolio-status {
+		bottom: 10px;
+		left: 10px;
+	}
+	.portfolio-entry-article.post-highlight .portfolio-entry-meta .portfolio-progress {
+		bottom: 0;
+		right: 10px;
+	}
+	.portfolio-entry-article.post-highlight .portfolio-entry-meta .portfolio-progress {
+		font-size: 2.5em;
+	}
+	.portfolio-entry-article.post-highlight .portfolio-entry-content {
+		height: 185px;
+		overflow: hidden;
+		position: relative;
+	}
+}
 
 /*--------------------------------------------------------------
 ## Staff post type

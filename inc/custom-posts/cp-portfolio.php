@@ -35,6 +35,9 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 			}
 			if ( 'off' != get_option( 'portfolio_categories', 'on' ) ) {	
 				add_action( 'init', array( $this, 'register_categories' ), 0 );
+			}
+			if ( 'off' != get_option( 'portfolio_provinces', 'on' ) ) {	
+				add_action( 'init', array( $this, 'register_provinces' ), 0 );
 			}	
 
 			// Admin only actions
@@ -76,7 +79,7 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 			$slug             = $slug ? $slug : 'portfolio-item';
 			$menu_icon        = get_option( 'portfolio_admin_icon' );
 			$menu_icon        = $menu_icon ? $menu_icon : 'portfolio';
-			$portfolio_search = true;
+			$portfolio_search = false;
 
 			// Args
 			$args = array(
@@ -129,7 +132,7 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 
 			// Define and sanitize options
 			$name = esc_html( get_option( 'portfolio_tag_labels' ) );
-			$name = $name ? $name : esc_html__( 'Portfolio Tags', 'wpsp' );
+			$name = $name ? $name : esc_html__( 'Portfolio Tags', 'wpsp_admin' );
 			$slug = get_option( 'portfolio_tag_slug' );
 			$slug = $slug ? $slug : 'portfolio-tag';
 
@@ -139,18 +142,18 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 					'name' => $name,
 					'singular_name' => $name,
 					'menu_name' => $name,
-					'search_items' => esc_html__( 'Search','wpsp' ),
-					'popular_items' => esc_html__( 'Popular', 'wpsp' ),
-					'all_items' => esc_html__( 'All', 'wpsp' ),
-					'parent_item' => esc_html__( 'Parent', 'wpsp' ),
-					'parent_item_colon' => esc_html__( 'Parent', 'wpsp' ),
-					'edit_item' => esc_html__( 'Edit', 'wpsp' ),
-					'update_item' => esc_html__( 'Update', 'wpsp' ),
-					'add_new_item' => esc_html__( 'Add New', 'wpsp' ),
-					'new_item_name' => esc_html__( 'New', 'wpsp' ),
-					'separate_items_with_commas' => esc_html__( 'Separate with commas', 'wpsp' ),
-					'add_or_remove_items' => esc_html__( 'Add or remove', 'wpsp' ),
-					'choose_from_most_used' => esc_html__( 'Choose from the most used', 'wpsp' ),
+					'search_items' => esc_html__( 'Search','wpsp_admin' ),
+					'popular_items' => esc_html__( 'Popular', 'wpsp_admin' ),
+					'all_items' => esc_html__( 'All', 'wpsp_admin' ),
+					'parent_item' => esc_html__( 'Parent', 'wpsp_admin' ),
+					'parent_item_colon' => esc_html__( 'Parent', 'wpsp_admin' ),
+					'edit_item' => esc_html__( 'Edit', 'wpsp_admin' ),
+					'update_item' => esc_html__( 'Update', 'wpsp_admin' ),
+					'add_new_item' => esc_html__( 'Add New', 'wpsp_admin' ),
+					'new_item_name' => esc_html__( 'New', 'wpsp_admin' ),
+					'separate_items_with_commas' => esc_html__( 'Separate with commas', 'wpsp_admin' ),
+					'add_or_remove_items' => esc_html__( 'Add or remove', 'wpsp_admin' ),
+					'choose_from_most_used' => esc_html__( 'Choose from the most used', 'wpsp_admin' ),
 				),
 				'public' => true,
 				'show_in_nav_menus' => true,
@@ -180,8 +183,8 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 
 			// Define and sanitize options
 			$name = esc_html( get_option( 'portfolio_cat_labels' ) );
-			$name = $name ? $name : esc_html__( 'Portfolio Categories', 'wpsp' );
-			$slug = get_option( 'portfolio_tag_slug' );
+			$name = $name ? $name : esc_html__( 'Portfolio Categories', 'wpsp_admin' );
+			$slug = get_option( 'portfolio_cat_slug' );
 			$slug = $slug ? $slug : 'portfolio-category';
 
 			// Define portfolio category arguments
@@ -190,18 +193,18 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 					'name' => $name,
 					'singular_name' => $name,
 					'menu_name' => $name,
-					'search_items' => esc_html__( 'Search','wpsp' ),
-					'popular_items' => esc_html__( 'Popular', 'wpsp' ),
-					'all_items' => esc_html__( 'All', 'wpsp' ),
-					'parent_item' => esc_html__( 'Parent', 'wpsp' ),
-					'parent_item_colon' => esc_html__( 'Parent', 'wpsp' ),
-					'edit_item' => esc_html__( 'Edit', 'wpsp' ),
-					'update_item' => esc_html__( 'Update', 'wpsp' ),
-					'add_new_item' => esc_html__( 'Add New', 'wpsp' ),
-					'new_item_name' => esc_html__( 'New', 'wpsp' ),
-					'separate_items_with_commas' => esc_html__( 'Separate with commas', 'wpsp' ),
-					'add_or_remove_items' => esc_html__( 'Add or remove', 'wpsp' ),
-					'choose_from_most_used' => esc_html__( 'Choose from the most used', 'wpsp' ),
+					'search_items' => esc_html__( 'Search','wpsp_admin' ),
+					'popular_items' => esc_html__( 'Popular', 'wpsp_admin' ),
+					'all_items' => esc_html__( 'All', 'wpsp_admin' ),
+					'parent_item' => esc_html__( 'Parent', 'wpsp_admin' ),
+					'parent_item_colon' => esc_html__( 'Parent', 'wpsp_admin' ),
+					'edit_item' => esc_html__( 'Edit', 'wpsp_admin' ),
+					'update_item' => esc_html__( 'Update', 'wpsp_admin' ),
+					'add_new_item' => esc_html__( 'Add New', 'wpsp_admin' ),
+					'new_item_name' => esc_html__( 'New', 'wpsp_admin' ),
+					'separate_items_with_commas' => esc_html__( 'Separate with commas', 'wpsp_admin' ),
+					'add_or_remove_items' => esc_html__( 'Add or remove', 'wpsp_admin' ),
+					'choose_from_most_used' => esc_html__( 'Choose from the most used', 'wpsp_admin' ),
 				),
 				'public' => true,
 				'show_in_nav_menus' => true,
@@ -221,16 +224,68 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 		}
 
 		/**
+		 * Register Province category.
+		 *
+		 * @since 1.0.0
+		 */
+		public static function register_provinces() {
+
+			// Define and sanitize options
+			$name = esc_html( get_option( 'portfolio_province_labels' ) );
+			$name = $name ? $name : esc_html__( 'Portfolio Provinces', 'wpsp_admin' );
+			$slug = get_option( 'portfolio_province_slug' );
+			$slug = $slug ? $slug : 'portfolio-province';
+
+			// Define portfolio province arguments
+			$args = array(
+				'labels' => array(
+					'name' => $name,
+					'singular_name' => $name,
+					'menu_name' => $name,
+					'search_items' => esc_html__( 'Search','wpsp_admin' ),
+					'popular_items' => esc_html__( 'Popular', 'wpsp_admin' ),
+					'all_items' => esc_html__( 'All', 'wpsp_admin' ),
+					'parent_item' => esc_html__( 'Parent', 'wpsp_admin' ),
+					'parent_item_colon' => esc_html__( 'Parent', 'wpsp_admin' ),
+					'edit_item' => esc_html__( 'Edit', 'wpsp_admin' ),
+					'update_item' => esc_html__( 'Update', 'wpsp_admin' ),
+					'add_new_item' => esc_html__( 'Add New', 'wpsp_admin' ),
+					'new_item_name' => esc_html__( 'New', 'wpsp_admin' ),
+					'separate_items_with_commas' => esc_html__( 'Separate with commas', 'wpsp_admin' ),
+					'add_or_remove_items' => esc_html__( 'Add or remove', 'wpsp_admin' ),
+					'choose_from_most_used' => esc_html__( 'Choose from the most used', 'wpsp_admin' ),
+				),
+				'public' => true,
+				'show_in_nav_menus' => true,
+				'show_ui' => true,
+				'show_tagcloud' => true,
+				'hierarchical' => true,
+				'rewrite' => array( 'slug' => $slug ),
+				'query_var' => true
+			);
+
+			// Apply filters
+			$args = apply_filters( 'wpsp_taxonomy_portfolio_province_args', $args );
+
+			// Register the portfolio province taxonomy
+			register_taxonomy( 'portfolio_province', array( 'portfolio' ), $args );
+
+		}
+
+		/**
 		 * Adds columns to the WP dashboard edit screen.
 		 *
 		 * @since 1.0.0
 		 */
 		public static function edit_columns( $columns ) {
 			if ( taxonomy_exists( 'portfolio_category' ) ) {
-				$columns['portfolio_category'] = esc_html__( 'Category', 'wpsp' );
+				$columns['portfolio_category'] = esc_html__( 'Category', 'wpsp_admin' );
+			}
+			if ( taxonomy_exists( 'portfolio_province' ) ) {
+				$columns['portfolio_province'] = esc_html__( 'Province', 'wpsp_admin' );
 			}
 			if ( taxonomy_exists( 'portfolio_tag' ) ) {
-				$columns['portfolio_tag']      = esc_html__( 'Tags', 'wpsp' );
+				$columns['portfolio_tag']      = esc_html__( 'Tags', 'wpsp_admin' );
 			}
 			return $columns;
 		}
@@ -250,6 +305,17 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 
 					if ( $category_list = get_the_term_list( $post_id, 'portfolio_category', '', ', ', '' ) ) {
 						echo $category_list;
+					} else {
+						echo '&mdash;';
+					}
+
+				break;
+
+				// Display the province categories in the column view
+				case 'portfolio_province':
+
+					if ( $province_list = get_the_term_list( $post_id, 'portfolio_province', '', ', ', '' ) ) {
+						echo $province_list;
 					} else {
 						echo '&mdash;';
 					}
@@ -280,7 +346,7 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 			global $typenow;
 
 			// An array of all the taxonomyies you want to display. Use the taxonomy name or slug
-			$taxonomies = array( 'portfolio_category', 'portfolio_tag' );
+			$taxonomies = array( 'portfolio_category', 'portfolio_province', 'portfolio_tag' );
 
 			// must set this to the post type you want the filter(s) displayed on
 			if ( 'portfolio' == $typenow ) {
@@ -314,8 +380,8 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 		public function add_page() {
 			$wpsp_portfolio_editor = add_submenu_page(
 				'edit.php?post_type=portfolio',
-				esc_html__( 'Post Type Editor', 'wpsp' ),
-				esc_html__( 'Post Type Editor', 'wpsp' ),
+				esc_html__( 'Post Type Editor', 'wpsp_admin' ),
+				esc_html__( 'Post Type Editor', 'wpsp_admin' ),
 				'administrator',
 				'wpsp-portfolio-editor',
 				array( $this, 'create_admin_page' )
@@ -368,6 +434,7 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 				// Checkboxes
 				$checkboxes = array(
 					'portfolio_categories',
+					'portfolio_provinces',
 					'portfolio_tags',
 				);
 				foreach ( $checkboxes as $checkbox ) {
@@ -393,7 +460,7 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 			add_settings_error(
 				'wpsp_portfolio_editor_page_notices',
 				esc_attr( 'settings_updated' ),
-				esc_html__( 'Settings saved and rewrite rules flushed.', 'wpsp' ),
+				esc_html__( 'Settings saved and rewrite rules flushed.', 'wpsp_admin' ),
 				'updated'
 			);
 
@@ -409,12 +476,12 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 		 */
 		public static function create_admin_page() { ?>
 			<div class="wrap">
-				<h2><?php esc_html_e( 'Post Type Editor', 'wpsp' ); ?></h2>
+				<h2><?php esc_html_e( 'Post Type Editor', 'wpsp_admin' ); ?></h2>
 				<form method="post" action="options.php">
 				<?php settings_fields( 'wpsp_portfolio_options' ); ?>
 				<table class="form-table">
 					<tr valign="top">
-						<th scope="row"><?php esc_html_e( 'Admin Icon', 'wpsp' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Admin Icon', 'wpsp_admin' ); ?></th>
 						<td>
 							<?php
 							// Mod
@@ -433,15 +500,15 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 						</td>
 					</tr>
 					<tr valign="top">
-						<th scope="row"><?php esc_html_e( 'Post Type: Name', 'wpsp' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Post Type: Name', 'wpsp_admin' ); ?></th>
 						<td><input type="text" name="wpsp_portfolio_branding[portfolio_labels]" value="<?php echo get_option( 'portfolio_labels' ); ?>" /></td>
 					</tr>
 					<tr valign="top">
-						<th scope="row"><?php esc_html_e( 'Post Type: Singular Name', 'wpsp' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Post Type: Singular Name', 'wpsp_admin' ); ?></th>
 						<td><input type="text" name="wpsp_portfolio_branding[portfolio_singular_name]" value="<?php echo get_option( 'portfolio_singular_name' ); ?>" /></td>
 					</tr>
 					<tr valign="top" id="wpsp-tags-enable">
-						<th scope="row"><?php esc_html_e( 'Enable Tags', 'wpsp' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Enable Tags', 'wpsp_admin' ); ?></th>
 						<?php
 						// Get checkbox value
 						$mod = get_option( 'portfolio_tags', 'on' );
@@ -449,15 +516,15 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 						<td><input type="checkbox" name="wpsp_portfolio_branding[portfolio_tags]" value="<?php echo esc_attr( $mod ); ?>" <?php checked( $mod, 'on' ); ?> /></td>
 					</tr>
 					<tr valign="top" id="wpsp-tags-label">
-						<th scope="row"><?php esc_html_e( 'Tags: Label', 'wpsp' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Tags: Label', 'wpsp_admin' ); ?></th>
 						<td><input type="text" name="wpsp_portfolio_branding[portfolio_tag_labels]" value="<?php echo get_option( 'portfolio_tag_labels' ); ?>" /></td>
 					</tr>
 					<tr valign="top" id="wpsp-tags-slug">
-						<th scope="row"><?php esc_html_e( 'Tags: Slug', 'wpsp' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Tags: Slug', 'wpsp_admin' ); ?></th>
 						<td><input type="text" name="wpsp_portfolio_branding[portfolio_tag_slug]" value="<?php echo get_option( 'portfolio_tag_slug' ); ?>" /></td>
 					</tr>
 					<tr valign="top" id="wpsp-categories-enable">
-						<th scope="row"><?php esc_html_e( 'Enable Categories', 'wpsp' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Enable Categories', 'wpsp_admin' ); ?></th>
 						<?php
 						// Get checkbox value
 						$mod = get_option( 'portfolio_categories', 'on' );
@@ -465,12 +532,28 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 						<td><input type="checkbox" name="wpsp_portfolio_branding[portfolio_categories]" value="<?php echo esc_attr( $mod ); ?>" <?php checked( $mod, 'on' ); ?> /></td>
 					</tr>
 					<tr valign="top" id="wpsp-categories-label">
-						<th scope="row"><?php esc_html_e( 'Categories: Label', 'wpsp' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Categories: Label', 'wpsp_admin' ); ?></th>
 						<td><input type="text" name="wpsp_portfolio_branding[portfolio_cat_labels]" value="<?php echo get_option( 'portfolio_cat_labels' ); ?>" /></td>
 					</tr>
 					<tr valign="top" id="wpsp-categories-slug">
-						<th scope="row"><?php esc_html_e( 'Categories: Slug', 'wpsp' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Categories: Slug', 'wpsp_admin' ); ?></th>
 						<td><input type="text" name="wpsp_portfolio_branding[portfolio_cat_slug]" value="<?php echo get_option( 'portfolio_cat_slug' ); ?>" /></td>
+					</tr>
+					<tr valign="top" id="wpsp-provinces-enable">
+						<th scope="row"><?php esc_html_e( 'Enable Provinces', 'wpsp_admin' ); ?></th>
+						<?php
+						// Get checkbox value
+						$mod = get_option( 'portfolio_provinces', 'on' );
+						$mod = 'off' != $mod ? 'on' : 'off'; // sanitize ?>
+						<td><input type="checkbox" name="wpsp_portfolio_branding[portfolio_provinces]" value="<?php echo esc_attr( $mod ); ?>" <?php checked( $mod, 'on' ); ?> /></td>
+					</tr>
+					<tr valign="top" id="wpsp-provinces-label">
+						<th scope="row"><?php esc_html_e( 'Provinces: Label', 'wpsp_admin' ); ?></th>
+						<td><input type="text" name="wpsp_portfolio_branding[portfolio_province_labels]" value="<?php echo get_option( 'portfolio_province_labels' ); ?>" /></td>
+					</tr>
+					<tr valign="top" id="wpsp-provinces-slug">
+						<th scope="row"><?php esc_html_e( 'Provinces: Slug', 'wpsp_admin' ); ?></th>
+						<td><input type="text" name="wpsp_portfolio_branding[portfolio_province_slug]" value="<?php echo get_option( 'portfolio_province_slug' ); ?>" /></td>
 					</tr>
 				</table>
 				<?php submit_button(); ?>
@@ -550,7 +633,7 @@ if ( ! class_exists( 'WPSP_Cp_Portfolio' ) ) {
 
 			// Register custom sidebar
 			register_sidebar( array(
-				'name'          => $post_type_name .' '. esc_html__( 'Sidebar', 'wpsp' ),
+				'name'          => $post_type_name .' '. esc_html__( 'Sidebar', 'wpsp_admin' ),
 				'id'            => 'portfolio_sidebar',
 				'description'   => '',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',

@@ -181,7 +181,7 @@ if ( ! class_exists( 'WPSP_Cp_Staff' ) ) {
 			// Define and sanitize options
 			$name = esc_html( get_option( 'staff_cat_labels' ) );
 			$name = $name ? $name : esc_html__( 'Staff Categories', 'wpsp' );
-			$slug = get_option( 'staff_tag_slug' );
+			$slug = get_option( 'staff_cat_slug' );
 			$slug = $slug ? $slug : 'staff-category';
 
 			// Define staff category arguments

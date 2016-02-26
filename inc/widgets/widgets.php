@@ -143,6 +143,9 @@ function wpsp_sidebar_primary() {
 	if ( is_singular('staff') && $redux_wpsp['sidebar-single-staff'] ) $sidebar = $redux_wpsp['sidebar-single-staff'];
 	if ( is_archive() && $redux_wpsp['sidebar-archive'] ) $sidebar = $redux_wpsp['sidebar-archive'];
 	if ( is_category() && $redux_wpsp['sidebar-archive-category'] ) $sidebar = $redux_wpsp['sidebar-archive-category'];
+	if ( is_tax('portfolio_category') && $redux_wpsp['sidebar-archive-portfolio'] ) $sidebar = $redux_wpsp['sidebar-archive-portfolio'];
+	if ( is_tax('portfolio_province') && $redux_wpsp['sidebar-archive-portfolio'] ) $sidebar = $redux_wpsp['sidebar-archive-portfolio'];
+	if ( is_tax('portfolio_tag') && $redux_wpsp['sidebar-archive-portfolio'] ) $sidebar = $redux_wpsp['sidebar-archive-portfolio'];
 	if ( is_tax('publications_tag') && $redux_wpsp['sidebar-archive-publication'] ) $sidebar = $redux_wpsp['sidebar-archive-publication'];
 	if ( is_tax('publications_category') && $redux_wpsp['sidebar-archive-publication'] ) $sidebar = $redux_wpsp['sidebar-archive-publication'];
 	if ( is_search() && $redux_wpsp['sidebar-search'] ) $sidebar = $redux_wpsp['sidebar-search'];
@@ -206,6 +209,9 @@ function wpsp_layout_class() {
 	elseif ( is_home() && ( $redux_wpsp['layout-home'] !='inherit' ) ) $layout = $redux_wpsp['layout-home'];
 	elseif ( is_category() && ( $redux_wpsp['layout-archive-category'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-category'];
 	elseif ( is_archive() && ( $redux_wpsp['layout-archive'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive'];
+	elseif ( is_tax('portfolio_category') && ( $redux_wpsp['layout-archive-portfolio'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-portfolio'];
+	elseif ( is_tax('portfolio_province') && ( $redux_wpsp['layout-archive-portfolio'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-portfolio'];
+	elseif ( is_tax('portfolio_tag') && ( $redux_wpsp['layout-archive-portfolio'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-portfolio'];
 	elseif ( is_tax('publications_tag') && ( $redux_wpsp['layout-archive-publication'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-publication'];
 	elseif ( is_tax('publications_category') && ( $redux_wpsp['layout-archive-publication'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-publication'];
 	elseif ( is_search() && ( $redux_wpsp['layout-search'] !='inherit' ) ) $layout = $redux_wpsp['layout-search'];

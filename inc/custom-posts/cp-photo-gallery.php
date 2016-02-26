@@ -181,7 +181,7 @@ if ( ! class_exists( 'WPSP_Cp_Photo_Gallery' ) ) {
 			// Define and sanitize options
 			$name = esc_html( get_option( 'photo_gallery_cat_labels' ) );
 			$name = $name ? $name : esc_html__( 'Photo Gallery Categories', 'wpsp' );
-			$slug = get_option( 'photo_gallery_tag_slug' );
+			$slug = get_option( 'photo_gallery_cat_slug' );
 			$slug = $slug ? $slug : 'photo-gallery-category';
 
 			// Define photo gallery category arguments
