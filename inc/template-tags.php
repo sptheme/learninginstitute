@@ -223,8 +223,8 @@ function wpsp_paging_nav() {
 		'current'  => $paged,
 		'mid_size' => 2,
 		'add_args' => array_map( 'urlencode', $query_args ),
-		'prev_text' => __( '← Previous', 'klahan9' ),
-		'next_text' => __( 'Next →', 'klahan9' ),
+		'prev_text' => __( '← Previous', 'learninginstitute' ),
+		'next_text' => __( 'Next →', 'learninginstitute' ),
         'type'      => 'list',
 	) );
 
@@ -232,7 +232,7 @@ function wpsp_paging_nav() {
 
 	?>
 	<nav class="navigation paging-navigation" role="navigation">
-		<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'klahan9' ); ?></h1>
+		<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'learninginstitute' ); ?></h1>
 			<?php echo $links; ?>
 	</nav><!-- .navigation -->
 	<?php

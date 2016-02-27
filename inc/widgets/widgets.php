@@ -140,6 +140,7 @@ function wpsp_sidebar_primary() {
 	// Set sidebar based on page
 	if ( is_home() && $redux_wpsp['sidebar-home'] ) $sidebar = $redux_wpsp['sidebar-home'];
 	if ( is_single() && $redux_wpsp['sidebar-single'] ) $sidebar = $redux_wpsp['sidebar-single'];
+	if ( is_singular('portfolio') && $redux_wpsp['sidebar-single-portfolio'] ) $sidebar = $redux_wpsp['sidebar-single-portfolio'];
 	if ( is_singular('staff') && $redux_wpsp['sidebar-single-staff'] ) $sidebar = $redux_wpsp['sidebar-single-staff'];
 	if ( is_archive() && $redux_wpsp['sidebar-archive'] ) $sidebar = $redux_wpsp['sidebar-archive'];
 	if ( is_category() && $redux_wpsp['sidebar-archive-category'] ) $sidebar = $redux_wpsp['sidebar-archive-category'];
@@ -196,6 +197,7 @@ function wpsp_layout_class() {
 		elseif ( is_page() && ( $redux_wpsp['layout-page'] !='inherit' ) ) $layout = $redux_wpsp['layout-page'];
 		
 		// Else check for custom post
+		elseif ( is_singular('portfolio') && ( $redux_wpsp['layout-single-portfolio'] !='inherit' ) ) $layout = $redux_wpsp['layout-single-portfolio'];
 		elseif ( is_singular('staff') && ( $redux_wpsp['layout-single-staff'] !='inherit' ) ) $layout = $redux_wpsp['layout-single-staff'];
 
 		// Else check for custom template

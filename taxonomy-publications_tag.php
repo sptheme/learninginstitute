@@ -38,7 +38,11 @@ get_header(); ?>
 
 			endwhile;
 
-			the_posts_navigation();
+			 // Pagination
+            if(function_exists('wp_pagenavi'))
+                wp_pagenavi();
+            else 
+                wpsp_paging_nav();
 
 		else :
 

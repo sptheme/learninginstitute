@@ -57,7 +57,7 @@ if ( ! empty( $cats_ids ) ) {
 } 
 
 // Apply filters to query args
-$args = apply_filters( 'wpex_related_staff_args', $args );
+$args = apply_filters( 'wpsp_related_staff_args', $args );
 
 // Run Query - must be set to $wpex_related_query var!!
 $related_query = new wp_query( $args );

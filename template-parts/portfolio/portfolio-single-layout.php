@@ -20,4 +20,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php get_template_part( 'template-parts/portfolio/portfolio-single-content' ); ?>
 </article><!-- #post-## -->
 <?php wpsp_the_post_navigation(); ?>
-<?php //get_template_part( 'template-parts/portfolio/portfolio-single-related' ); ?>
+<?php get_template_part( 'template-parts/portfolio/portfolio-single-related' ); ?>

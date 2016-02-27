@@ -44,7 +44,7 @@ get_header();
 	                    if(function_exists('wp_pagenavi'))
 	                        wp_pagenavi();
 	                    else 
-	                        wpsp_paging_nav($custom_query->max_num_pages); ?>
+	                        wpsp_paging_nav(); ?>
 				</div> <!-- .wpsp-row .clearfix -->
 				<?php	
 				} else { ?>

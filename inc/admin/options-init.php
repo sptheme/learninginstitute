@@ -162,7 +162,59 @@
         'id'               => 'portfolio-options',
         'desc'             => __( '', 'redux-framework-wpsp' ),
         'customizer_width' => '400px',
-        'icon'             => 'el el-list-alt'
+        'icon'             => 'el el-briefcase'
+    ) );
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Single', 'redux-framework-wpsp' ),
+        'id'         => 'portfolio-single-option',
+        'subsection' => true,
+        'desc'       => __( 'Manage portfolio single options', 'redux-framework-wpsp' ),
+        'fields'     => array(
+            array(
+                'id'       => 'layout-single-portfolio',
+                'type'     => 'image_select',
+                'title'    => __( 'Single layout', 'redux-framework-wpsp' ),
+                'subtitle' => __( '', 'redux-framework-wpsp' ),
+                'desc'     => __( 'Other layouts will override this option if they are set', 'redux-framework-wpsp' ),
+                //Must provide key => value(array:title|img) pairs for radio options
+                'options'  => array(
+                    'col-1c' => array(
+                        'alt' => '1 Column',
+                        'img' => ReduxFramework::$_url . 'assets/img/1col.png'
+                    ),
+                    'col-2cl' => array(
+                        'alt' => '2 Column Left',
+                        'img' => ReduxFramework::$_url . 'assets/img/2cl.png'
+                    ),
+                    'col-2cr' => array(
+                        'alt' => '2 Column Right',
+                        'img' => ReduxFramework::$_url . 'assets/img/2cr.png'
+                    )
+                ),
+                'default'  => 'col-1c',
+            ),
+            array(
+                'id'       => 'sidebar-single-portfolio',
+                'type'     => 'select',
+                'data'     => 'sidebar',
+                'title'    => __( 'Single portfolio sidebar', 'redux-framework-wpsp' ),
+                'desc'     => __( 'Portfolio sidebar for single post', 'redux-framework-wpsp' ),
+            ),
+            array(
+                'id'       => 'is-portfolio-post-related',
+                'type'     => 'switch', 
+                'title'    => __('Post related', 'redux-framework-demo'),
+                'subtitle' => __('Show related posts On or Off', 'redux-framework-demo'),
+                'default'  => true,
+            ),
+            array(
+                'id'       => 'portfolio-post-related-title',
+                'type'     => 'text', 
+                'title'    => __('Post related title', 'redux-framework-demo'),
+                'subtitle' => __('', 'redux-framework-demo'),
+                'default'  => 'You may also see...',
+            ),
+        ) 
     ) );
     Redux::setSection( $opt_name, array(
         'title'      => __( 'Archive', 'redux-framework-wpsp' ),

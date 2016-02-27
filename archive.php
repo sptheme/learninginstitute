@@ -41,7 +41,11 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 			</div>
-			<?php the_posts_navigation();
+			<?php // Pagination
+                if(function_exists('wp_pagenavi'))
+                    wp_pagenavi();
+                else 
+                    wpsp_paging_nav();
 
 		else :
 

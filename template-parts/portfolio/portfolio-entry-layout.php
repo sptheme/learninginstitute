@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $redux_wpsp;
 
-$cols = $redux_wpsp['column-archive-portfolio'];
+$cols = (is_page()) ? 3 : $redux_wpsp['column-archive-portfolio'];
 $entry_classes = array( 'portfolio-entry-article' ); 
 $entry_classes[] = 'post-highlight';
 $entry_classes[] = 'col';
