@@ -27,6 +27,7 @@ function wpsp_add_shortcodes() {
 	//add_shortcode( 'button', 'wpsp_button_shortcode' );
 	add_shortcode( 'callout_box', 'wpsp_callout_box_shortcode' );
 	add_shortcode( 'sc_staff', 'wpsp_staff_shortcode' );
+	add_shortcode( 'sc_partner', 'wpsp_partner_shortcode' );
 	add_shortcode( 'sc_publication', 'wpsp_publication_shortcode' );
 	add_shortcode( 'sc_post', 'wpsp_post_shortcode' );
 	
@@ -194,7 +195,7 @@ function wpsp_staff_shortcode( $atts, $content = null ){
 		$entry_classes = array( 'staff-entry' );
 		$entry_classes[] = $post_style;
 		$entry_classes[] = 'col';
-		$entry_classes[] = 'span_1_of_'. $cols; 
+		$entry_classes[] = wpsp_grid_class($cols); 
 	?>	
 			<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
 				<div class="staff-entry-inner">
@@ -214,6 +215,66 @@ function wpsp_staff_shortcode( $atts, $content = null ){
 }
 endif;
 
+if ( ! function_exists( 'wpsp_partner_shortcode' ) ) :
+/**
+ * partner shortcode
+ *
+ * Options: Show all partner / by Category
+ *
+ */
+function wpsp_partner_shortcode( $atts, $content = null ){
+	ob_start();
+	extract( shortcode_atts( array(
+		'term_id' => null,
+		'post_count' => null,
+		'cols' => null
+	), $atts ) );
+
+	$args = array();
+	if ( $term_id != '-1' ) {
+		$args = array(
+			'tax_query' => array(
+					array(
+						'taxonomy' => 'partner_category',
+						'field'    => 'id',
+						'terms'    => array($term_id)
+					)
+				),
+			);
+	}
+
+	$defaults = array(
+			'post_type' => 'partner',
+			'posts_per_page' => $post_count
+		);
+	$args = wp_parse_args( $args, $defaults );
+	extract( $args );
+
+	$partner_query = new WP_Query($args);
+
+	if ( $partner_query->have_posts() ) { ?>
+		<div class="wpsp-row clearfix">
+
+	<?php while ( $partner_query->have_posts() ) : $partner_query->the_post(); ?>
+	<?php
+		$entry_classes = array( 'entry-partner-article' );
+		$entry_classes[] = 'col';
+		$entry_classes[] = wpsp_grid_class($cols); 
+	?>	
+			<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
+				<?php get_template_part( 'template-parts/partner/partner-entry-media' ); ?>
+			</article><!-- #post-## -->
+	<?php endwhile; wp_reset_postdata(); ?>
+
+		</div> <!-- .wpsp-row .clearfix -->
+	<?php	
+	} else {
+		echo esc_html__( 'Sorry, new content will coming soon.', 'learninginstitute' );
+	}
+
+	return ob_get_clean();
+}
+endif;
 
 if ( ! function_exists( 'wpsp_publication_shortcode' ) ) :
 /**
@@ -259,7 +320,7 @@ function wpsp_publication_shortcode( $atts, $content = null ){
 	<?php
 		$entry_classes = array( 'entry-publication-article' );
 		$entry_classes[] = 'col';
-		$entry_classes[] = 'span_1_of_'. $cols; 
+		$entry_classes[] = wpsp_grid_class($cols); 
 	?>	
 			<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
 				<?php get_template_part( 'template-parts/publication/publication-entry-media' ); ?>
@@ -341,7 +402,7 @@ function wpsp_post_shortcode( $atts, $content = null ){
 		$entry_classes = array( 'entry-blog-article' );
 		$entry_classes[] = $post_style;
 		$entry_classes[] = 'col';
-		$entry_classes[] = 'span_1_of_'. $cols; ?>	
+		$entry_classes[] = wpsp_grid_class($cols); ?>	
 				<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
 				<?php if ( 'overlay-2' == $post_style ) : ?>
 					<div class="post-thumbnail-wrap overlay-2">

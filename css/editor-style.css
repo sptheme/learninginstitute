@@ -44,6 +44,7 @@ h5,
 h6 {
 	font-family: 'Open Sans', sans-serif;
 	clear: both;
+	font-weight: 400;
 	line-height: 1.3em; /* Always relative to the inherited font-size of container element */
 	margin-top: 2.5rem; /* Use rem are root relative to em, always related to default font-size (16px) */
 	margin-bottom: 1rem; 

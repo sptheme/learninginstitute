@@ -104,9 +104,9 @@ if ( ! class_exists( 'WPSP_Cp_Partner' ) ) {
 				),
 				'supports' => array(
 					'title',
-					'editor',
-					'excerpt',
-					'thumbnail',
+					//'editor',
+					//'excerpt',
+					//'thumbnail',
 					'comments',
 					'custom-fields',
 					'revisions',

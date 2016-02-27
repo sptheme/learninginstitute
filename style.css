@@ -2414,6 +2414,9 @@ object {
 .our-work .col.col-3 .post-thumbnail-wrap {
 	background-color: #eabe0f;
 }
+.our-work .col.col-3 {
+	clear: none!important;
+}
 
 .our-work .post-thumbnail-wrap span.title {
 	font-size: 1.125em;
@@ -2472,6 +2475,9 @@ object {
 .latest-post.wpsp-row .col,
 .latest-publications.wpsp-row .col {
 	margin-bottom: 0;
+}
+.latest-publications.wpsp-row .col.span_1_of_2:nth-child(2n+1) {
+	clear: none!important;
 }
 .latest-publications .publication-entry-title {
 	font-size: 0.938em;

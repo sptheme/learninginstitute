@@ -403,6 +403,32 @@
 		)
     );
 
+    // Partner post type
+    $meta_boxes[] = array(
+    	'id'			=> 'partner-options',
+		'title'			=> __( 'Partner Options', 'wpsp_meta_options' ),
+		'post_types'	=> array( 'partner' ),
+		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
+		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
+		'autosave'		=> true, // Auto save: true, false (default). Optional.
+
+		'fields'		=> array(
+			array(
+				'name'  => __( 'Logo', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "partner_logo",
+				'desc'	=> __( 'Upload logo image. File support .gif, .jpeg or png', 'wpsp_meta_options' ), 
+				'type'  => 'image_advanced',
+				'max_file_uploads' => 1
+			),	
+			array(
+				'name'  => __( 'Website URL:', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "partner_url",
+				'type' => 'url',
+				'std'  => 'http://google.com',
+			),
+		)
+    );
+
     // Publications post type
     $meta_boxes[] = array(
     	'id'			=> 'publication-options',
