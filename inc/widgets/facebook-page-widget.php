@@ -48,8 +48,9 @@ class WPSP_Facebook_Page_Widget extends WP_Widget {
 	public function widget( $args, $instance ) {
 
 		// Set vars for widget usage
-		$title        = isset( $instance['title'] ) ? apply_filters( 'widget_title', $instance['title'] ) : '';
-		$facebook_url = isset( $instance['facebook_url'] ) ? $instance['facebook_url'] : '';
+		$title        	= isset( $instance['title'] ) ? apply_filters( 'widget_title', $instance['title'] ) : '';
+		$facebook_url 	= isset( $instance['facebook_url'] ) ? $instance['facebook_url'] : '';
+		$height 		= isset( $instance['height'] ) ? $instance['height'] : '';
 
 		// Before widget WP hook
 		echo $args['before_widget'];
@@ -67,8 +68,8 @@ class WPSP_Facebook_Page_Widget extends WP_Widget {
 
 		elseif ( $facebook_url ) : ?>
 
-			<div class="fb-page" data-href="<?php echo esc_url( $facebook_url ); ?>" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>
-
+			<div class="fb-page" data-href="<?php echo esc_url( $facebook_url ); ?>" data-tabs="timeline" data-height="<?php echo $height; ?>" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
+			
 			<div id="fb-root"></div>
 			<script>(function(d, s, id) {
 			  var js, fjs = d.getElementsByTagName(s)[0];
@@ -99,9 +100,10 @@ class WPSP_Facebook_Page_Widget extends WP_Widget {
 	 * @return array Updated safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$instance                 = $old_instance;
-		$instance['title']        = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-		$instance['facebook_url'] = ( ! empty( $new_instance['facebook_url'] ) ) ? esc_url( $new_instance['facebook_url'] ) : '';
+		$instance                 	= $old_instance;
+		$instance['title']        	= ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['facebook_url'] 	= ( ! empty( $new_instance['facebook_url'] ) ) ? esc_url( $new_instance['facebook_url'] ) : '';
+		$instance['height'] 		= ( ! empty( $new_instance['height'] ) ) ? (int) $new_instance['height'] : '';
 		return $instance;
 	}
 
@@ -118,6 +120,7 @@ class WPSP_Facebook_Page_Widget extends WP_Widget {
 		extract( wp_parse_args( ( array ) $instance, array(
 			'title'        => esc_html__( 'Find Us On Facebook', 'wpsp_admin' ),
 			'facebook_url' => '',
+			'height' => '',
 		) ) ); ?>
 
 		<p>
@@ -128,6 +131,11 @@ class WPSP_Facebook_Page_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'facebook_url' ) ); ?>"><?php esc_html_e( 'Facebook Page URL', 'wpsp_admin' ); ?></label>
 			<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'facebook_url' ) ); ?>" type="text" value="<?php echo esc_attr( $facebook_url ); ?>" />
+		</p>
+
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'height' ) ); ?>"><?php esc_html_e( 'Height', 'wpsp_admin' ); ?></label>
+			<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'height' ) ); ?>" type="text" value="<?php echo esc_html( $height ); ?>" placeholder="The pixel height of the embed (Min. 70)" />
 		</p>
 		
 	<?php

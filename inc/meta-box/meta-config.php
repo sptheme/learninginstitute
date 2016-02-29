@@ -354,13 +354,13 @@
     );		
 	
 	// Portfolio post type
-    $meta_boxes[] = array(
+    /*$meta_boxes[] = array(
     	'id'			=> 'portfolio-options',
 		'title'			=> __( 'Portfolio options', 'wpsp_meta_options' ),
 		'post_types'	=> array( 'portfolio' ),
-		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
-		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
-		'autosave'		=> true, // Auto save: true, false (default). Optional.
+		'context'		=> 'normal', 
+		'priority'		=> 'high', 
+		'autosave'		=> true, 
 
 		'fields'		=> array(
 			array(
@@ -383,7 +383,7 @@
 				'step' => 10,
 			),
 		)
-    );
+    );*/
 
 	// Staff post type
     $meta_boxes[] = array(

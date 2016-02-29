@@ -24,9 +24,8 @@ $entry_classes[] = wpsp_grid_class($cols); ?>
 	<?php get_template_part( 'template-parts/portfolio/portfolio-entry-media' ); ?>
 	<div class="portfolio-entry-content">
 		<?php get_template_part( 'template-parts/portfolio/portfolio-entry-title' ); ?>
-		<div class="portfolio-entry-meta">
-			<?php get_template_part( 'template-parts/portfolio/portfolio-entry-meta' ); ?>
-		</div> <!-- .portfolio-entry-meta -->
+		<?php get_template_part( 'template-parts/portfolio/portfolio-entry-meta' ); ?>
+		<?php get_template_part( 'template-parts/portfolio/portfolio-entry-excerpt' ); ?>
 	</div> <!-- .entry-portfolio-content -->
 </article>
 </article><!-- #post-## -->

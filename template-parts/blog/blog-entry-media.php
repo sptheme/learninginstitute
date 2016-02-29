@@ -27,7 +27,7 @@ $post_format = get_post_format(); ?>
 <?php else: ?>
 		<div id="blog-entry-media" class="blog-entry-media">
 			<div class="post-thumbnail">	
-			<?php wpsp_get_post_thumbnail('thumb-landscape'); ?>
+			<?php wpsp_get_post_thumbnail('thumb-full'); ?>
 			</div> <!-- .post-thumbnail -->
 		</div> <!-- .blog-entry-media -->
 <?php endif;?> 	

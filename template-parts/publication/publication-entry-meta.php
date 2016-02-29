@@ -36,10 +36,10 @@ if ( ! defined( 'ABSPATH' ) ) {
     	<ul class="file-download">
     		<li><?php esc_html_e( 'Download: ', 'learninginstitute' ); ?></li>
     		<?php if ( !empty($file_en) ) : ?>
-    		<li><a href="<?php echo get_attached_file( $file_en ); ?>" target="_blank"><?php esc_html_e( 'English', 'learninginstitute' ); ?></a><?php printf( __( '<small> (Size: %s)</small>', 'learninginstitute' ), esc_html( $file_size_en ) ); ?></li>
+    		<li><a href="<?php echo wp_get_attachment_url( $file_en ); ?>" target="_blank"><?php esc_html_e( 'English', 'learninginstitute' ); ?></a><?php printf( __( '<small> (Size: %s)</small>', 'learninginstitute' ), esc_html( $file_size_en ) ); ?></li>
     		<?php endif; ?>	
     		<?php if ( !empty($file_kh) ) : ?>
-    		<li><?php echo ( !empty($file_en) ) ? ' - ' : ''; ?><a href="<?php echo get_attached_file( $file_kh ); ?>" target="_blank"><?php esc_html_e( 'Khmer', 'learninginstitute' ); ?></a><?php printf( __( '<small> (Size: %s)</small>', 'learninginstitute' ), esc_html( $file_size_kh ) ); ?></li>
+    		<li><?php echo ( !empty($file_en) ) ? ' - ' : ''; ?><a href="<?php echo wp_get_attachment_url( $file_kh ); ?>" target="_blank"><?php esc_html_e( 'Khmer', 'learninginstitute' ); ?></a><?php printf( __( '<small> (Size: %s)</small>', 'learninginstitute' ), esc_html( $file_size_kh ) ); ?></li>
     		<?php endif; ?>	
     	</ul>
     </div>

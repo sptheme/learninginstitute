@@ -406,7 +406,7 @@ function wpsp_post_shortcode( $atts, $content = null ){
 				<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
 				<?php if ( 'overlay-2' == $post_style ) : ?>
 					<div class="post-thumbnail-wrap overlay-2">
-						<div class="post-thumbnail"><?php wpsp_get_post_thumbnail('thumb-landscape'); ?></div>
+						<div class="post-thumbnail"><?php wpsp_get_post_thumbnail('thumb-full'); ?></div>
 						<div class="caption-wrap">
 							<div class="caption-inner">
 							<a href="<?php wpsp_permalink();?>" title="<?php echo wpsp_esc_title(); ?>" rel="bookmark"><span class="title"><?php the_title(); ?></span></a>
@@ -417,7 +417,7 @@ function wpsp_post_shortcode( $atts, $content = null ){
 					<?php printf( '<div class="post-thumbnail"><a itemprop="url" href="%1$s" rel="bookmark" title="%2$s">%3$s</a></div>', 
 						wpsp_get_permalink(), 
 						wpsp_get_esc_title(), 
-						wpsp_post_thumbnail('thumb-landscape')  
+						wpsp_post_thumbnail('thumb-full')  
 					); ?>
 					<div class="entry-post-content-wrap">
 						<div class="entry-blog-content">
