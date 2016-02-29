@@ -17,20 +17,20 @@ get_header();
 	<section class="our-work">
 		<div class="container">
 			<header class="section-title">
-			<?php if ( !empty($home_meta['wpsp_program_headline'][0]) ) : ?>
-	            <h2><?php echo $home_meta['wpsp_program_headline'][0]; ?></h2>
+			<?php if ( !empty($home_meta['wpsp_program_headline_home'][0]) ) : ?>
+	            <h2><?php echo $home_meta['wpsp_program_headline_home'][0]; ?></h2>
 	        <?php endif; ?>    
-	        <?php if ( !empty($home_meta['wpsp_program_desc'][0]) ) : ?>
-	            <p class="description"><?php echo $home_meta['wpsp_program_desc'][0]; ?></p>
+	        <?php if ( !empty($home_meta['wpsp_program_desc_home'][0]) ) : ?>
+	            <p class="description"><?php echo $home_meta['wpsp_program_desc_home'][0]; ?></p>
 	        <?php endif; ?>    
 	        </header>
-	        <?php if ( !empty($home_meta['wpsp_main_program_page'][0]) ) : ?>
+	        <?php if ( !empty($home_meta['wpsp_main_program_page_home'][0]) ) : ?>
 	        <div class="featured-page wpsp-row clearfix">
 	    	<?php
 	    		$page_count = 0;
 	    		$cols = 2;
 	    		$args = array (
-					'child_of' => $home_meta['wpsp_main_program_page'][0],
+					'child_of' => $home_meta['wpsp_main_program_page_home'][0],
 					'sort_column' => 'menu_order',
 				); 
 				$featured_pages = get_pages( $args );

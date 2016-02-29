@@ -25,9 +25,18 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'learninginstitute' ); ?></a>
-
+	<div id="top-bar" class="site-top-bar">
+		<div class="container clearfix">
+		<?php //if ( is_active_sidebar( 'top-sidebar' ) ) dynamic_sidebar( 'top-sidebar' ); ?>
+		</div>
+	</div>
 	<header id="masthead" class="site-header" role="banner">
 		<div class="container clearfix">
+			<?php if ( is_active_sidebar( 'top-sidebar' ) ) : ?>
+			<div id="top-bar" class="site-top-bar clearfix">
+			<?php dynamic_sidebar( 'top-sidebar' ); ?>
+			</div>
+			<?php endif; ?>
 			<div class="site-branding">
 				<?php if( !is_singular() ) echo '<h1 class="site-title">'; else echo '<h2>'; ?>
 					<a itemprop="url" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="<?php bloginfo( 'name' ); ?>"></a>

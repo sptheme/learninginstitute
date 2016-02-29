@@ -97,18 +97,18 @@
 			),
 				array(
 					'name'  => __( 'Highlight the title', 'wpsp_meta_options' ), 
-					'id'    => $prefix . "program_headline",
+					'id'    => $prefix . "program_headline_home",
 					'type'  => 'text'
 				),
 				array(
 					'name'  => __( 'Description', 'wpsp_meta_options' ), 
-					'id'    => $prefix . "program_desc",
+					'id'    => $prefix . "program_desc_home",
 					'type'  => 'textarea',
 					'row'	=> 3
 				),
 				array(
 					'name'  => __( 'Display Main Programs Page', 'wpsp_meta_options' ), 
-					'id'    => $prefix . "main_program_page",
+					'id'    => $prefix . "main_program_page_home",
 					'desc'	=> __( 'Please select parent page that containe all of main programs. eg: Areas of Interest', 'wpsp_meta_options' ), 
 					'type'  => 'post',
 					'post_type' => 'page',

@@ -45,6 +45,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## Page header image
 	## Portfolio post type
 	## Staff post type
+	## Partner post type
 	## Publication post type
 	## Asides
 	## Comments
@@ -1618,6 +1619,23 @@ blockquote.aligncenter {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+.site-top-bar {
+	padding-top: 0.188em;
+	padding-right: 0.500em;
+}
+.site-top-bar .widget {
+	float: right;
+	margin-bottom: 0;
+}
+.site-top-bar .widget li {
+	border-bottom: none;
+}
+.site-top-bar .widget #lang_sel_list {
+	height: auto;
+}
+.site-top-bar .widget .lang_sel_list_horizontal ul {
+ 	overflow: hidden;
+}
 .site-header {
 	background-color: #ffffff;
 }
@@ -1657,6 +1675,9 @@ blockquote.aligncenter {
 }
 
 @media only screen and (min-width: 767px) {
+	.site-top-bar {
+		padding-right:0;
+	}
 	.site-branding h2 {
 		padding-left: 0;
 	}
@@ -1666,7 +1687,7 @@ blockquote.aligncenter {
 	.site-search-top {
 		display: block;
 		float: right;
-		margin-top: 1em;
+		margin-top: 0.500em;
 	}
 }
 
@@ -2220,6 +2241,13 @@ blockquote.aligncenter {
 .staff-single-position {
 	font-size: 0.938em;
 	color:#555;
+}
+
+/*--------------------------------------------------------------
+## Partner post type
+--------------------------------------------------------------*/
+.entry-partner-article a:hover img {
+	opacity: 0.5;
 }
 
 /*--------------------------------------------------------------
