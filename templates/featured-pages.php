@@ -29,7 +29,7 @@ get_header();
 			<?php // setup cols
 				$page_count = 0;
 				$cols = rwmb_meta('wpsp_page_col') ? rwmb_meta('wpsp_page_col') : 4;
-				$post_style = 'post-highlight';
+				$post_style = rwmb_meta('wpsp_featured_page_style') ? rwmb_meta('wpsp_featured_page_style') : 'post-highlight-green';
 				$post_excerpt = 1;
 				$excerpt_length = 25;
 				$entry_classes = array( 'entry-blog-article' ); 

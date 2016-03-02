@@ -298,6 +298,21 @@
 				'placeholder' => __( 'Select an Item', 'wpsp_meta_options' ),
 			),
 			array(
+				'name'  => __( 'Page style', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "featured_page_style",
+				'desc'	=> __( 'Will show page style as box with background color options', 'wpsp_meta_options' ), 
+				'type'  => 'select',
+				'options'     => array(
+					'post-highlight' => __( 'Highlight Blue', 'wpsp_meta_options' ),
+					'post-highlight-green' => __( 'Highlight Green', 'wpsp_meta_options' ),
+					'post-highlight-gray' => __( 'Highlight Green', 'wpsp_meta_options' ),
+				),
+				// Select multiple values, optional. Default is false.
+				'multiple'    => false,
+				'std'         => 'post-highlight',
+				'placeholder' => __( 'Select an Item', 'your-prefix' ),
+			),
+			array(
 				'name'  => __( 'Page columns', 'wpsp_meta_options' ), 
 				'id'    => $prefix . "page_col",
 				'desc'	=> __( 'How many columns to display child page', 'wpsp_meta_options' ),
