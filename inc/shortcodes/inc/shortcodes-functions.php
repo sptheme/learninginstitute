@@ -291,6 +291,7 @@ function wpsp_publication_shortcode( $atts, $content = null ){
 		'cols' => null
 	), $atts ) );
 
+	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 	$args = array();
 	if ( $term_id != '-1' ) {
 		$args = array(
@@ -306,7 +307,8 @@ function wpsp_publication_shortcode( $atts, $content = null ){
 
 	$defaults = array(
 			'post_type' => 'publications',
-			'posts_per_page' => $post_count
+			'posts_per_page' => $post_count,
+			'paged' 		=> $paged
 		);
 	$args = wp_parse_args( $args, $defaults );
 	extract( $args );
@@ -327,7 +329,13 @@ function wpsp_publication_shortcode( $atts, $content = null ){
 				<?php get_template_part( 'template-parts/publication/publication-entry-title' ); ?>	
 				<?php get_template_part( 'template-parts/publication/publication-entry-meta' ); ?>
 			</article><!-- #post-## -->
-	<?php endwhile; wp_reset_postdata(); ?>
+	<?php endwhile; //wp_reset_postdata(); 
+
+			// Pagination
+            if(function_exists('wp_pagenavi'))
+                wp_pagenavi();
+            else 
+                wpsp_paging_nav($publication_query->max_num_pages); ?>
 
 		</div> <!-- .wpsp-row .clearfix -->
 	<?php	

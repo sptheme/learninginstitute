@@ -194,9 +194,18 @@ if ( ! function_exists( 'wpsp_paging_nav' ) ) :
  *
  * @todo Remove this function when WordPress 4.3 is released.
  */
-function wpsp_paging_nav() {
+function wpsp_paging_nav( $pages = '', $mid_size = 2 ) {
+	global $wp_query, $paged;
 	// Don't print empty markup if there's only one page.
-	if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
+	if( $pages == '' ) {
+
+		$pages = $GLOBALS['wp_query']->max_num_pages;
+
+		if( !$pages )
+			$pages = 1;
+
+	}
+	if ( $pages < 2 ) {
 		return;
 	}
 
@@ -219,9 +228,9 @@ function wpsp_paging_nav() {
 	$links = paginate_links( array(
 		'base'     => $pagenum_link,
 		'format'   => $format,
-		'total'    => $GLOBALS['wp_query']->max_num_pages,
+		'total'    => $pages,
 		'current'  => $paged,
-		'mid_size' => 2,
+		'mid_size' => $mid_size,
 		'add_args' => array_map( 'urlencode', $query_args ),
 		'prev_text' => __( '← Previous', 'learninginstitute' ),
 		'next_text' => __( 'Next →', 'learninginstitute' ),
