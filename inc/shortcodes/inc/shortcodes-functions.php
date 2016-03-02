@@ -329,7 +329,7 @@ function wpsp_publication_shortcode( $atts, $content = null ){
 				<?php get_template_part( 'template-parts/publication/publication-entry-title' ); ?>	
 				<?php get_template_part( 'template-parts/publication/publication-entry-meta' ); ?>
 			</article><!-- #post-## -->
-	<?php endwhile; //wp_reset_postdata(); 
+	<?php endwhile; wp_reset_postdata(); 
 
 			// Pagination
             if(function_exists('wp_pagenavi'))
