@@ -63,7 +63,7 @@ get_header();
 						}
 						$term_list .= '<div class="portfolio-entry-content">';
 						$term_list .= '<h3 class="entry-title portfolio-entry-title">';
-						$term_list .= '<a href="' . esc_url( get_term_link( $term ) ) . '" alt="' . esc_attr( sprintf( __( 'View all post filed under %s', 'learninginstitute' ), $term->name ) ) . '">' . esc_html( sprintf( __( 'Project in %s', 'learninginstitute' ), $term->name ) ) . '</a>';
+						$term_list .= '<a href="' . esc_url( get_term_link( $term ) ) . '" alt="' . esc_attr( sprintf( __( 'View all post filed under %s', 'learninginstitute' ), $term->name ) ) . '">' . esc_html( sprintf( __( 'Projects in %s', 'learninginstitute' ), $term->name ) ) . '</a>';
 						$term_list .= '</h3>';
 						if ( !empty($term->description) ) {
 							$term_list .= '<div class="portfolio-entry-excerpt">' . $term->description . '</div>';
