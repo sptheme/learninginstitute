@@ -30,7 +30,7 @@ get_header();
 				$post_count = 0;
 				$post_excerpt = 1;
 				$excerpt_length = 25;
-				$term_id = rwmb_meta('wpsp_featured_video_cat') ? rwmb_meta('wpsp_featured_video_cat') : 3;
+				$term_id = ( rwmb_meta('wpsp_featured_video_cat') ) ? rwmb_meta('wpsp_featured_video_cat') : 3;
 				$post_style = '';
 				$entry_classes = array( 'entry-blog-article' ); 
 				$entry_classes[] = $post_style;

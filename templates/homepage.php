@@ -41,7 +41,7 @@ get_header();
 		            	if ( $page_count == 1 ) {
 		            		$image_url = aq_resize( $thumb_url[0], '415', '560', true);
 		            	} else {
-		            		$image_url = aq_resize( $thumb_url[0], '415', '270', true);
+		            		$image_url = aq_resize( $thumb_url[0], '415', '271', true);
 		            	}
 		            	if ( $page_count <= 3 ) { 
 		            		$entry_classes = array( 'page-entry-overlay' );

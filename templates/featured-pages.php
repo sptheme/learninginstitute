@@ -32,11 +32,10 @@ get_header();
 				$post_style = rwmb_meta('wpsp_featured_page_style') ? rwmb_meta('wpsp_featured_page_style') : 'post-highlight-green';
 				$post_excerpt = 1;
 				$excerpt_length = 25;
-				$entry_classes = array( 'entry-blog-article' ); 
+				$entry_classes = (rwmb_meta('wpsp_featured_page_style') == 'post-masonry') ? array( 'page-entry-overlay' ) : array( 'entry-blog-article' ); 
 				$entry_classes[] = $post_style;
 				$entry_classes[] = 'col';
 				$entry_classes[] = wpsp_grid_class($cols);
-				$entry_classes[] = 'col-' . $page_count;
 
 				$args = array (
 					'child_of' => rwmb_meta('wpsp_featured_parent_page'),
@@ -44,7 +43,31 @@ get_header();
 				); 
 				$featured_pages = get_pages( $args );
 				if ( !empty($featured_pages) ) {
-					foreach ( $featured_pages as $page ) { ?>
+					foreach ( $featured_pages as $page ) { 
+						$page_count++; 
+						$entry_classes[] = 'col-' . $page_count; ?>
+
+					<?php if (rwmb_meta('wpsp_featured_page_style') == 'post-masonry') { 
+
+						$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id( $page->ID ), 'large' );
+		            	if ( $page_count == 1 ) {
+		            		$image_url = aq_resize( $thumb_url[0], '415', '565', true);
+		            	} else {
+		            		$image_url = aq_resize( $thumb_url[0], '415', '270', true);
+		            	} ?> 
+
+						<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
+							<div class="entry-page post-thumbnail-wrap overlay-1">
+								<img src="<?php echo $image_url;?>">
+								<div class="caption-wrap">
+									<div class="caption-inner">
+									<a href="<?php wpsp_permalink($page->ID);?>" rel="bookmark"><span class="title"><?php echo $page->post_title; ?></span></a>
+									</div>
+								</div>
+							</div>
+						</article> <!-- .page-entry-overlay -->
+
+					<?php } else { ?> 
 						<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
 							<div class="post-thumbnail">
 								<a href="<?php wpsp_permalink($page->ID);?>" title="<?php echo wpsp_esc_title($page->ID); ?>" rel="bookmark">
@@ -59,14 +82,12 @@ get_header();
 								</div> <!-- .entry-blog-content -->
 								<?php if ( $post_excerpt ) { ?>
 								<div class="blog-entry-excerpt">
-									<?php /*wpsp_excerpt( array(
-										'length'   => $excerpt_length,
-										'readmore' => true,
-									) );*/ echo $page->post_excerpt; ?>
+									<?php echo $page->post_excerpt; ?>
 								</div>
 								<?php } ?>
 							</div> <!-- .entry-post-content-wrap -->
 						</article>	
+					<?php }?>	
 				<?php }; 
 				} ?>
 			</section> <!-- .li-goal -->

@@ -305,7 +305,8 @@
 				'options'     => array(
 					'post-highlight' => __( 'Highlight Blue', 'wpsp_meta_options' ),
 					'post-highlight-green' => __( 'Highlight Green', 'wpsp_meta_options' ),
-					'post-highlight-gray' => __( 'Highlight Green', 'wpsp_meta_options' ),
+					'post-highlight-gray' => __( 'Highlight Gray', 'wpsp_meta_options' ),
+					'post-masonry' => __( 'Masonry', 'wpsp_meta_options' ),
 				),
 				// Select multiple values, optional. Default is false.
 				'multiple'    => false,
@@ -321,6 +322,29 @@
 				'max'  	=> 5,
 				'step' 	=> 1,
 				'std'  	=> 3,
+			),
+		)
+    );
+
+    // Featured Video
+    $meta_boxes[] = array(
+    	'id'			=> 'video-post-options',
+		'title'			=> __( 'Featured Video Options', 'wpsp_meta_options' ),
+		'post_types'	=> array( 'page' ),
+		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
+		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
+		'autosave'		=> true, // Auto save: true, false (default). Optional.
+
+		'fields'		=> array(
+			array(
+				'name'  => __( 'Select category', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "featured_video_cat",
+				'desc'	=> __( 'Please select Media category', 'wpsp_meta_options' ), 
+				'type'  => 'taxonomy',
+				'options' => array(
+					'taxonomy' => 'category',
+					'type'     => 'select', // How to show taxonomy: 'checkbox_list' (default) or 'checkbox_tree', 'select_tree', select_advanced or 'select'. Optional
+				),
 			),
 		)
     );	

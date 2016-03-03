@@ -41,12 +41,14 @@ jQuery(document).ready(function($) {
 	$homepage = $('#homepage-options'),
 	$about = $('#about-options'),
 	$featured_pages = $('#featured-pages-options'),
+	$video_post = $('#video-post-options'),
 	$contact = $('#contact-options');
 	
 	function hide_meta_template() {
 		$homepage.hide();
         $about.hide();
         $featured_pages.hide();
+        $video_post.hide();
         $contact.hide();
         //default meta box
         $masthead.show();
@@ -55,7 +57,7 @@ jQuery(document).ready(function($) {
 	if ( $('#page_template').length ) {
 		hide_meta_template();
 		
-		var page_tempaltes = ['homepage', 'about', 'featured-pages', 'contact'];
+		var page_tempaltes = ['homepage', 'about', 'featured-pages', 'video-post', 'contact'];
 		var selected_page_template = $('#page_template').val().replace('templates/', '').replace('.php', '');
 		//console.log( selected_page_template );
 		if(jQuery.inArray(selected_page_template,page_tempaltes) != '-1') {			
