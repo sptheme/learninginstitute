@@ -1,10 +1,10 @@
 === Meta Box ===
-Contributors: rilwis, fitwp, f-j-kaiser, funkatronic, PerWiklander, ruanmer, Omnicia
+Contributors: metabox, rilwis, fitwp, f-j-kaiser, funkatronic, PerWiklander, ruanmer, Omnicia
 Donate link: http://www.deluxeblogtips.com/donate
 Tags: meta-box, custom fields, custom field, meta, meta-boxes, admin, advanced, custom, edit, field, file, image, magic fields, matrix, more fields, Post, repeater, simple fields, text, textarea, type, cms, fields post
-Requires at least: 3.5
-Tested up to: 4.4
-Stable tag: 4.7.3
+Requires at least: 4.1
+Tested up to: 4.5.2
+Stable tag: 4.8.7
 License: GPLv2 or later
 
 Meta Box plugin is a powerful, professional solution to create custom meta boxes and custom fields for WordPress websites.
@@ -33,7 +33,11 @@ See more documentation [here](https://metabox.io/docs/).
 
 ### Extensions
 
-- [MB Custom Post Type](https://wordpress.org/plugins/mb-custom-post-type/): Create and manage custom post types easily in WordPress with an easy-to-use interface.
+- [Meta Box Geolocation](https://metabox.io/plugins/meta-box-geolocation/)|Automatically and instantly populate location data with the power of Google Maps Geolocation API.
+- [MB Admin Columns](https://metabox.io/plugins/mb-admin-columns/): Display custom fields in table columns in admin screens for All Posts (types).
+- [MB Term Meta](https://metabox.io/plugins/mb-term-meta/): Add meta data to categories, tags or any custom taxonomy with simple syntax.
+- [MB Settings Page](https://metabox.io/plugins/mb-settings-page/): Create settings pages for themes, plugins or websites with beautiful syntax.
+- [MB Custom Post Type](https://wordpress.org/plugins/mb-custom-post-type/): Create and manage custom post types and taxonomies easily in WordPress with an easy-to-use interface.
 - [Meta Box Yoast SEO](https://wordpress.org/plugins/meta-box-yoast-seo/): Add content of custom fields to Yoast SEO Content Analysis to have better/correct SEO score.
 - [Meta Box Text Limiter](https://wordpress.org/plugins/meta-box-text-limiter/): Limit the number of characters or words entered for text and textarea fields.
 - [Meta Box Conditional Logic](https://metabox.io/plugins/meta-box-conditional-logic/): Add visibility dependency for custom meta boxes and custom fields in WordPress.
@@ -74,6 +78,122 @@ To getting started with the plugin API, please read [this tutorial](https://meta
 1. Post Taxonomy Fields
 
 == Changelog ==
+
+= 4.8.7 =
+* Improvement: Refactor the code to reduce the complexity in the fields' inheritance
+* Improvement: All HTML 5 input types (week, month, etc.) are supported
+* Improvement: Optimize the_value function, use recursive call to reduce nested loop. Sub-fields need to define format_single_value only.
+* Improvement: Use 1 single localization file for jQuery date picker for simplicity
+* Improvement: Add support for custom marker for map field (param `marker_icon`) in rwmb_meta function
+* Improvement: Add `limit` option for media fields in `rwmb_meta` function when retrieving meta value.
+* Improvement: Add `rwmb_option_label` filter for choice fields (user, post, taxonomy) so users can choose which object field is used as label
+* Improvement: Use `WP_User_Query` for user field which supports more options for querying
+* Improvement: Optimize code for oembed, also use esc_html__ for better security
+* Improvement: Compatibility with Meta Box Geolocation
+* Fix: Fix first option is auto selected in select_advanced field.
+* Fix: Fix clone issue for color in Meta Box Group extension.
+* Fix: Fix clone issue for image advanced in Meta Box Group extension.
+* Fix: Fix not parsing $args to array in helper functions.
+
+= 4.8.6 =
+* Improvement: Edit link on media items now opens edit modal
+* Improvement: Refresh map when sorting meta boxes.
+* Improvement: Wrap checkbox's description into a <label> to make it clickable to activate/deactivate the checkbox.
+* Improvement: Remove Spanish language (ES) as it's already translated on translate.wordpress.org
+* Improvement: Add support for saving zoom in map
+* Improvement: Prevent output localized strings twice.
+* Improvement: Add fallback for autoload in PHP 5.2 in case it's disabled.
+* Improvement: No need to json_encode for custom attributes. User can pass an array to custom attribute
+* Improvement: Add style for `select2` library to match WordPress admin style
+* Improvement: Adds min width to select. @prop ahmadawais
+* Improvement: Added `max_status` option for media type fields. `true` to show status, `false` to hide
+* Improvement: Add attachment meta data to file info
+* Fix: Validation for non-Meta Box fields
+* Fix: advanced_image field after reload page F5 in Firefox
+* Fix: Cannot read property 'getFullYear' of null
+* Fix: Empty date converting to 0
+* Fix: Add missing class for image_select field which prevents setting input's name when cloning.
+* Fix: Fix bug with blank maps on the front end
+* Fix: Fix bug with cloning media fields
+* Fix: Remove empty values in clones and reset index.
+* Fix: Reset of cloned select fields
+* Fix: select_advanced with multiple=true adds empty selected option
+* Fix: No empty option for simple select field
+* Fix: Empty datetime field with timestamp => true returns January 1, 1970
+* Fix: For color picker when using with Columns extension
+* Fix: Fix bug with taxonomy advanced returns all taxonomy items for posts with no meta saved
+* Fix: Fix bug with taxonomy advanced not saving value when field isn't multiple
+* Fix: Make radio inline again
+* Fix: Wrong meta value when using helper function outside the loop
+* Fix: Validation now works for hidden elements in tabs
+
+= 4.8.5 =
+* Improvement: Add localization for Select2 library
+* Improvement: Range preview output added
+* Improvement: Add Persian translation and nag fix
+* Fix: Map has no refresh in collapsed meta boxes
+* Fix: Fix incorrect URL if the plugin is symlinked.
+* Fix: Added fix for saved order in object-choice
+
+= 4.8.4 =
+* Improvement: Refactor code for plupload_image. Introduces file_upload and image_upload field which acts the same as plupload_image but for files and images.
+* Improvement: Do not show "Embed is not available" if fields don't have any value
+* Improvement: Refactor date/time related fields. 'timestamp' now works for date field as well.
+* Improvement: Add 'inline' mode for date/datetime fields.
+* Improvement: Add option 'select_all_none' for select/select2 with default = false
+* Fix: users now can register 2 meta boxes with same field IDs for different post types.
+* Fix: width of embeded video if $content_width is too large.
+* Fix: autoloader now works more safely.
+* Fix: post field doesn't show correct post link
+* Fix: select field must call field's get_value to get field's value as 'select' is used in many non-inherited classes
+* Fix: Allows old syntax for `query_args.post_types` for post/user/taxonomy fields
+* Fix: Do not reset value for hidden field when clone
+* Fix: Missing Insert into Post button for thickbox_image field
+* Fix: Date picker cut off by TinyMCE
+* Fix: CSS for multi months in date picker
+
+= 4.8.3 =
+* Improvement: WYSIWYG field now can be cloned. Sorting clone hasn't worked yet.
+* Fix: 'std' value not working if there is 'divider' or 'heading' field withough 'id'
+* Fix: helper function not working in AJAX or admin.
+* Fix: getting plugin's path on Windows system.
+* Fix: warning get_value of taxonomy field
+* Fix: guarantee file ids are in an array
+
+= 4.8.2 =
+* Fix: re-add code for backward compatibility for helper function
+* Fix:  undefined 'class' attribute for button
+* Improvement: speedup the helper function
+
+= 4.8.1 =
+
+* Fix: select multiple value with post, user and taxonomy
+* Fix: bug in oembed field
+* Fix: fix JS/CSS compatibility with WooCommerce
+* Fix: do not force field ID to lowercase, which can potentially breaks existing fields or fields with ID of CAPS characters.
+
+= 4.8.0 =
+
+* Improvement: rewrite the way the plugin loads file, which allows developers to include the plugin into themes/plugins simply by include the main file. The new loading mechanism also uses autoloading feature which prevents loading files twice and saves memory.
+* Improvement: rewrite `user`, `post`, `taxonomy` fields using the same codebase as they're native WordPress objects and sharing similar options. Also changes the syntax of query parameters for these fields (old syntax still works). Please see docs for details.
+* Improvement: add `srcset` in the returned value of helper function for image fields
+* Improvement: better sanitize value for `url` field
+* Improvement: prevent issues with dashes in field types
+* Improvement: remove redundant value in checkbox
+* Improvement: update CSS for date, time fields
+* Improvement: select2 now updated to 4.0.1
+* Improvement: optimize code for `file_advanced` and `image_advanced` fields which now submit array of values when saving instead of single CSV value
+* Improvement: add `collapse` option to `checkbox_list` and `checkbox_tree` in `user`, `taxonomy`, `post` fields which prevents plugin save parent values.
+* Improvement: secure password field so it is no longer saved in plain text. To check if a password matches the hash, please use `wp_check_password`.
+* Improvement: change the output of `color` field in the helper function. Now it shows the color instead of hex value.
+* Improvement: add `color:change` and `color:clear` JavaScript event for detecting changes in `color` field.
+* Improvement: refactor code for better structure and security
+* Fix: rewrite the JavaScript for cloning which causes bugs for date field.
+* Fix: fix missing attributes if value is '0' or 0.
+* Fix: add missing `class` attribute for fields
+* Fix: do not auto populate color field with '#'
+* Fix: wrong callback for fix page template
+
 
 = 4.7.3 =
 

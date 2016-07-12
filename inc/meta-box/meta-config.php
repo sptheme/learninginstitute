@@ -462,7 +462,7 @@
 			array(
 				'name'  => __( 'Website URL:', 'wpsp_meta_options' ), 
 				'id'    => $prefix . "partner_url",
-				'type' => 'url',
+				'type' => 'text',
 				'std'  => 'http://google.com',
 			),
 		)
@@ -492,7 +492,7 @@
 				'desc'  => __( 'Upload Khmer version. Keep blank if do not have', 'wpsp_meta_options'),
 				'type'             => 'file_advanced',
 				'max_file_uploads' => 1,
-				'mime_type'        => ''
+				'mime_type'        => 'application,pdf,doc,docx'
 			),
 		)
     );
