@@ -14,10 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 <?php 
-$logo_img = wp_get_attachment_image( rwmb_meta( 'wpsp_partner_logo'), 'large' );
-$logo_url = (rwmb_meta('wpsp_partner_url')) ? rwmb_meta('wpsp_partner_url') : '#';
-printf( '<a itemprop="url" href="%1$s" rel="bookmark" title="%2$s" target="_blank">%3$s</a>', 
-	$logo_url, 
-	wpsp_get_esc_title(), 
-	$logo_img  
-); ?>
+$logos = rwmb_meta( 'wpsp_partner_logo', array('type' => 'image_advanced', 'size' => 'large') );
+$logo_url = (rwmb_meta('wpsp_partner_url')) ? rwmb_meta('wpsp_partner_url') : '#'; ?>
+
+<a href="<?php echo $logo_url; ?>" rel="bookmark" title="<?php echo wpsp_get_esc_title(); ?>" target="_blank">
+	<?php foreach ( $logos as $logo ) : ?>
+		<img src="<?php echo $logo['full_url']; ?>">
+	<?php endforeach; ?>
+</a>
